@@ -7,7 +7,7 @@ const Home = () => {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1/api/", {
+    fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api/", {
       method: "GET"
     })
       .then((response) => response.json())
