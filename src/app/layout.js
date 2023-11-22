@@ -119,9 +119,6 @@ useEffect(() => {
         <Menu.Item key='13'><Link href="/premium/last-&-damaged">last & damaged</Link></Menu.Item>
         </SubMenu> 
         
-        <SubMenu key='sub5' title='Marketplace'>
-        <Menu.Item key='14'><Link href="/marketplace/products">products</Link></Menu.Item>
-        </SubMenu>
         </Menu>
       </Sider>
       <Layout>
