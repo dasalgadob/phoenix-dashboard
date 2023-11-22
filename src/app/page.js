@@ -12,7 +12,7 @@ const Home = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setMessage(data[0].joke);
+        setMessage(data.message);
         console.log(data);
       })
       .catch((error) => console.log(error));
