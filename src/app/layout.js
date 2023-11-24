@@ -96,27 +96,27 @@ useEffect(() => {
         <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" >
         <Menu.Item key='1'><Link href="/overview">Overview</Link></Menu.Item>
         <SubMenu key='sub1' title='My shipping Metrics'>
-        <Menu.Item key='2'><Link href="/my-shipping-metrics/spend">spend</Link></Menu.Item>
-        <Menu.Item key='3'><Link href="/my-shipping-metrics/refund">refund</Link></Menu.Item>
-        <Menu.Item key='4'><Link href="/my-shipping-metrics/breakdown">breakdown</Link></Menu.Item>
-        <Menu.Item key='5'><Link href="/my-shipping-metrics/map">map</Link></Menu.Item>
+        <Menu.Item key='2'><Link href="/my-shipping-metrics/spend">Spend</Link></Menu.Item>
+        <Menu.Item key='3'><Link href="/my-shipping-metrics/refund">Refund</Link></Menu.Item>
+        <Menu.Item key='4'><Link href="/my-shipping-metrics/breakdown">Breakdown</Link></Menu.Item>
+        <Menu.Item key='5'><Link href="/my-shipping-metrics/map">Map</Link></Menu.Item>
 
         </SubMenu>
         <SubMenu key='sub2' title='Refunds'>
-        <Menu.Item key='6'><Link href="/refunds/overview">overview</Link></Menu.Item>
-        <Menu.Item key='7'><Link href="/refunds/breakdown">breakdown</Link></Menu.Item>
+        <Menu.Item key='6'><Link href="/refunds/overview">Overview</Link></Menu.Item>
+        <Menu.Item key='7'><Link href="/refunds/breakdown">Breakdown</Link></Menu.Item>
         </SubMenu>
 
         <SubMenu key='sub3' title='Invoice'>
-        <Menu.Item key='8'><Link href="/invoice/invoice-report">invoice report</Link></Menu.Item>
-        <Menu.Item key='9'><Link href="/invoice/make-a-payment">make a payment</Link></Menu.Item>
-        <Menu.Item key='10'><Link href="/invoice/credit-cards">credit cards</Link></Menu.Item>
-        <Menu.Item key='11'><Link href="/invoice/payment-history">payment history</Link></Menu.Item>
+        <Menu.Item key='8'><Link href="/invoice/invoice-report">Invoice report</Link></Menu.Item>
+        <Menu.Item key='9'><Link href="/invoice/make-a-payment">Make a payment</Link></Menu.Item>
+        <Menu.Item key='10'><Link href="/invoice/credit-cards">Credit cards</Link></Menu.Item>
+        <Menu.Item key='11'><Link href="/invoice/payment-history">Payment history</Link></Menu.Item>
         </SubMenu>
 
         <SubMenu key='sub4' title='Premium'>
-        <Menu.Item key='12'><Link href="/premium/overview">overview</Link></Menu.Item>
-        <Menu.Item key='13'><Link href="/premium/last-&-damaged">last & damaged</Link></Menu.Item>
+        <Menu.Item key='12'><Link href="/premium/overview">Overview</Link></Menu.Item>
+        <Menu.Item key='13'><Link href="/premium/last-&-damaged">Last & damaged</Link></Menu.Item>
         </SubMenu> 
         
         </Menu>
