@@ -11,7 +11,21 @@ const columns = [
     dataIndex: 'carrier',
     key: 'carrier',
     render: (text) => <a>{text}</a>,
+    filters: [
+      {
+        text: 'FedEx',
+        value: 'FedEx',
+      },
+      {
+        text: 'UPS',
+        value: 'UPS',
+      },
+        ],
+        onFilter: (value, record) => record.carrier.indexOf(value) === 0,
+        sorter: (a, b) => a.carrier.length - b.carrier.length,
+        sortDirections: ['descend'],    
   },
+
   {
     title: 'TRACKING #',
     dataIndex: 'tracking',
@@ -91,6 +105,11 @@ const datatable = [
     claimStatus: 'Unprocessed',
   },
 ];
+
+const onChange = (pagination, filters, sorter, extra) => {
+  console.log('params', pagination, filters, sorter, extra);
+};
+
 
 const Home = () => {
 
