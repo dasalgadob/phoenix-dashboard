@@ -95,11 +95,11 @@ useEffect(() => {
 
         <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" >
         <Menu.Item key='1'><Link href="/overview">Overview</Link></Menu.Item>
-        <SubMenu key='sub1' title='My shipping Metrics'>
-        <Menu.Item key='2'><Link href="/my-shipping-metrics/spend">Spend</Link></Menu.Item>
-        <Menu.Item key='3'><Link href="/my-shipping-metrics/refund">Refund</Link></Menu.Item>
-        <Menu.Item key='4'><Link href="/my-shipping-metrics/breakdown">Breakdown</Link></Menu.Item>
-        <Menu.Item key='5'><Link href="/my-shipping-metrics/map">Map</Link></Menu.Item>
+        <SubMenu key='sub1' title='Shipping Metrics'>
+        <Menu.Item key='2'><Link href="/shipping-metrics/spend">Spend</Link></Menu.Item>
+        <Menu.Item key='3'><Link href="/shipping-metrics/refund">Refund</Link></Menu.Item>
+        <Menu.Item key='4'><Link href="/shipping-metrics/breakdown">Breakdown</Link></Menu.Item>
+        <Menu.Item key='5'><Link href="/shipping-metrics/map">Map</Link></Menu.Item>
 
         </SubMenu>
         <SubMenu key='sub2' title='Refunds'>
@@ -125,16 +125,19 @@ useEffect(() => {
         <Header
           style={{
             padding: 0,
+            background: 'colorBgContainer',
           }}
         />
         <Content
           style={{
             margin: '0 16px',
+            background: 'colorBgContainer',
           }}
         >
           <Breadcrumb
             style={{
               margin: '16px 0',
+              background: 'colorBgContainer',
             }}
           >
             <Breadcrumb.Item>User</Breadcrumb.Item>
@@ -144,6 +147,8 @@ useEffect(() => {
           <div
             style={{
               padding: 24,
+              minHeight: 360,
+              background: 'white',
             }}
           >
           {children}
@@ -155,7 +160,7 @@ useEffect(() => {
             textAlign: 'center',
           }}
         >
-          Ant Design ©2023 Created by Ant UED
+        
         </Footer>
       </Layout>
     </Layout>
