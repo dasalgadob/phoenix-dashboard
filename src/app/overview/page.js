@@ -107,8 +107,8 @@ function createGradient(ctx, area) {
 
 
 const Home = () =>{
-  const chartRef = useRef<ChartJS>(null);
-  const [chartData, setChartData] = useState<ChartData<'bar'>>({
+  const chartRef = useRef(null);
+  const [chartData, setChartData] = useState({
     datasets: [],
   });
 
