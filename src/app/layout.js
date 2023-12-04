@@ -141,7 +141,7 @@ useEffect(() => {
         <Header
           style={{
             padding: 0,
-            background: 'black',
+            background: 'colorBgContainer',
           }}
         />
         <Content
