@@ -1,7 +1,7 @@
 
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex } from 'antd';
+import { Breadcrumb, Layout, Menu, ConfigProvider, theme, Button, Dropdown, Flex } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import Link from 'next/link'
 import SubMenu from 'antd/lib/menu/SubMenu'
@@ -79,6 +79,22 @@ useEffect(() => {
   asyncFetch()
 }, []);
   return (
+
+    <ConfigProvider
+    theme={{
+      token: {
+        // Seed Token
+        colorPrimary: '#597ef7',
+        borderRadius: 2,
+
+        // Alias Token
+        colorBgContainer: '#f6ffed',
+      },
+    }}
+  >
+
+ 
+
     <html lang="en">
       <body>
       <Layout
@@ -125,19 +141,20 @@ useEffect(() => {
         <Header
           style={{
             padding: 0,
-            background: 'colorBgContainer',
+            background: 'black',
           }}
         />
         <Content
           style={{
-            margin: '0 16px',
-            background: 'colorBgContainer',
+            margin: '0 0px',
+            border: '1rem solid #597ef7',
+            background: '#597ef7',
           }}
         >
           <Breadcrumb
             style={{
               margin: '16px 0',
-              background: 'colorBgContainer',
+              background: '#597ef7',
             }}
           >
             <Breadcrumb.Item>User</Breadcrumb.Item>
@@ -149,22 +166,17 @@ useEffect(() => {
               padding: 24,
               minHeight: 360,
               background: 'white',
+              borderRadius: '20px',
             }}
           >
           {children}
 
           </div>
         </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-        
-        </Footer>
       </Layout>
     </Layout>
       </body>
     </html>
+    </ConfigProvider>
   )
 }
