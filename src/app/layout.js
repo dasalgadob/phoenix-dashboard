@@ -5,6 +5,9 @@ import { Breadcrumb, Layout, Menu, ConfigProvider, theme, Button, Dropdown, Flex
 const { Header, Content, Footer, Sider } = Layout;
 import Link from 'next/link'
 import SubMenu from 'antd/lib/menu/SubMenu'
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 import {
   DesktopOutlined,
@@ -22,44 +25,6 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
-
-
-const items = [
-
-  getItem('Overview', '1', <UserOutlined />, null),  
-  getItem('Shipping Metrics', 'sub2', <UserOutlined />, [
-    getItem('Spend', '3'),
-    getItem('Refund', '4'),
-    getItem('Breakdown', '5'),
-    getItem('Map', '6'),
-  ]),
-  getItem('Refunds', 'sub3', <UserOutlined />, [
-    getItem('Overview', '7'),
-    getItem('Breakdown', '8'),
-  ]),
-  getItem('Invoice', 'sub4', <UserOutlined />, [
-    getItem('Invoice Report', '9'),
-    getItem('Make a Payment', '10'),
-    getItem('Credit Cards', '11'),
-    getItem('Payment History', '12'),
-  ]),
-  getItem('Premium', 'sub5', <UserOutlined />, [
-    getItem('Overview', '13'),
-    getItem('Lost & Damaged', '14'),
-  ]),
-  getItem('Shipping', 'sub6', <UserOutlined />, [
-    getItem('Create Label', '15'),
-    getItem('View Labels', '16'),
-    getItem('Reports', '17'),
-    getItem('Vendors', '18'),
-    getItem('Labels in Queue', '19'),
-    getItem('B3p', '20'),
-  ]),
-  getItem('Marketplace', 'sub7', <UserOutlined />, [
-    getItem('Products', '15'),
-  ]),
-];
-
 
 export default function RootLayout({
   children,
@@ -110,29 +75,29 @@ useEffect(() => {
           </div>
 
         <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" >
-        <Menu.Item key='1'><Link href="/overview">Overview</Link></Menu.Item>
-        <SubMenu key='sub1' title='Shipping Metrics'>
-        <Menu.Item key='2'><Link href="/shipping-metrics/spend">Spend</Link></Menu.Item>
-        <Menu.Item key='3'><Link href="/shipping-metrics/refund">Refund</Link></Menu.Item>
-        <Menu.Item key='4'><Link href="/shipping-metrics/breakdown">Breakdown</Link></Menu.Item>
-        <Menu.Item key='5'><Link href="/shipping-metrics/map">Map</Link></Menu.Item>
+        <Menu.Item key='1'><Link href="/overview"><Title level={5} style={{ color: '#ffffff' }}>Overview</Title></Link></Menu.Item>
+        <SubMenu key='sub1' title= {<Title level={5} style={{ color: '#ffffff' }}>Shipping Metrics</Title>}>
+        <Menu.Item key='2'><Link href="/shipping-metrics/spend"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Spend</Title></Link></Menu.Item>
+        <Menu.Item key='3'><Link href="/shipping-metrics/refund"><Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Refund</Title></Link></Menu.Item>
+        <Menu.Item key='4'><Link href="/shipping-metrics/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Breakdown</Title></Link></Menu.Item>
+        <Menu.Item key='5'><Link href="/shipping-metrics/map"><Title level={5} style={{ color: '#ffffff', marginBottom: 31    }}>Map</Title></Link></Menu.Item>
 
         </SubMenu>
-        <SubMenu key='sub2' title='Refunds'>
-        <Menu.Item key='6'><Link href="/refunds/overview">Overview</Link></Menu.Item>
-        <Menu.Item key='7'><Link href="/refunds/breakdown">Breakdown</Link></Menu.Item>
+        <SubMenu key='sub2' title= {<Title level={5} style={{ color: '#ffffff' }}>Refunds</Title>}>
+        <Menu.Item key='6'><Link href="/refunds/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Overview</Title></Link></Menu.Item>
+        <Menu.Item key='7'><Link href="/refunds/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Breakdown</Title></Link></Menu.Item>
         </SubMenu>
 
-        <SubMenu key='sub3' title='Invoice'>
-        <Menu.Item key='8'><Link href="/invoice/invoice-report">Invoice report</Link></Menu.Item>
-        <Menu.Item key='9'><Link href="/invoice/make-a-payment">Make a payment</Link></Menu.Item>
-        <Menu.Item key='10'><Link href="/invoice/credit-cards">Credit cards</Link></Menu.Item>
-        <Menu.Item key='11'><Link href="/invoice/payment-history">Payment history</Link></Menu.Item>
+        <SubMenu key='sub3' title= {<Title level={5} style={{ color: '#ffffff' }}>Invoice</Title>}>
+        <Menu.Item key='8'><Link href="/invoice/invoice-report"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice report</Title></Link></Menu.Item>
+        <Menu.Item key='9'><Link href="/invoice/make-a-payment"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Make a payment</Title></Link></Menu.Item>
+        <Menu.Item key='10'><Link href="/invoice/credit-cards"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Credit cards</Title></Link></Menu.Item>
+        <Menu.Item key='11'><Link href="/invoice/payment-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment history</Title></Link></Menu.Item>
         </SubMenu>
 
-        <SubMenu key='sub4' title='Premium'>
-        <Menu.Item key='12'><Link href="/premium/overview">Overview</Link></Menu.Item>
-        <Menu.Item key='13'><Link href="/premium/last-&-damaged">Last & damaged</Link></Menu.Item>
+        <SubMenu key='sub4' title= {<Title level={5} style={{ color: '#ffffff' }}>Premium</Title>}>
+        <Menu.Item key='12'><Link href="/premium/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Overview</Title></Link></Menu.Item>
+        <Menu.Item key='13'><Link href="/premium/last-&-damaged"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Last & damaged</Title></Link></Menu.Item>
         </SubMenu> 
         
         </Menu>
