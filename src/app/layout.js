@@ -75,27 +75,27 @@ useEffect(() => {
           </div>
 
         <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" >
-        <Menu.Item key='1'><Link href="/overview"><Title level={5} style={{ color: '#ffffff' }}>Overview</Title></Link></Menu.Item>
-        <SubMenu key='sub1' title= {<Title level={5} style={{ color: '#ffffff' }}>Shipping Metrics</Title>}>
+        <Menu.Item key='1'><Link href="/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Overview</Title></Link></Menu.Item>
+        <SubMenu key='sub1' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Shipping Metrics</Title>}>
         <Menu.Item key='2'><Link href="/shipping-metrics/spend"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Spend</Title></Link></Menu.Item>
         <Menu.Item key='3'><Link href="/shipping-metrics/refund"><Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Refund</Title></Link></Menu.Item>
         <Menu.Item key='4'><Link href="/shipping-metrics/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Breakdown</Title></Link></Menu.Item>
         <Menu.Item key='5'><Link href="/shipping-metrics/map"><Title level={5} style={{ color: '#ffffff', marginBottom: 31    }}>Map</Title></Link></Menu.Item>
 
         </SubMenu>
-        <SubMenu key='sub2' title= {<Title level={5} style={{ color: '#ffffff' }}>Refunds</Title>}>
+        <SubMenu key='sub2' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Refunds</Title>}>
         <Menu.Item key='6'><Link href="/refunds/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Overview</Title></Link></Menu.Item>
         <Menu.Item key='7'><Link href="/refunds/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Breakdown</Title></Link></Menu.Item>
         </SubMenu>
 
-        <SubMenu key='sub3' title= {<Title level={5} style={{ color: '#ffffff' }}>Invoice</Title>}>
+        <SubMenu key='sub3' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Invoice</Title>}>
         <Menu.Item key='8'><Link href="/invoice/invoice-report"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice report</Title></Link></Menu.Item>
         <Menu.Item key='9'><Link href="/invoice/make-a-payment"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Make a payment</Title></Link></Menu.Item>
         <Menu.Item key='10'><Link href="/invoice/credit-cards"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Credit cards</Title></Link></Menu.Item>
         <Menu.Item key='11'><Link href="/invoice/payment-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment history</Title></Link></Menu.Item>
         </SubMenu>
 
-        <SubMenu key='sub4' title= {<Title level={5} style={{ color: '#ffffff' }}>Premium</Title>}>
+        <SubMenu key='sub4' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Premium</Title>}>
         <Menu.Item key='12'><Link href="/premium/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Overview</Title></Link></Menu.Item>
         <Menu.Item key='13'><Link href="/premium/last-&-damaged"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Last & damaged</Title></Link></Menu.Item>
         </SubMenu> 
