@@ -102,7 +102,7 @@ useEffect(() => {
         
         <SubMenu key='sub5' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Shipping</Title>}>
           <SubMenu key='sub6' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Labels</Title>}>
-            <Menu.Item key='14'><Link href="/shipping/labels/create-label"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Overview</Title></Link></Menu.Item>
+            <Menu.Item key='14'><Link href="/shipping/labels/create-label"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create label</Title></Link></Menu.Item>
             <Menu.Item key='15'><Link href="/shipping/labels/label-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Label History</Title></Link></Menu.Item>
             <Menu.Item key='16'><Link href="/shipping/labels/queue"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Queue</Title></Link></Menu.Item>
           </SubMenu>
