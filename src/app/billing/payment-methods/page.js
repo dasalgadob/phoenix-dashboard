@@ -5,7 +5,7 @@ import { Button } from 'antd';
 
 const Home = () => (
   <div className="App">
-    <Button type="primary">make a payment</Button>
+    <Button type="primary">Payment Methods</Button>
   </div>
 );
 
