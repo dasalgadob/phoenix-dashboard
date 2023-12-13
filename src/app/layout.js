@@ -53,7 +53,7 @@ useEffect(() => {
         borderRadius: 2,
 
         // Alias Token
-        colorBgContainer: '#f6ffed',
+        colorBgContainer: '#F2F3F4',
       },
     }}
   >
