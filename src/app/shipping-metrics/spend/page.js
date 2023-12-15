@@ -2,8 +2,59 @@
 
 import React from 'react';
 import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Select, Typography  } from 'antd';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import { faker } from '@faker-js/faker';
 
-const { Title } = Typography;
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Shipping Spend',
+    },
+  },
+};
+
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      fill: true,
+      label: 'Dataset 2',
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
+};
+
 
 const Home = () => {
 
@@ -13,7 +64,6 @@ const Home = () => {
 
   return (
     <div>
-    <Title level={5}>Shipping Spend</Title>
     <Row style={{marginTop: 40}}>
       <Col span={6}> 
       <Select
@@ -136,6 +186,10 @@ const Home = () => {
   />
     </Col>
     </Row>
+    <Row style={{marginTop: 40}}>
+          <Col span={24}><Line height={80} options={options} data={data} /></Col>
+          </Row>
+
     </div>
 );
 };
