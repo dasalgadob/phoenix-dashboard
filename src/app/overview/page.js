@@ -17,6 +17,8 @@ import { faker } from '@faker-js/faker';
 import { Col, Row, Divider, Tabs } from 'antd';
 import Metrics from './metrics';
 import Spend_by_carrier from './spend-by-carrier';
+import Spend_by_service_type from './spend-by-service-type';
+import Maps from './maps';
 import Last_12_months_shipping_spend from './last-12-months-shipping-spend';
 
 ChartJS.register(
@@ -52,12 +54,12 @@ const Home = () => {
       {
         label: 'Spend by Service Type',
         key: '3',
-        children: 'Tab 3',
+        children: <Spend_by_service_type />,
       },
       {
         label: 'Maps',
         key: '4',
-        children: 'Tab 4',
+        children: <Maps />,
       },
       {
         label: 'Last 12 Months Shipping Spend',

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { Col, Row, Divider } from 'antd';
+import { Col, Row, Divider, Typography } from 'antd';
 import { faker } from '@faker-js/faker';
 
 export const options = {
