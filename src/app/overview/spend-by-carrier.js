@@ -1,6 +1,6 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { Card, Col, Row, Divider, Typography } from 'antd';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -34,6 +34,12 @@ const Spend_by_carrier = () => {
   const options = {
     maintainAspectRatio: false, 
     responsive: true,
+    plugins: {
+      legend: {
+        position: 'right',
+        onClick: () => false,
+      },
+    },
   };
 
 

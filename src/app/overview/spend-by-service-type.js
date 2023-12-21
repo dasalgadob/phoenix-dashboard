@@ -37,6 +37,7 @@ const Spend_by_service_type = () => {
       legend: {
         position: 'right',
         padding: 0,
+        onClick: () => false,
       },
     },
     layout: {
