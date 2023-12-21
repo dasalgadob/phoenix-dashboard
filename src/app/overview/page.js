@@ -22,7 +22,15 @@ import Maps from './maps';
 import Last_12_months_shipping_spend from './last-12-months-shipping-spend';
 
 
-
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Home = () => {
   
