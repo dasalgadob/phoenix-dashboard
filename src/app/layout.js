@@ -68,9 +68,9 @@ useEffect(() => {
       }}
     >
 
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width={204}>
         <div className="demo-logo-vertical" />
-        <div className='logo' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
+        <div className='logo' style={{display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
             <img src={'/71lbs_logo.jpg'} style={{borderRadius: '50%'}} width={90} />
           </div>
 
@@ -145,6 +145,8 @@ useEffect(() => {
               minHeight: 360,
               background: 'white',
               borderRadius: '20px',
+              overflow: 'auto',
+              height: '100vh',
             }}
           >
           {children}

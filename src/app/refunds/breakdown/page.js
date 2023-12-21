@@ -116,7 +116,7 @@ const Home = () => {
 return (
 
           <Row style={{marginTop: 40}}>
-          <Col span={24}><Table columns={columns} dataSource={datatable} /></Col>
+          <Col span={24}><Table columns={columns} dataSource={datatable} size='small' /></Col>
           </Row>
 
 );

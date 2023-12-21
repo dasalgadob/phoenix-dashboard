@@ -21,15 +21,6 @@ import Spend_by_service_type from './spend-by-service-type';
 import Maps from './maps';
 import Last_12_months_shipping_spend from './last-12-months-shipping-spend';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 
 
@@ -41,28 +32,28 @@ const Home = () => {
     defaultActiveKey="1"
     items={[
       {
-        label: 'Metrics',
+        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>Metrics</span>,
         key: '1',
         children: <Metrics />,
       },
       {
-        label: 'Spend by Carrier',
+        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>Spend by Carrier</span>,
         key: '2',
         children: <Spend_by_carrier />,
         //disabled: true,
       },
       {
-        label: 'Spend by Service Type',
+        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>Spend by Service Type</span>,
         key: '3',
         children: <Spend_by_service_type />,
       },
       {
-        label: 'Maps',
+        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>Maps</span>,
         key: '4',
         children: <Maps />,
       },
       {
-        label: 'Last 12 Months Shipping Spend',
+        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>Last 12 Months Shipping Spend</span>,
         key: '5',
         children: <Last_12_months_shipping_spend />,
       },
