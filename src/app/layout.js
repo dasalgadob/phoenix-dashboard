@@ -1,11 +1,12 @@
 
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Breadcrumb, Layout, Menu, ConfigProvider, theme, Button, Dropdown, Flex } from 'antd';
+import { Breadcrumb, Layout, Menu, ConfigProvider, theme, Button, Dropdown, Flex, Col, Row } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import Link from 'next/link'
 import SubMenu from 'antd/lib/menu/SubMenu'
 import { Typography } from 'antd';
+import { usePathname } from "next/navigation"
 
 const { Title } = Typography;
 
@@ -39,6 +40,10 @@ export default function RootLayout({
         console.log('fetch data failed', error);
       })
   };
+
+  const pathname = usePathname()
+
+  const isNotLoggedIn = pathname === "/"
  
 useEffect(() => {
   asyncFetch()
@@ -67,7 +72,8 @@ useEffect(() => {
         minHeight: '100vh',
       }}
     >
-
+      {!isNotLoggedIn && 
+      
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width={210}>
         <div className="demo-logo-vertical" />
         <div className='logo' style={{display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
@@ -115,13 +121,34 @@ useEffect(() => {
 
         </Menu>
       </Sider>
+
+      }
+      
       <Layout>
         <Header
           style={{
             padding: 0,
             background: 'colorBgContainer',
-          }}
-        />
+          }}   
+        >
+          <Row>
+          <Col span={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2px' }}>
+          {isNotLoggedIn &&
+            <img src={'/71lbs_logo.jpg'} style={{ width: '50px' }} />
+          }
+          </Col>
+          <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}></Col>
+          <Col span={4} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>  
+          <div>
+          <Button type="primary" style={{ marginRight: '16px' }}>Sign Up</Button>
+          <Button type="primary">Log In</Button>
+          </div>
+          </Col>
+          </Row>
+          
+        
+        
+        </Header>  
         <Content
           style={{
             margin: '0 0px',
@@ -129,16 +156,18 @@ useEffect(() => {
             background: '#597ef7',
           }}
         >
+          {!isNotLoggedIn &&
           <Breadcrumb
             style={{
               margin: '16px 0',
               background: '#597ef7',
             }}
           >
+            
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>B18ED48633</Breadcrumb.Item>
           </Breadcrumb>
-          
+          }
           <div
             style={{
               padding: 24,

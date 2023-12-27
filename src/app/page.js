@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
+import SignIn from './sign-in';
 
 const Home = () => {
   const [message, setMessage] = useState(null);
@@ -19,7 +20,7 @@ const Home = () => {
   }, []);
   return (
   <div className="App">
-    <Button type="primary">{message}</Button>
+    <SignIn/>
   </div>);
 }
 ;
