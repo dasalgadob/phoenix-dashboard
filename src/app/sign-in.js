@@ -99,15 +99,15 @@ const SignIn = () => {
     <Col span={8}></Col>
   <Col span={8} style={{ marginTop: '0px'}}>
   <Space direction="vertical" style={{ marginLeft: '-40px'}}>
-  <Text style={{ textAlign: 'center', lineHeight: '0', fontSize: '10px' }}>Not a 71lbs customer?  
-  <Link href="/" target="_blank" style={{ textAlign: 'right', lineHeight: '0', fontSize: '10px' }}>
+  <Text style={{ textAlign: 'center', fontSize: '10px' }}>Not a 71lbs customer?  
+  <Link href="/" target="_blank" style={{ textAlign: 'right', fontSize: '10px' }}>
        Sign Up
     </Link>
   </Text>
-  <Link href="/" target="_blank" style={{ textAlign: 'center', lineHeight: '0', fontSize: '10px'}}>
+  <Link href="/" target="_blank" style={{ textAlign: 'center', fontSize: '10px'}}>
       Forgot your password?
     </Link>
-  <Link href="/" target="_blank" style={{ textAlign: 'center', lineHeight: '0', fontSize: '10px'}}>
+  <Link href="/" target="_blank" style={{ textAlign: 'center', fontSize: '10px'}}>
     Didn't receive confirmation instructions?
     </Link>      
   </Space>
