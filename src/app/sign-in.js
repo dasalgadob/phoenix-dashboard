@@ -108,7 +108,7 @@ const SignIn = () => {
       Forgot your password?
     </Link>
   <Link href="/" target="_blank" style={{ textAlign: 'center', fontSize: '10px'}}>
-    Didn't receive confirmation instructions?
+    Didn&apos;t receive confirmation instructions?
     </Link>      
   </Space>
   </Col>
