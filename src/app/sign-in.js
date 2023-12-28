@@ -23,7 +23,7 @@ const SignIn = () => {
   </Col>
   </Row>
 
-  <Row justify="center" align="middle" style={{ marginTop: '80px', backgroundColor: '#E3F2FD', marginLeft: '380px', marginRight: '380px' }} >
+  <Row justify="center" align="middle" style={{ marginTop: '80px', backgroundColor: '#e6f4ff', marginLeft: '380px', marginRight: '380px' }} >
   <Divider></Divider>
   <Form
     name="basic"

@@ -114,10 +114,11 @@ useEffect(() => {
           </SubMenu>
           <Menu.Item key='17'><Link href="/shipping/bill-to-3rd-party"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Bill to 3rd Party</Title></Link></Menu.Item>
           <Menu.Item key='18'><Link href="/shipping/reports"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>
-          <Menu.Item key='19'><Link href="/shipping/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
-          
+          <Menu.Item key='19'><Link href="/shipping/vendors-&-permissions"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Vendors & Permissions</Title></Link></Menu.Item>
         </SubMenu>
         
+        <Menu.Item key='20'><Link href="/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
+        <Menu.Item key='21'><Link href="/help"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Help</Title></Link></Menu.Item>
 
         </Menu>
       </Sider>
@@ -139,10 +140,12 @@ useEffect(() => {
           </Col>
           <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}></Col>
           <Col span={4} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>  
+          {isNotLoggedIn &&
           <div>
           <Button type="primary" style={{ marginRight: '16px' }}>Sign Up</Button>
           <Button type="primary">Log In</Button>
           </div>
+          }
           </Col>
           </Row>
           
