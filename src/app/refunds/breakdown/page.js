@@ -66,7 +66,7 @@ const columns = [
     dataIndex: 'configTable',
     key: 'configTable',
     render: () => 
-    <Button type="primary">Test</Button>
+    <Button type="primary" size='small'>Test</Button>
   },
 ];
 
