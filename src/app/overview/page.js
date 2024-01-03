@@ -60,7 +60,7 @@ const Home = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'right',
+        position: 'top',
         onClick: () => false,
       },
     },
@@ -71,14 +71,14 @@ const Home = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'right',
+        position: 'top',
         padding: 0,
         onClick: () => false,
       },
     },
     layout: {
       padding: {
-        right: 180,
+        right: 0,
       },
     },
   };
@@ -117,13 +117,42 @@ const Home = () => {
               margin: 10,
               borderRadius: '12px',
             }}>
+              <p style={{ fontWeight: 'bold', margin: 0, }}>Number of Refunds</p>
+        <Title level={2} style={{
+              fontWeight: 'bold',
+              margin: 0,
+            }}>48</Title>
+      </Card>
+    </Col>
+    <Col span={8}>
+      <Card style={{
+              margin: 10,
+              borderRadius: '12px',
+            }}>
+              <p style={{ fontWeight: 'bold', margin: 0, }}>CN Savings</p>
+        <Title level={2} style={{
+              fontWeight: 'bold',
+              margin: 0,
+            }}>3954</Title>
+      </Card>
+    </Col>
+    
+  </Row>
+
+  
+  <Row>
+  <Col span={8}>
+      <Card style={{
+              margin: 10,
+              borderRadius: '12px',
+            }}>
               <p style={{ fontWeight: 'bold', margin: 0, }}># of Shipments</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
             }}>3,249</Title>
       </Card>
-    </Col>
+    </Col>  
     <Col span={8}>
       <Card style={{
               margin: 10,
@@ -136,11 +165,7 @@ const Home = () => {
             }}>$20.10</Title>
       </Card>
     </Col>
-  </Row>
-
-  
-  <Row>
-  <Col span={8}>
+    <Col span={8}>
       <Card style={{
               margin: 10,
               borderRadius: '12px',
@@ -152,76 +177,58 @@ const Home = () => {
             }}>16.3lbs.</Title>
       </Card>
     </Col>
-    <Col span={8}>
-      <Card style={{
-              margin: 10,
-              borderRadius: '12px',
-            }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Money Refunded</p>
-        <Title level={2} style={{
-              fontWeight: 'bold',
-              margin: 0,
-            }}>$3,954</Title>
-      </Card>
-    </Col>
-    <Col span={8}>
-      <Card style={{
-              margin: 10,
-              borderRadius: '12px',
-            }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Number of Refunds</p>
-        <Title level={2} style={{
-              fontWeight: 'bold',
-              margin: 0,
-            }}>48</Title>
-      </Card>
-    </Col>
   </Row>
 
   <Divider></Divider>
 
   <Row>
-  <Col span={12}>  
-  <Title level={3} style={{
+  <Col span={8}>  
+  <Title level={4} style={{
               fontWeight: 'bold',
               margin: 0,
             }}>Shipping Spend by Carrier</Title>
   </Col>
-  <Col span={12}>  
-  <Title level={3} style={{
+  <Col span={8}>  
+  <Title level={4} style={{
               fontWeight: 'bold',
               margin: 0,
             }}>Shipping Spend by Service Type</Title>
   </Col>
+  <Col span={8}>  
+  <Title level={4} style={{
+              fontWeight: 'bold',
+              margin: 0,
+            }}>Shipping Spend by Category</Title>
+  </Col>
   </Row>         
   <Row>
-  <Col span={12}>
+  <Col span={8}>
       <Card style={{
               margin: 10,
               borderRadius: '12px',
+              height:480
             }}>
               <Row>
-              <Col span={12}>
-              <Doughnut height={400} data={data} options={options} />
+              <Col span={24}>
+              <Doughnut height={200} data={data} options={options} />
               </Col>
-              <Col span={12}>
+              <Col span={24}>
                 <Row>
                 <Card style={{
-                              margin: 10,
+                              margin: 0,
                               borderRadius: '12px',
                              }}>
-                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px'}}>FedEx       83% </p>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>FedEx       83% </p>
                                <Title level={1} style={{
                                                         fontWeight: 'bold',
                                                         margin: 0,
                                                        }}>$54,506</Title>
-                 </Card>
-                 <Divider></Divider>
+                 </Card>  
                  <Card style={{
-                              margin: 10,
+                              margin: 0,
                               borderRadius: '12px',
                              }}>
-                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px'}}>UPS       17% </p>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>UPS       17% </p>
                                <Title level={1} style={{
                                                         fontWeight: 'bold',
                                                         margin: 0,
@@ -233,13 +240,25 @@ const Home = () => {
       </Card>
     </Col>
     
-    <Col span={12}>
+    <Col span={8}>
         <Card style={{
                 margin: 10,
                 borderRadius: '12px',
+                height:480
               }}>
                 <Doughnut height={400} data={data2} options={options2} />  
         </Card>
+      </Col>
+      
+      <Col span={8}>
+      <Card style={{
+                margin: 10,
+                borderRadius: '12px',
+                height:480
+              }}>
+                <Doughnut height={400} data={data2} options={options2} />  
+        </Card>
+
       </Col>
       </Row>
     
@@ -257,7 +276,7 @@ const Home = () => {
   </div>  
 
   <Divider></Divider>      
-
+{/*
     <Tabs
     defaultActiveKey="1"
     items={[
@@ -269,6 +288,7 @@ const Home = () => {
       },
     ]}
   />
+  */}
   <Divider></Divider>  
   <div className="App">
     <Button type="primary">overview</Button>

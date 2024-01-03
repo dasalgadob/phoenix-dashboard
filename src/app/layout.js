@@ -159,6 +159,7 @@ useEffect(() => {
             background: '#597ef7',
           }}
         >
+          {/*
           {!isNotLoggedIn &&
           <Breadcrumb
             style={{
@@ -171,6 +172,7 @@ useEffect(() => {
             <Breadcrumb.Item>B18ED48633</Breadcrumb.Item>
           </Breadcrumb>
           }
+          */}
           <div
             style={{
               padding: 24,
