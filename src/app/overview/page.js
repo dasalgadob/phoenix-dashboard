@@ -105,7 +105,7 @@ const Home = () => {
               margin: 10,
               borderRadius: '12px',
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Shipping Spend</p>
+              <p style={{ fontWeight: 'bold', margin: 0, }}>1 A Shipping Spend</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
@@ -117,7 +117,7 @@ const Home = () => {
               margin: 10,
               borderRadius: '12px',
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Number of Refunds</p>
+              <p style={{ fontWeight: 'bold', margin: 0, }}>Refunds Savings</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
@@ -129,7 +129,7 @@ const Home = () => {
               margin: 10,
               borderRadius: '12px',
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>CN Savings</p>
+              <p style={{ fontWeight: 'bold', margin: 0, }}>CN Savings (New)</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
@@ -146,7 +146,7 @@ const Home = () => {
               margin: 10,
               borderRadius: '12px',
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}># of Shipments</p>
+              <p style={{ fontWeight: 'bold', margin: 0, }}># Shipments</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
@@ -198,7 +198,7 @@ const Home = () => {
   <Title level={4} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>Shipping Spend by Category</Title>
+            }}>Shipping Spend by Category (New)</Title>
   </Col>
   </Row>         
   <Row>
