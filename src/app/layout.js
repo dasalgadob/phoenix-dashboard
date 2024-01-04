@@ -102,8 +102,10 @@ useEffect(() => {
         </SubMenu>
 
         <SubMenu key='sub4' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Premium</Title>}>
-        <Menu.Item key='12'><Link href="/premium/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Overview</Title></Link></Menu.Item>
-        <Menu.Item key='13'><Link href="/premium/lost-&-damaged"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Lost & Damaged</Title></Link></Menu.Item>
+        <Menu.Item key='12'><Link href="/premium/cn-savings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>CN Savings</Title></Link></Menu.Item>
+        <Menu.Item key='13'><Link href="/premium/b3p-savings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P Savings</Title></Link></Menu.Item>
+        <Menu.Item key='14'><Link href="/premium/shipping-fraud"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping Fraud</Title></Link></Menu.Item>
+        <Menu.Item key='15'><Link href="/premium/gl-coding"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}> G/L Coding</Title></Link></Menu.Item>
         </SubMenu> 
         
         <SubMenu key='sub5' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Shipping</Title>}>
@@ -114,11 +116,15 @@ useEffect(() => {
           </SubMenu>
           <Menu.Item key='17'><Link href="/shipping/bill-to-3rd-party"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Bill to 3rd Party</Title></Link></Menu.Item>
           <Menu.Item key='18'><Link href="/shipping/reports"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>
-          <Menu.Item key='19'><Link href="/shipping/vendors-&-permissions"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Vendors & Permissions</Title></Link></Menu.Item>
+        </SubMenu>
+
+        <SubMenu key='sub7' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Carrier Invoice</Title>}>
+        <Menu.Item key='19'><Link href="/carrier-invoice/fedex-invoice"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>FedEx Invoice</Title></Link></Menu.Item>
+        <Menu.Item key='20'><Link href="/carrier-invoice/ups-invoice"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>UPS Invoice</Title></Link></Menu.Item>
         </SubMenu>
         
-        <Menu.Item key='20'><Link href="/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
-        <Menu.Item key='21'><Link href="/help"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Help</Title></Link></Menu.Item>
+        <Menu.Item key='21'><Link href="/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
+        <Menu.Item key='22'><Link href="/help"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Help</Title></Link></Menu.Item>
 
         </Menu>
       </Sider>
