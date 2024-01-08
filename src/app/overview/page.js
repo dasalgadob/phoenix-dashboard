@@ -315,7 +315,7 @@ const Home = () => {
     <Divider></Divider>
     <Row>
         <Col span={24}>
-          <Card style={{ margin: 10, borderRadius: '12px', height: 750 }}>
+          <Card style={{ margin: 10, borderRadius: '12px', height: 850 }}>
             <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }}>
               <Geographies geography={geoUrl}>
                 {({ geographies }) =>
