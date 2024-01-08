@@ -171,7 +171,7 @@ const Home = () => {
               margin: 10,
               borderRadius: '12px',
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>CN Savings (New)</p>
+              <p style={{ fontWeight: 'bold', margin: 0, }}>CN Savings</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
@@ -240,7 +240,7 @@ const Home = () => {
   <Title level={4} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>Shipping Spend by Category (New)</Title>
+            }}>Shipping Spend by Category</Title>
   </Col>
   </Row>         
   <Row>
