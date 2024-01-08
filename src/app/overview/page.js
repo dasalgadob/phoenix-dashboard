@@ -1,17 +1,57 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import { Button } from 'antd';
-import { Line, Doughnut } from 'react-chartjs-2';
+import { Line, Doughnut, Chart, Map, ColorScale, Dataset } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { faker } from '@faker-js/faker';
 import { Col, Row, Select, Divider, Tabs, Space, Card, Typography } from 'antd';
+import 'chartjs-chart-geo';
+import 'topojson';
+import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import { us } from 'topojson-client';
 import Last_12_months_shipping_spend from './last-12-months-shipping-spend';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 const { Title } = Typography;
+
+const mapData = {
+  labels: ['CA', 'TX', 'FL', 'NY', 'PA'], 
+  datasets: [
+    {
+      label: 'Shipments by State',
+      data: [120, 80, 60, 50, 40], 
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
+const optionsMap = {
+  showOutline: true,
+  showGraticule: true,
+  legend: {
+    display: true,
+    position: 'bottom',
+  },
+};
+
+const geoUrl = 'https://unpkg.com/us-atlas/states-10m.json';
 
 export const data = {
   labels: [ 'FedEx', 'UPS'],
@@ -55,6 +95,8 @@ export const data2 = {
 
 const Home = () => {
   
+  const [tooltipContent, setTooltipContent] = useState('');
+
   const options = {
     maintainAspectRatio: false, 
     responsive: true,
@@ -271,9 +313,49 @@ const Home = () => {
             }}>Maps</Title>
 
     <Divider></Divider>
-    <div className="App">
-    <Button type="primary">Maps</Button>
-  </div>  
+    <Row>
+        <Col span={24}>
+          <Card style={{ margin: 10, borderRadius: '12px', height: 750 }}>
+            <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }}>
+              <Geographies geography={geoUrl}>
+                {({ geographies }) =>
+                  geographies.map((geo) => (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      fill="#EAEAEC"
+                      stroke="#D6D6DA"
+                      style={{
+                        hover: {
+                          fill: '#87CEFA',
+                          stroke: '#FFF',
+                          strokeWidth: 2,
+                        },
+                      }}
+                      onMouseEnter={() => {
+                        const { NAME, postal } = geo.properties;
+                        const shipments = mapData.labels.indexOf(postal) !== -1
+                          ? mapData.datasets[0].data[mapData.labels.indexOf(postal)]
+                          : 0;
+
+                        setTooltipContent(`${NAME}: ${shipments} shipments`);
+                      }}
+                      onMouseLeave={() => {
+                        setTooltipContent('');
+                      }}
+                    />
+                  ))
+                }
+              </Geographies>
+            </ComposableMap>
+            {tooltipContent && (
+              <div style={{ position: 'absolute', top: '10px', left: '10px', background: '#FFF', padding: '10px', borderRadius: '5px', zIndex: 999 }}>
+                {tooltipContent}
+              </div>
+            )}
+          </Card>
+        </Col>
+      </Row>
 
   <Divider></Divider>      
 {/*
