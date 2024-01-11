@@ -89,7 +89,7 @@ const SignIn = () => {
         span: 16,
       }}
     >
-      <Button type="primary" htmlType="submit" href="/overview" style={{ borderRadius: '13px', width: '120px', marginLeft: '5px' }}>
+      <Button type="primary" htmlType="submit" href="/at-a-glance" style={{ borderRadius: '13px', width: '120px', marginLeft: '5px' }}>
         Log In
       </Button>
     </Form.Item>
