@@ -131,7 +131,7 @@ const Home = () => {
     <Button type="primary">LAST 12 MONTHS</Button>
     <Button type="primary">YEAR TO DATE</Button>
     <Button type="primary">DATE RANGE</Button>
-    <Button type="primary">CURRENT MONTH</Button>
+    <Button type="primary" style={{ background: '#2d3f7c'}}>CURRENT MONTH</Button>
     </Space>
     </Row>
 
@@ -147,7 +147,7 @@ const Home = () => {
               margin: 10,
               borderRadius: '12px',
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>1 A Shipping Spend</p>
+              <p style={{ fontWeight: 'bold', margin: 0, }}>Shipping Spend</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
@@ -159,7 +159,7 @@ const Home = () => {
               margin: 10,
               borderRadius: '12px',
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Refunds Savings</p>
+              <p style={{ fontWeight: 'bold', margin: 0, }}>Refund Savings</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
@@ -312,11 +312,12 @@ const Home = () => {
               margin: 0,
             }}>Maps</Title>
 
-    <Divider></Divider>
+    
     <Row>
         <Col span={24}>
-          <Card style={{ margin: 10, borderRadius: '12px', height: 850 }}>
-            <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }}>
+          <Card style={{ margin: 10, borderRadius: '12px', height: 450 }}>
+            <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }}
+             style={{ height: 450, alignItems: 'center',marginLeft: '140px' }}>
               <Geographies geography={geoUrl}>
                 {({ geographies }) =>
                   geographies.map((geo) => (
@@ -373,7 +374,7 @@ const Home = () => {
   */}
   <Divider></Divider>  
   <div className="App">
-    <Button type="primary">overview</Button>
+    <Button type="primary">At A Glance</Button>
   </div>
   </>
 )  

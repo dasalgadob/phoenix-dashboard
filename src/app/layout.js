@@ -5,18 +5,22 @@ import { Breadcrumb, Layout, Menu, ConfigProvider, theme, Button, Dropdown, Flex
 const { Header, Content, Footer, Sider } = Layout;
 import Link from 'next/link'
 import SubMenu from 'antd/lib/menu/SubMenu'
-import { Typography } from 'antd';
+import { Typography, Avatar, Tooltip, Badge } from 'antd';
 import { usePathname } from "next/navigation"
 
 const { Title } = Typography;
 
 import {
+  PoweroffOutlined,
   DesktopOutlined,
   FileOutlined,
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
+  BellOutlined
 } from '@ant-design/icons';
+
+
 
 function getItem(label, key, icon, children) {
   return {
@@ -46,6 +50,9 @@ export default function RootLayout({
   const isNotLoggedIn = pathname === "/"
  
 useEffect(() => {
+
+  
+
   asyncFetch()
 }, []);
   return (
@@ -81,7 +88,7 @@ useEffect(() => {
           </div>
 
         <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" >
-        <Menu.Item key='1'><Link href="/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Overview</Title></Link></Menu.Item>
+        <Menu.Item key='1'><Link href="/at-a-glance"><Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>At A Glance</Title></Link></Menu.Item>
         <SubMenu key='sub1' title= {<Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Shipping Metrics</Title>}>
         <Menu.Item key='2'><Link href="/shipping-metrics/spend"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Spend</Title></Link></Menu.Item>
         <Menu.Item key='3'><Link href="/shipping-metrics/refund"><Title level={5} style={{ color: '#ffffff', marginBottom: 31  }}>Refund</Title></Link></Menu.Item>
@@ -144,16 +151,44 @@ useEffect(() => {
           <Row>
           <Col span={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2px' }}>
           {isNotLoggedIn &&
+           
             <img src={'/71lbs_logo.jpg'} style={{ width: '50px' }} />
+          
           }
           </Col>
-          <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}></Col>
+          <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>
+          {!isNotLoggedIn && 
+          <>
+            <Tooltip title="User">
+            <Button
+            type="primary" shape="circle" icon={<UserOutlined />}
+            style={{ alignItems: 'center', marginTop: '6px', marginRight: '10px', backgroundColor: '#597ef7',cursor: 'pointer', }}
+            />
+            </Tooltip>
+            <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '#ffffff'}}>Diego Salgado </p>
+            </>
+            }
+          </Col>
           <Col span={4} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>  
           {isNotLoggedIn &&
           <div>
           <Button type="primary" style={{ marginRight: '16px' }}>Sign Up</Button>
           <Button type="primary">Log In</Button>
           </div>
+          }
+          {!isNotLoggedIn &&
+          <>
+          <Badge count={3} style={{ fontSize: '10px', marginTop: '-3px', marginRight: '25px' }}>
+          <BellOutlined 
+          style={{ fontSize: '24px', alignItems: 'center', marginTop: '5px', marginRight: '25px',  color: '#ffffff' }} />
+          </Badge>
+          <Tooltip title="Logout">
+          <Button
+          type="primary" href="/"
+          icon={<PoweroffOutlined />}
+          />
+          </Tooltip>
+          </>
           }
           </Col>
           </Row>
