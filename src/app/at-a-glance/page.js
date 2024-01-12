@@ -11,9 +11,23 @@ import 'topojson';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { us } from 'topojson-client';
 import Last_12_months_shipping_spend from './last-12-months-shipping-spend';
+import {
+  useQuery,
+} from '@tanstack/react-query'
+import useSWR from 'swr'
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+const fetchShippingSpend = async () => {
+  const response = await fetch('http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=1');
+  const data = await response.json();
+  console.log(fetchShippingSpend)
+  console.log(data)
+  return data.date;
+};
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const { Title } = Typography;
 
@@ -93,7 +107,23 @@ export const data2 = {
   ],
 };
 
+
+
 const Home = () => {
+
+  const [message, setMessage] = useState(null);
+
+  useEffect(() => {
+    fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=1", {
+      method: "GET"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setMessage(data.data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   
   const [tooltipContent, setTooltipContent] = useState('');
 
@@ -151,7 +181,9 @@ const Home = () => {
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>$65,313</Title>
+            }}>
+              ${message && message[0]?.shipping_spend}
+            </Title>
       </Card>
     </Col>
     <Col span={8}>
@@ -163,7 +195,7 @@ const Home = () => {
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>48</Title>
+            }}>${message && message[0]?.refund_savings}</Title>
       </Card>
     </Col>
     <Col span={8}>
@@ -175,7 +207,7 @@ const Home = () => {
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>3954</Title>
+            }}>${message && message[0]?.cn_savings}</Title>
       </Card>
     </Col>
     
@@ -192,7 +224,7 @@ const Home = () => {
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>3,249</Title>
+            }}>${message && message[0]?.number_of_shipments}</Title>
       </Card>
     </Col>  
     <Col span={8}>
@@ -204,7 +236,7 @@ const Home = () => {
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>$20.10</Title>
+            }}>${message && message[0]?.average_cost}</Title>
       </Card>
     </Col>
     <Col span={8}>
@@ -216,7 +248,7 @@ const Home = () => {
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>16.3lbs.</Title>
+            }}>${message && message[0]?.average_weight}</Title>
       </Card>
     </Col>
   </Row>
@@ -260,7 +292,7 @@ const Home = () => {
                               margin: 0,
                               borderRadius: '12px',
                              }}>
-                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>FedEx       83% </p>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>FedEx 83%</p>
                                <Title level={1} style={{
                                                         fontWeight: 'bold',
                                                         margin: 0,
@@ -315,9 +347,10 @@ const Home = () => {
     
     <Row>
         <Col span={24}>
-          <Card style={{ margin: 10, borderRadius: '12px', height: 450 }}>
+          <Card style={{ margin: 10, borderRadius: '12px', height: 520 }}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}> 
             <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }}
-             style={{ height: 450, alignItems: 'center',marginLeft: '140px' }}>
+             style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}>
               <Geographies geography={geoUrl}>
                 {({ geographies }) =>
                   geographies.map((geo) => (
@@ -349,6 +382,7 @@ const Home = () => {
                 }
               </Geographies>
             </ComposableMap>
+            </div> 
             {tooltipContent && (
               <div style={{ position: 'absolute', top: '10px', left: '10px', background: '#FFF', padding: '10px', borderRadius: '5px', zIndex: 999 }}>
                 {tooltipContent}

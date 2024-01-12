@@ -7,6 +7,7 @@ import Link from 'next/link'
 import SubMenu from 'antd/lib/menu/SubMenu'
 import { Typography, Avatar, Tooltip, Badge } from 'antd';
 import { usePathname } from "next/navigation"
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 const { Title } = Typography;
 
@@ -20,7 +21,7 @@ import {
   BellOutlined
 } from '@ant-design/icons';
 
-
+const queryClient = new QueryClient()
 
 function getItem(label, key, icon, children) {
   return {
@@ -56,6 +57,8 @@ useEffect(() => {
   asyncFetch()
 }, []);
   return (
+    
+    <QueryClientProvider client={queryClient}>
 
     <ConfigProvider
     theme={{
@@ -159,10 +162,18 @@ useEffect(() => {
           <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>
           {!isNotLoggedIn && 
           <>
-            <Tooltip title="User">
+            <Tooltip title="Business">
             <Button
             type="primary" shape="circle" icon={<UserOutlined />}
             style={{ alignItems: 'center', marginTop: '6px', marginRight: '10px', backgroundColor: '#597ef7',cursor: 'pointer', }}
+            />
+            </Tooltip>
+            <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '#ffffff'}}>Source One Auto Parts </p>
+
+            <Tooltip title="User">
+            <Button
+            type="primary" shape="circle" icon={<UserOutlined />}
+            style={{ alignItems: 'center', marginTop: '6px', marginRight: '10px', marginLeft: '20px', backgroundColor: '#597ef7',cursor: 'pointer', }}
             />
             </Tooltip>
             <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '#ffffff'}}>Diego Salgado </p>
@@ -236,5 +247,6 @@ useEffect(() => {
       </body>
     </html>
     </ConfigProvider>
+    </QueryClientProvider>
   )
 }
