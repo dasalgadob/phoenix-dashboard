@@ -49,9 +49,19 @@ export default function RootLayout({
   const pathname = usePathname()
 
   const isNotLoggedIn = pathname === "/"
+
+  const [message, setMessage] = useState(null);
  
 useEffect(() => {
-
+  fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/business/65/", {
+      method: "GET"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setMessage(data.data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
   
 
   asyncFetch()
@@ -162,13 +172,8 @@ useEffect(() => {
           <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>
           {!isNotLoggedIn && 
           <>
-            <Tooltip title="Business">
-            <Button
-            type="primary" shape="circle" icon={<UserOutlined />}
-            style={{ alignItems: 'center', marginTop: '6px', marginRight: '10px', backgroundColor: '#597ef7',cursor: 'pointer', }}
-            />
-            </Tooltip>
-            <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '#ffffff'}}>Source One Auto Parts </p>
+            
+            <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '#ffffff'}}>{message && message[0]?.business.business_name} </p>
 
             <Tooltip title="User">
             <Button

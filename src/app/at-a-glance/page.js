@@ -112,6 +112,7 @@ export const data2 = {
 const Home = () => {
 
   const [message, setMessage] = useState(null);
+  const [dataSpendByCarrier, setDataSpendByCarrier] = useState(data);
 
   useEffect(() => {
     fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=1", {
@@ -120,6 +121,21 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => {
         setMessage(data.data);
+        setDataSpendByCarrier({...dataSpendByCarrier, datasets: [
+          {
+            label: ' ',
+            data: [  parseInt(data.data[0]?.shipping_spend_by_carrier.fedex[1]) , parseInt(data.data[0]?.shipping_spend_by_carrier.ups[1]) ],
+            backgroundColor: [
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(239, 184, 16, 0.2)',
+            ],
+            borderColor: [
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1,
+          },
+        ],  })
         console.log(data);
       })
       .catch((error) => console.log(error));
@@ -154,6 +170,9 @@ const Home = () => {
       },
     },
   };
+
+  console.log(dataSpendByCarrier);
+
   return (
   <>
     <Row justify="center" align="middle">
@@ -224,7 +243,7 @@ const Home = () => {
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>${message && message[0]?.number_of_shipments}</Title>
+            }}>{message && message[0]?.number_of_shipments}</Title>
       </Card>
     </Col>  
     <Col span={8}>
@@ -248,7 +267,7 @@ const Home = () => {
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
-            }}>${message && message[0]?.average_weight}</Title>
+            }}>{message && message[0]?.average_weight}</Title>
       </Card>
     </Col>
   </Row>
@@ -284,7 +303,7 @@ const Home = () => {
             }}>
               <Row>
               <Col span={24}>
-              <Doughnut height={200} data={data} options={options} />
+              <Doughnut height={200} data={ dataSpendByCarrier } options={options} />
               </Col>
               <Col span={24}>
                 <Row>
