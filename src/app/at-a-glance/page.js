@@ -113,6 +113,7 @@ const Home = () => {
 
   const [message, setMessage] = useState(null);
   const [dataSpendByCarrier, setDataSpendByCarrier] = useState(data);
+  const [dataShippingSpendByServiceType, setDataShippingSpendByServiceType] = useState(data2);
 
   useEffect(() => {
     fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=1", {
@@ -135,6 +136,26 @@ const Home = () => {
             ],
             borderWidth: 1,
           },
+          
+        ],  })
+        console.log(data);
+        setDataShippingSpendByServiceType({...dataShippingSpendByServiceType, datasets: [
+          {
+            label: ' ',
+            data: [data.data[0]?.shipping_spend_by_service_type.air, data.data[0]?.shipping_spend_by_service_type.ground, data.data[0]?.shipping_spend_by_service_type.intl ],
+            backgroundColor: [
+              'rgba(20, 20, 184, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+              'rgba(29, 29, 184, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 1,
+          },
+          
         ],  })
         console.log(data);
       })
@@ -339,7 +360,7 @@ const Home = () => {
                 borderRadius: '12px',
                 height:480
               }}>
-                <Doughnut height={400} data={data2} options={options2} />  
+                <Doughnut height={400} data={dataShippingSpendByServiceType} options={options2} />  
         </Card>
       </Col>
       
