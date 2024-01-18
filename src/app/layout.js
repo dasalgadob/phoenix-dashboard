@@ -12,6 +12,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 const { Title } = Typography;
 
 import {
+  DownOutlined,
   PoweroffOutlined,
   DesktopOutlined,
   FileOutlined,
@@ -20,6 +21,37 @@ import {
   UserOutlined,
   BellOutlined
 } from '@ant-design/icons';
+
+const handleButtonClick = (e) => {
+  message.info('Click on left button.');
+  console.log('click left button', e);
+};
+
+const handleMenuClick = (e) => {
+  message.info('Click on menu item.');
+  console.log('click', e);
+};
+
+const items = [
+  {
+    label: '1st alert',
+    key: '1',
+    icon: <BellOutlined />,
+  },
+  {
+    label: '2nd alert',
+    key: '2',
+    icon: <BellOutlined />,
+  },
+  
+];
+
+const menuProps = {
+  items,
+  onClick: handleMenuClick,
+}
+
+
 
 const queryClient = new QueryClient()
 
@@ -194,9 +226,11 @@ useEffect(() => {
           }
           {!isNotLoggedIn &&
           <>
-          <Badge count={3} style={{ fontSize: '10px', marginTop: '-3px', marginRight: '25px' }}>
+          <Badge count={2} style={{ fontSize: '10px', marginTop: '-3px', marginRight: '25px' }}>
+          <Dropdown menu={menuProps} placement="bottomCenter">
           <BellOutlined 
           style={{ fontSize: '24px', alignItems: 'center', marginTop: '5px', marginRight: '25px',  color: '#ffffff' }} />
+          </Dropdown>
           </Badge>
           <Tooltip title="Logout">
           <Button
