@@ -216,11 +216,13 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
+              background: 'linear-gradient(to right, #4B0082, #6F2DA8)'
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Shipping Spend</p>
+              <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>Shipping Spend</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
+              color: '#ffffff'
             }}>
               ${message && message[0]?.shipping_spend}
             </Title>
@@ -230,11 +232,13 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
+              background: 'linear-gradient(to right, #4B0082, #6F2DA8)'
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Refund Savings</p>
+              <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>Refund Savings</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
+              color: '#ffffff'
             }}>${message && message[0]?.refund_savings}</Title>
       </Card>
     </Col>
@@ -242,11 +246,13 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
+              background: 'linear-gradient(to right, #4B0082, #6F2DA8)'
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>CN Savings</p>
+              <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>CN Savings</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
+              color: '#ffffff'
             }}>${message && message[0]?.cn_savings}</Title>
       </Card>
     </Col>
@@ -259,11 +265,13 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
+              background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}># Shipments</p>
+              <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}># Shipments</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
+              color: '#ffffff'
             }}>{message && message[0]?.number_of_shipments}</Title>
       </Card>
     </Col>  
@@ -271,11 +279,13 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
+              background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Average Cost</p>
+              <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff'}}>Average Cost</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
+              color: '#ffffff'
             }}>${message && message[0]?.average_cost}</Title>
       </Card>
     </Col>
@@ -283,11 +293,13 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
+              background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'
             }}>
-              <p style={{ fontWeight: 'bold', margin: 0, }}>Average Weight</p>
+              <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>Average Weight</p>
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
+              color: '#ffffff'
             }}>{message && message[0]?.average_weight}</Title>
       </Card>
     </Col>
