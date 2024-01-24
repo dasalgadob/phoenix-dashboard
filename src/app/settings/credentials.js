@@ -1,6 +1,6 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import { Button, Card, Divider, Row, Col, Tooltip, Typography, } from 'antd';
 const { Title, Link, Text } = Typography;
 import {
@@ -12,6 +12,23 @@ import {
 
 
 const Credentials = () => {
+
+  const [message, setMessage] = useState(null);
+
+  useEffect(() => {
+    fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/settings/credentials/65/", {
+        method: "GET"
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setMessage(data.data);
+          console.log(data);
+        })
+        .catch((error) => console.log(error));
+    
+  
+    
+  }, []);
 
   return (
     <>
@@ -36,7 +53,9 @@ const Credentials = () => {
         </Tooltip>
         </Col>
         <Col span={16}>     
-        <p style={{  fontSize: '13px', margin: 0, marginLeft: '-30px', display: 'flex', alignItems: 'right', fontWeight: 'bold', }}>trendsauto</p>
+        <p style={{  fontSize: '13px', margin: 0, marginLeft: '-30px', display: 'flex', alignItems: 'right', fontWeight: 'bold', }}>
+        {message && message[0]?.fedex_account_name}
+        </p>
         </Col>
         <Col span={2}>
         <Tooltip title="Edit" placement="left" >
