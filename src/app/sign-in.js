@@ -101,7 +101,7 @@ const SignIn = () => {
   <Space direction="vertical" style={{ marginLeft: '-40px'}}>
   <Text style={{ textAlign: 'center', fontSize: '10px' }}>Not a 71lbs customer?  
   <Link href="/" target="_blank" style={{ textAlign: 'right', fontSize: '10px' }}>
-       Sign Up
+      &nbsp;Sign Up
     </Link>
   </Text>
   <Link href="/" target="_blank" style={{ textAlign: 'center', fontSize: '10px'}}>
