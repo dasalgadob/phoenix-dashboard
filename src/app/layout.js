@@ -8,6 +8,7 @@ import SubMenu from 'antd/lib/menu/SubMenu'
 import { Typography, Avatar, Tooltip, Badge } from 'antd';
 import { usePathname } from "next/navigation"
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 const { Title } = Typography;
 
@@ -99,7 +100,7 @@ useEffect(() => {
   asyncFetch()
 }, []);
   return (
-    
+    <AntdRegistry>
     <QueryClientProvider client={queryClient}>
 
     <ConfigProvider
@@ -287,5 +288,6 @@ useEffect(() => {
     </html>
     </ConfigProvider>
     </QueryClientProvider>
+    </AntdRegistry>
   )
 }
