@@ -344,21 +344,21 @@ const Home = () => {
                               margin: 0,
                               borderRadius: '12px',
                              }}>
-                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>FedEx {message && message[0]?.shipping_spend_by_carrier.fedex[1]}</p>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>FedEx {message && message[0]?.shipping_spend_by_carrier?.fedex?.[1]}</p>
                                <Title level={1} style={{
                                                         fontWeight: 'bold',
                                                         margin: 0,
-                                                       }}>${message && message[0]?.shipping_spend_by_carrier.fedex[0]}</Title>
+                                                       }}>${message && message[0]?.shipping_spend_by_carrier?.fedex?.[0]}</Title>
                  </Card>  
                  <Card style={{
                               margin: 0,
                               borderRadius: '12px',
                              }}>
-                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>UPS {message && message[0]?.shipping_spend_by_carrier.ups[1]} </p>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>UPS {message && message[0]?.shipping_spend_by_carrier?.ups?.[1]} </p>
                                <Title level={1} style={{
                                                         fontWeight: 'bold',
                                                         margin: 0,
-                                                       }}>${message && message[0]?.shipping_spend_by_carrier.ups[0]}</Title>
+                                                       }}>${message && message[0]?.shipping_spend_by_carrier?.ups?.[0]}</Title>
                  </Card>
                 </Row>
               </Col>
