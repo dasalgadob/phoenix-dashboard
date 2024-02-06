@@ -146,10 +146,10 @@ const Home = () => {
         setDataShippingSpendByServiceType({...dataShippingSpendByServiceType, datasets: [
           {
             label: ' ',
-            data: [data.data[0]?.shipping_spend_by_service_type.air[1],
-                   data.data[0]?.shipping_spend_by_service_type.ground[1],
-                   data.data[0]?.shipping_spend_by_service_type.intl[1],
-                   data.data[0]?.shipping_spend_by_service_type.deferred[1],
+            data: [parseInt(data.data[0]?.shipping_spend_by_service_type.air[1]),
+                   parseInt(data.data[0]?.shipping_spend_by_service_type.ground[1]),
+                   parseInt(data.data[0]?.shipping_spend_by_service_type.intl[1]),
+                   parseInt(data.data[0]?.shipping_spend_by_service_type.deferred[1]),
                   ],
             backgroundColor: [
               'rgba(20, 20, 184, 0.2)',
@@ -172,8 +172,7 @@ const Home = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(dataSpendByCarrier);
-  console.log(dataShippingSpendByServiceType);
+  
 
   const [tooltipContent, setTooltipContent] = useState('');
 
@@ -189,7 +188,7 @@ const Home = () => {
   };
 
   const options2 = {
-    maintainAspectRatio: true, 
+    maintainAspectRatio: false, 
     responsive: true,
     plugins: {
       legend: {
@@ -205,7 +204,8 @@ const Home = () => {
     },
   };
 
-  
+  console.log(dataSpendByCarrier);
+  console.log(dataShippingSpendByServiceType);
 
   return (
   <>
@@ -399,15 +399,16 @@ const Home = () => {
       </Col>
       
       <Col span={8}>
+        
       <Card style={{
                 margin: 10,
                 borderRadius: '12px',
                 height:500
               }}>
                 <p style={{ fontWeight: 'bold', margin: 0, color: '#808080'  }}>Feature not available</p>
-                <Doughnut height={400} data={data2} options={options2} />  
+                 
         </Card>
-
+        
       </Col>
       </Row>
     
