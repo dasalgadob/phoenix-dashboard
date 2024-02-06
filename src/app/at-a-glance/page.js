@@ -87,20 +87,23 @@ export const data = {
 };
 
 export const data2 = {
-  labels: ['Air', 'Ground', 'Intl'],
+  labels: ['Air', 'Ground', 'Intl', 'Deferred'],
   datasets: [
     {
       label: ' ',
-      data: [9275, 55560, 477 ],
+      data: [9275, 55560, 477, 100 ],
       backgroundColor: [
         'rgba(20, 20, 184, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(75, 192, 192, 0.2)',
+        '#F8BBD0',
+
       ],
       borderColor: [
         'rgba(29, 29, 184, 1)',
         'rgba(54, 162, 235, 1)',
         'rgba(75, 192, 192, 1)',
+        '#C2185B',
       ],
       borderWidth: 1,
     },
@@ -125,7 +128,8 @@ const Home = () => {
         setDataSpendByCarrier({...dataSpendByCarrier, datasets: [
           {
             label: ' ',
-            data: [  parseInt(data.data[0]?.shipping_spend_by_carrier.fedex[1]) , parseInt(data.data[0]?.shipping_spend_by_carrier.ups[1]) ],
+            data: [  parseInt(data.data[0]?.shipping_spend_by_carrier.fedex[1]) 
+            , parseInt(data.data[0]?.shipping_spend_by_carrier.ups[1]) ],
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)',
               'rgba(239, 184, 16, 0.2)',
@@ -142,16 +146,22 @@ const Home = () => {
         setDataShippingSpendByServiceType({...dataShippingSpendByServiceType, datasets: [
           {
             label: ' ',
-            data: [data.data[0]?.shipping_spend_by_service_type.air, data.data[0]?.shipping_spend_by_service_type.ground, data.data[0]?.shipping_spend_by_service_type.intl ],
+            data: [data.data[0]?.shipping_spend_by_service_type.air[1],
+                   data.data[0]?.shipping_spend_by_service_type.ground[1],
+                   data.data[0]?.shipping_spend_by_service_type.intl[1],
+                   data.data[0]?.shipping_spend_by_service_type.deferred[1],
+                  ],
             backgroundColor: [
               'rgba(20, 20, 184, 0.2)',
               'rgba(54, 162, 235, 0.2)',
               'rgba(75, 192, 192, 0.2)',
+              '#F8BBD0',
             ],
             borderColor: [
               'rgba(29, 29, 184, 1)',
               'rgba(54, 162, 235, 1)',
               'rgba(75, 192, 192, 1)',
+              '#C2185B',
             ],
             borderWidth: 1,
           },
@@ -161,7 +171,10 @@ const Home = () => {
       })
       .catch((error) => console.log(error));
   }, []);
-  
+
+  console.log(dataSpendByCarrier);
+  console.log(dataShippingSpendByServiceType);
+
   const [tooltipContent, setTooltipContent] = useState('');
 
   const options = {
@@ -176,7 +189,7 @@ const Home = () => {
   };
 
   const options2 = {
-    maintainAspectRatio: false, 
+    maintainAspectRatio: true, 
     responsive: true,
     plugins: {
       legend: {
@@ -192,7 +205,7 @@ const Home = () => {
     },
   };
 
-  console.log(dataSpendByCarrier);
+  
 
   return (
   <>
@@ -249,11 +262,19 @@ const Home = () => {
               background: 'linear-gradient(to right, #4B0082, #6F2DA8)'
             }}>
               <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>CN Savings</p>
+        <Row>      
+        < Col span={8}>      
         <Title level={2} style={{
               fontWeight: 'bold',
               margin: 0,
               color: '#ffffff'
-            }}>${message && message[0]?.cn_savings}</Title>
+            }}>{(message && message[0]?.cn_savings)} &nbsp;
+             </Title>
+             </Col>
+             < Col span={16} style={{ display: 'flex', alignItems: 'flex-end' }}>
+            <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff'  }}>Feature not available</p>
+            </Col>
+            </Row>
       </Card>
     </Col>
     
@@ -332,7 +353,7 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
-              height:480
+              height:500
             }}>
               <Row>
               <Col span={24}>
@@ -370,8 +391,9 @@ const Home = () => {
         <Card style={{
                 margin: 10,
                 borderRadius: '12px',
-                height:480
+                height:500
               }}>
+                
                 <Doughnut height={400} data={dataShippingSpendByServiceType} options={options2} />  
         </Card>
       </Col>
@@ -380,8 +402,9 @@ const Home = () => {
       <Card style={{
                 margin: 10,
                 borderRadius: '12px',
-                height:480
+                height:500
               }}>
+                <p style={{ fontWeight: 'bold', margin: 0, color: '#808080'  }}>Feature not available</p>
                 <Doughnut height={400} data={data2} options={options2} />  
         </Card>
 
