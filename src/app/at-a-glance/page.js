@@ -110,16 +110,17 @@ export const data2 = {
   ],
 };
 
-
+const filter = {currentMonth: 1, lastMonth: 2, last12Months: 4, yearToDate: 3}
 
 const Home = () => {
 
   const [message, setMessage] = useState(null);
   const [dataSpendByCarrier, setDataSpendByCarrier] = useState(data);
   const [dataShippingSpendByServiceType, setDataShippingSpendByServiceType] = useState(data2);
+  const [filterType, setFilterType] = useState('currentMonth');
 
   useEffect(() => {
-    fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=1", {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=${filter[filterType]}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -170,7 +171,7 @@ const Home = () => {
         console.log(data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [filterType]);
 
   
 
@@ -211,10 +212,16 @@ const Home = () => {
   <>
     <Row justify="center" align="middle">
     <Space size={16}>
-    <Button type="primary">LAST 12 MONTHS</Button>
-    <Button type="primary">YEAR TO DATE</Button>
+    <Button type="primary" onClick={() => setFilterType('last12Months')}
+                           style={filterType === 'last12Months' && {background: '#2d3f7c'}}
+                           >LAST 12 MONTHS</Button>
+    <Button type="primary"onClick={() => setFilterType('yearToDate')}
+                           style={filterType === 'yearToDate' && {background: '#2d3f7c'}}
+                          >YEAR TO DATE</Button>
     <Button type="primary">DATE RANGE</Button>
-    <Button type="primary" style={{ background: '#2d3f7c'}}>CURRENT MONTH</Button>
+    <Button type="primary" onClick={() => setFilterType('currentMonth')}
+                           style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
+                           >CURRENT MONTH</Button>
     </Space>
     </Row>
 
@@ -268,7 +275,7 @@ const Home = () => {
               fontWeight: 'bold',
               margin: 0,
               color: '#ffffff'
-            }}>{(message && message[0]?.cn_savings)} &nbsp;
+            }}>{/*{(message && message[0]?.cn_savings)} */} &nbsp;
              </Title>
              </Col>
              < Col span={16} style={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -405,8 +412,7 @@ const Home = () => {
                 borderRadius: '12px',
                 height:500
               }}>
-                <p style={{ fontWeight: 'bold', margin: 0, color: '#808080'  }}>Feature not available</p>
-                 
+                <p style={{ fontWeight: 'bold', margin: 0, color: '#808080'  }}>Feature not available</p>         
         </Card>
         
       </Col>
