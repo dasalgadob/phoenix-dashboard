@@ -189,8 +189,8 @@ const Home = () => {
   };
 
   const options2 = {
-    maintainAspectRatio: false, 
-    responsive: true,
+    maintainAspectRatio: true, 
+    responsive: false,
     plugins: {
       legend: {
         position: 'top',
@@ -360,34 +360,40 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
-              height:500
+              height:630
             }}>
               <Row>
               <Col span={24}>
-              <Doughnut height={200} data={ dataSpendByCarrier } options={options} />
+              <Doughnut height={350} data={ dataSpendByCarrier } options={options} />
               </Col>
-              <Col span={24}>
-                <Row>
+              <Col span={24} style={{marginBottom: '10px'}}>
+                <Row >
+                  <Col span={12}>
                 <Card style={{
                               margin: 0,
                               borderRadius: '12px',
+                              justifyContent: 'center',
                              }}>
                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>FedEx {message && message[0]?.shipping_spend_by_carrier?.fedex?.[1]}</p>
-                               <Title level={1} style={{
+                               <Title level={2} style={{
                                                         fontWeight: 'bold',
                                                         margin: 0,
                                                        }}>${message && message[0]?.shipping_spend_by_carrier?.fedex?.[0]}</Title>
-                 </Card>  
+                 </Card> 
+                 </Col>
+                 <Col span={12}>
                  <Card style={{
                               margin: 0,
                               borderRadius: '12px',
+                              justifyContent: 'center',
                              }}>
                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>UPS {message && message[0]?.shipping_spend_by_carrier?.ups?.[1]} </p>
-                               <Title level={1} style={{
+                               <Title level={2} style={{
                                                         fontWeight: 'bold',
                                                         margin: 0,
                                                        }}>${message && message[0]?.shipping_spend_by_carrier?.ups?.[0]}</Title>
                  </Card>
+                 </Col>
                 </Row>
               </Col>
               </Row>
@@ -398,10 +404,73 @@ const Home = () => {
         <Card style={{
                 margin: 10,
                 borderRadius: '12px',
-                height:500
+                height:630
               }}>
                 
-                <Doughnut height={400} data={dataShippingSpendByServiceType} options={options2} />  
+                <Col span={24} style={{justifyContent: 'center', display: 'flex',}}>
+                <Doughnut height={350} data={dataShippingSpendByServiceType} options={options2}/> 
+                </Col> 
+                <Col span={24} style={{marginBottom: '10px'}}>
+                <Row>
+                  <Col span={12}>
+                <Card style={{
+                              margin: 0,
+                              borderRadius: '12px',
+                              justifyContent: 'center',
+                             }}>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>Air {message && message[0]?.shipping_spend_by_service_type?.air?.[1]}</p>
+                               <Title level={2} style={{
+                                                        fontWeight: 'bold',
+                                                        margin: 0,
+                                                       }}>${message && message[0]?.shipping_spend_by_service_type?.air?.[0]}</Title>
+                 </Card> 
+                 </Col>
+                 <Col span={12}>
+                 <Card style={{
+                              margin: 0,
+                              borderRadius: '12px',
+                              justifyContent: 'center',
+                             }}>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>Ground {message && message[0]?.shipping_spend_by_service_type?.ground?.[1]} </p>
+                               <Title level={2} style={{
+                                                        fontWeight: 'bold',
+                                                        margin: 0,
+                                                       }}>${message && message[0]?.shipping_spend_by_service_type?.ground?.[0]}</Title>
+                 </Card>
+                 </Col>
+                </Row>
+              </Col>
+              <Col span={24}>
+                <Row>
+                  <Col span={12}>
+                <Card style={{
+                              margin: 0,
+                              borderRadius: '12px',
+                              justifyContent: 'center',
+                             }}>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>Intl {message && message[0]?.shipping_spend_by_service_type?.intl?.[1]}</p>
+                               <Title level={2} style={{
+                                                        fontWeight: 'bold',
+                                                        margin: 0,
+                                                       }}>${message && message[0]?.shipping_spend_by_service_type?.intl?.[0]}</Title>
+                 </Card> 
+                 </Col>
+                 <Col span={12}>
+                 <Card style={{
+                              margin: 0,
+                              borderRadius: '12px',
+                              justifyContent: 'center',
+                             }}>
+                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>Deferred {message && message[0]?.shipping_spend_by_service_type?.deferred?.[1]} </p>
+                               <Title level={2} style={{
+                                                        fontWeight: 'bold',
+                                                        margin: 0,
+                                                       }}>${message && message[0]?.shipping_spend_by_service_type?.deferred?.[0]}</Title>
+                 </Card>
+                 </Col>
+                </Row>
+              </Col>
+
         </Card>
       </Col>
       
@@ -410,7 +479,7 @@ const Home = () => {
       <Card style={{
                 margin: 10,
                 borderRadius: '12px',
-                height:500
+                height:630
               }}>
                 <p style={{ fontWeight: 'bold', margin: 0, color: '#808080'  }}>Feature not available</p>         
         </Card>
