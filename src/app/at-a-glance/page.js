@@ -21,6 +21,8 @@ import allStates from "./data/allstates.json";
 
 const geoUrl2 = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
+
+
 const offsets = {
   VT: [50, -8],
   NH: [34, 2],
@@ -53,25 +55,12 @@ const mapData = {
     {
       label: 'Shipments by State',
       data: [120, 80, 60, 50, 40], 
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(54, 162, 235, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(75, 192, 192, 0.5)',
-        'rgba(153, 102, 255, 0.5)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-      ],
+      
       borderWidth: 1,
     },
   ],
 };
-
+/*
 const optionsMap = {
   showOutline: true,
   showGraticule: true,
@@ -82,7 +71,7 @@ const optionsMap = {
 };
 
 const geoUrl = 'https://unpkg.com/us-atlas/states-10m.json';
-
+*/
 export const data = {
   labels: [ 'FedEx', 'UPS'],
   datasets: [
@@ -224,6 +213,9 @@ const Home = () => {
   console.log(dataSpendByCarrier);
   console.log(dataShippingSpendByServiceType);
 
+  const [hoveredState, setHoveredState] = useState(null);
+
+
   return (
   <>
     <Row justify="center" align="middle">
@@ -295,7 +287,7 @@ const Home = () => {
              </Title>
              </Col>
              < Col span={16} style={{ display: 'flex', alignItems: 'flex-end' }}>
-            <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff'  }}>Feature not available</p>
+            <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff', fontSize: '20px' }}>Coming soon</p>
             </Col>
             </Row>
       </Card>
@@ -489,7 +481,7 @@ const Home = () => {
 
         </Card>
       </Col>
-      
+                                                        
       <Col span={8}>
         
       <Card style={{
@@ -497,13 +489,13 @@ const Home = () => {
                 borderRadius: '12px',
                 height:630
               }}>
-                <p style={{ fontWeight: 'bold', margin: 0, color: '#808080'  }}>Feature not available</p>         
+                <p style={{ fontWeight: 'bold', margin: 0, color: '#808080' , fontSize: '20px' }}>Coming soon</p>         
         </Card>
         
       </Col>
       </Row>
     
-
+{/*
     <Divider></Divider>
 
     <Title level={3} style={{
@@ -511,7 +503,7 @@ const Home = () => {
               margin: 0,
             }}>Maps</Title>
 
-    
+
     <Row>
         <Col span={24}>
           <Card style={{ margin: 10, borderRadius: '12px', height: 520 }}>
@@ -558,13 +550,13 @@ const Home = () => {
           </Card>
         </Col>
       </Row>
-
+            */}
   <Divider></Divider>  
 
 <Title level={3} style={{
           fontWeight: 'bold',
           margin: 0,
-        }}>Maps 2</Title>
+        }}>Maps</Title>
 
 <Row>
 <Col span={24}>
@@ -579,11 +571,29 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
           <>
             {geographies.map(geo => (
               <Geography
-                key={geo.rsmKey}
-                stroke="#FFF"
-                geography={geo}
-                fill="#DDD"
-              />
+              key={geo.rsmKey}
+              geography={geo}
+              fill="#EAEAEC"
+              stroke="#D6D6DA"
+              style={{
+                hover: {
+                  fill: '#87CEFA',
+                  stroke: '#FFF',
+                  strokeWidth: 2,
+                },
+              }}
+              onMouseEnter={() => {
+                const { NAME, postal } = geo.properties;
+                const shipments = mapData.labels.indexOf(postal) !== -1
+                  ? mapData.datasets[0].data[mapData.labels.indexOf(postal)]
+                  : 0;
+
+                setTooltipContent(`${NAME}: ${shipments} shipments`);
+              }}
+              onMouseLeave={() => {
+                setTooltipContent('');
+              }}
+            />
             ))}
             {geographies.map(geo => {
               const centroid = geoCentroid(geo);
