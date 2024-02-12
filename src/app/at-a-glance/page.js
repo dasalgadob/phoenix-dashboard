@@ -22,7 +22,6 @@ import allStates from "./data/allstates.json";
 const geoUrl2 = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 
-
 const offsets = {
   VT: [50, -8],
   NH: [34, 2],
@@ -213,8 +212,7 @@ const Home = () => {
   console.log(dataSpendByCarrier);
   console.log(dataShippingSpendByServiceType);
 
-  const [hoveredState, setHoveredState] = useState(null);
-
+  
 
   return (
   <>
@@ -580,9 +578,10 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
                   fill: '#87CEFA',
                   stroke: '#FFF',
                   strokeWidth: 2,
-                },
+                }, 
               }}
-              onMouseEnter={() => {
+              onClick={() => {}}
+              /*onMouseEnter={() => {
                 const { NAME, postal } = geo.properties;
                 const shipments = mapData.labels.indexOf(postal) !== -1
                   ? mapData.datasets[0].data[mapData.labels.indexOf(postal)]
@@ -593,6 +592,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
               onMouseLeave={() => {
                 setTooltipContent('');
               }}
+              */
             />
             ))}
             {geographies.map(geo => {
