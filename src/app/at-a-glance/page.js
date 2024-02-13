@@ -575,7 +575,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
               stroke="#D6D6DA"
               style={{
                 hover: {
-                  fill: '#87CEFA',
+                  fill: '#88898a',
                   stroke: '#FFF',
                   strokeWidth: 2,
                 }, 
