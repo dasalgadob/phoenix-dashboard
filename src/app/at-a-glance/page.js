@@ -366,7 +366,7 @@ const Home = () => {
       <Card style={{
               margin: 10,
               borderRadius: '12px',
-              height:630
+              height:605
             }}>
               <Row>
               <Col span={24}>
@@ -410,7 +410,7 @@ const Home = () => {
         <Card style={{
                 margin: 10,
                 borderRadius: '12px',
-                height:630
+                height:605
               }}>
                 
                 <Col span={24} style={{justifyContent: 'center', display: 'flex',}}>
@@ -454,10 +454,10 @@ const Home = () => {
                               borderRadius: '12px',
                               justifyContent: 'center',
                              }}>
-                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>Intl {message && message[0]?.shipping_spend_by_service_type?.intl?.[1]}</p>
+                               <p style={{ fontWeight: 'bold', marginTop: '-25px', fontSize: '16px'}}>Intl {message && message[0]?.shipping_spend_by_service_type?.intl?.[1]}</p>
                                <Title level={2} style={{
                                                         fontWeight: 'bold',
-                                                        margin: 0,
+                                                        marginTop: '-20px',
                                                        }}>${message && message[0]?.shipping_spend_by_service_type?.intl?.[0]}</Title>
                  </Card> 
                  </Col>
@@ -467,10 +467,10 @@ const Home = () => {
                               borderRadius: '12px',
                               justifyContent: 'center',
                              }}>
-                               <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px'}}>Deferred {message && message[0]?.shipping_spend_by_service_type?.deferred?.[1]} </p>
+                               <p style={{ fontWeight: 'bold', marginTop: '-25px', fontSize: '16px'}}>Deferred {message && message[0]?.shipping_spend_by_service_type?.deferred?.[1]} </p>
                                <Title level={2} style={{
                                                         fontWeight: 'bold',
-                                                        margin: 0,
+                                                        marginTop: '-20px',
                                                        }}>${message && message[0]?.shipping_spend_by_service_type?.deferred?.[0]}</Title>
                  </Card>
                  </Col>
@@ -485,7 +485,7 @@ const Home = () => {
       <Card style={{
                 margin: 10,
                 borderRadius: '12px',
-                height:630
+                height:605
               }}>
                 <p style={{ fontWeight: 'bold', margin: 0, color: '#808080' , fontSize: '20px' }}>Coming soon</p>         
         </Card>

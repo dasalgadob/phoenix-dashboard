@@ -1,7 +1,7 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React from 'react';
-import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Select, Typography  } from 'antd';
+import React, { useState } from 'react';
+import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Select, Typography, Modal  } from 'antd';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -58,19 +58,36 @@ export const data = {
 
 const Shipping_Spend = () => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const handleChange = (value) => {
     console.log(value);
   };
 
   return (
     <div>
-    <Row style={{marginTop: 40}}>
-      <Col span={6}> 
+ 
+    <Row>
+    <Col span={24}>
+    <Button type="primary" onClick={showModal} style={{ minWidth: '180px', marginTop: '15px' }}>
+        Shpping Spend Options
+      </Button>
+      <Modal title="Filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
       <Select
     labelInValue
     placeholder="Service Type"
     style={{
       width: 240,
+      marginTop: '15px'
     }}
     onChange={handleChange}
     options={[
@@ -96,13 +113,12 @@ const Shipping_Spend = () => {
       },
     ]}
   />
-      </Col>
-    <Col span={6}>
-    <Select
+       <Select
     labelInValue
     placeholder="Carrier"
     style={{
       width: 240,
+      marginTop: '15px'
     }}
     onChange={handleChange}
     options={[
@@ -120,13 +136,12 @@ const Shipping_Spend = () => {
       },
     ]}
   />
-    </Col>
-    <Col span={6}>
-    <Select
+  <Select
     labelInValue
     placeholder="Account #"
     style={{
       width: 240,
+      marginTop: '15px'
     }}
     onChange={handleChange}
     options={[
@@ -152,13 +167,12 @@ const Shipping_Spend = () => {
       },
     ]}
   />
-    </Col>
-    <Col span={6}>
-    <Select
+  <Select
     labelInValue
     placeholder="Zone"
     style={{
       width: 240,
+      marginTop: '15px'
     }}
     onChange={handleChange}
     options={[
@@ -184,6 +198,21 @@ const Shipping_Spend = () => {
       },
     ]}
   />
+      </Modal>
+    </Col>  
+    </Row>      
+    <Row style={{marginTop: 40}}>
+      <Col span={6}> 
+      
+      </Col>
+    <Col span={6}>
+    
+    </Col>
+    <Col span={6}>
+    
+    </Col>
+    <Col span={6}>
+    
     </Col>
     </Row>
     <Row style={{marginTop: 40}}>
