@@ -560,7 +560,7 @@ const Home = () => {
 <Col span={24}>
   <Card style={{ margin: 10, borderRadius: '12px', height: 520 }}>
    <div style={{ display: 'flex', justifyContent: 'center' }}> 
-
+<Col span={18} style={{ display: 'flex', justifyContent: 'center' }}>
 <ComposableMap projection="geoAlbersUsa"
 style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
 >
@@ -580,19 +580,18 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
                   strokeWidth: 2,
                 }, 
               }}
-              onClick={() => {}}
-              /*onMouseEnter={() => {
+              
+              onMouseEnter={() => {
                 const { NAME, postal } = geo.properties;
                 const shipments = mapData.labels.indexOf(postal) !== -1
                   ? mapData.datasets[0].data[mapData.labels.indexOf(postal)]
                   : 0;
-
+            
                 setTooltipContent(`${NAME}: ${shipments} shipments`);
               }}
               onMouseLeave={() => {
                 setTooltipContent('');
               }}
-              */
             />
             ))}
             {geographies.map(geo => {
@@ -627,6 +626,35 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
         )}
       </Geographies>
     </ComposableMap>
+    </Col>
+    <Col span={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+    <Card style={{ margin: 10, borderRadius: '12px', alignItems: 'center', marginTop: '0px'}}>
+      <Row>
+      <Col span={24}>
+        <p style={{ fontWeight: 'bold', margin: 0, fontSize: '20px'}}>Domestic</p>
+      </Col>
+      <Col span={24} style={{marginTop: '10px'}}>
+        <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
+           1 
+          </Button>
+          <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px', color: '#87CEFA' , display: 'inline-block', marginLeft: '10px'}}>CA 120</p>
+      </Col>
+      <Col span={24} style={{marginTop: '10px'}}>
+        <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
+           2 
+          </Button>
+          <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px', color: '#87CEFA' , display: 'inline-block', marginLeft: '10px'}}>TX 80</p>
+      </Col> 
+      <Col span={24} style={{marginTop: '10px'}}>
+        <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
+           3 
+          </Button>
+          <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px', color: '#87CEFA' , display: 'inline-block', marginLeft: '10px'}}>FL 60</p>
+      </Col>      
+
+    </Row>
+    </Card>
+    </Col>
     </div>
     </Card>
   </Col>
