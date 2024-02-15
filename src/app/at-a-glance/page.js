@@ -485,9 +485,12 @@ const Home = () => {
       <Card style={{
                 margin: 10,
                 borderRadius: '12px',
-                height:605
+                height:605,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center', 
               }}>
-                <p style={{ fontWeight: 'bold', margin: 0, color: '#808080' , fontSize: '20px' }}>Coming soon</p>         
+                <p style={{ fontWeight: 'bold', margin: 0, color: '#808080' , fontSize: '30px' }}>Coming soon</p>         
         </Card>
         
       </Col>

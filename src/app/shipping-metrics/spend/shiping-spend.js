@@ -1,7 +1,9 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
 import React, { useState } from 'react';
-import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Select, Typography, Modal  } from 'antd';
+
+import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table,
+   Select, Typography, Modal, Space, Divider, Radio } from 'antd';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -73,13 +75,33 @@ const Shipping_Spend = () => {
     console.log(value);
   };
 
+  const [value, setValue] = useState(1);
+  const onChange = (e) => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value);
+  };
+
+
   return (
     <div>
- 
+    <Row justify="center" align="middle">
+    <Space size={16}>
+    <Button type="primary">LAST 12 MONTHS</Button>
+    <Button type="primary">YEAR TO DATE</Button>
+    <Button type="primary">DATE RANGE</Button>
+    <Button type="primary"
+                           style={{background: '#2d3f7c'}}
+                           >CURRENT MONTH</Button>
+    </Space>
+    </Row>
+
+    <Divider></Divider>
+
+
     <Row>
     <Col span={24}>
-    <Button type="primary" onClick={showModal} style={{ minWidth: '180px', marginTop: '15px' }}>
-        Shpping Spend Options
+    <Button type="primary" onClick={showModal} style={{ minWidth: '180px', marginTop: '15px', marginLeft: '40px' }}>
+        Filters
       </Button>
       <Modal title="Filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
       <Select
@@ -87,7 +109,7 @@ const Shipping_Spend = () => {
     placeholder="Service Type"
     style={{
       width: 240,
-      marginTop: '15px'
+      marginTop: '5px'
     }}
     onChange={handleChange}
     options={[
@@ -198,23 +220,22 @@ const Shipping_Spend = () => {
       },
     ]}
   />
+  <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Display </p>
+  <Radio.Group onChange={onChange} value={value}>
+      <Radio value={1}>Total $</Radio>
+      <Radio value={2}>$/shipment</Radio>
+      <Radio value={3}>$/package</Radio>
+      <Radio value={4}>$/lb</Radio>
+    </Radio.Group>
+    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Compare to: </p>
+  <Radio.Group onChange={onChange} value={value}>
+      <Radio value={1}>Nothing</Radio>
+      <Radio value={2}># shipments</Radio>
+      <Radio value={3}># packages</Radio>
+    </Radio.Group>
       </Modal>
     </Col>  
     </Row>      
-    <Row style={{marginTop: 40}}>
-      <Col span={6}> 
-      
-      </Col>
-    <Col span={6}>
-    
-    </Col>
-    <Col span={6}>
-    
-    </Col>
-    <Col span={6}>
-    
-    </Col>
-    </Row>
     <Row style={{marginTop: 40}}>
           <Col span={24}><Line height={80} options={options} data={data} /></Col>
           </Row>

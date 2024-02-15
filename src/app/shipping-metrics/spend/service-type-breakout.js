@@ -62,9 +62,25 @@ const Service_Type_Breakout = () => {
 
 return(
 
+
  
 
   <>
+   <Row justify="center" align="middle">
+    <Space size={16}>
+    <Button type="primary">LAST 12 MONTHS</Button>
+    <Button type="primary">YEAR TO DATE</Button>
+    <Button type="primary">DATE RANGE</Button>
+    <Button type="primary"
+                           style={{background: '#2d3f7c'}}
+                           >CURRENT MONTH</Button>
+    </Space>
+    </Row>
+
+    <Divider></Divider>
+
+
+
   <Row>
     <Col span={24}>
     <Card style={{
