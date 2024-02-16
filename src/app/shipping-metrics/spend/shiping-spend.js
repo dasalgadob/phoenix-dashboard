@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table,
-   Select, Typography, Modal, Space, Divider, Radio } from 'antd';
+   Select, Typography, Modal, Space, Divider, Radio, DatePicker } from 'antd';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -28,6 +28,8 @@ ChartJS.register(
   Filler,
   Legend
 );
+
+const { RangePicker } = DatePicker;
 
 export const options = {
   responsive: true,
@@ -81,6 +83,16 @@ const Shipping_Spend = () => {
     setValue(e.target.value);
   };
 
+  const [isModalOpenDate, setIsModalOpenDate] = useState(false);
+  const showModalDate = () => {
+    setIsModalOpenDate(true);
+  };
+  const handleOkDate = () => {
+    setIsModalOpenDate(false);
+  };
+  const handleCancelDate = () => {
+    setIsModalOpenDate(false);
+  };
 
   return (
     <div>
@@ -234,7 +246,15 @@ const Shipping_Spend = () => {
       <Radio value={3}># packages</Radio>
     </Radio.Group>
       </Modal>
-    </Col>  
+    </Col> 
+    <Button type="primary" onClick={showModalDate} style={{ minWidth: '180px', marginTop: '15px', marginLeft: '40px' }}>
+        Date Range
+      </Button>
+      <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
+      <Space direction="vertical" size={12}>
+    <RangePicker />
+  </Space>
+      </Modal> 
     </Row>      
     <Row style={{marginTop: 40}}>
           <Col span={24}><Line height={80} options={options} data={data} /></Col>
