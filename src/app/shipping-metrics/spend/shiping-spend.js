@@ -100,12 +100,18 @@ const Shipping_Spend = () => {
     <Space size={16}>
     <Button type="primary">LAST 12 MONTHS</Button>
     <Button type="primary">YEAR TO DATE</Button>
-    <Button type="primary">DATE RANGE</Button>
+    <Button type="primary" onClick={showModalDate}>DATE RANGE</Button>
+    <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
+      <Space direction="vertical" size={12}>
+    <RangePicker />
+  </Space>
+      </Modal>
     <Button type="primary"
                            style={{background: '#2d3f7c'}}
                            >CURRENT MONTH</Button>
     </Space>
     </Row>
+
 
     <Divider></Divider>
 
@@ -247,14 +253,6 @@ const Shipping_Spend = () => {
     </Radio.Group>
       </Modal>
     </Col> 
-    <Button type="primary" onClick={showModalDate} style={{ minWidth: '180px', marginTop: '15px', marginLeft: '40px' }}>
-        Date Range
-      </Button>
-      <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
-      <Space direction="vertical" size={12}>
-    <RangePicker />
-  </Space>
-      </Modal> 
     </Row>      
     <Row style={{marginTop: 40}}>
           <Col span={24}><Line height={80} options={options} data={data} /></Col>
