@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import { Line, Doughnut, Chart, Map, ColorScale, Dataset } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { faker } from '@faker-js/faker';
-import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, DatePicker,Modal,  } from 'antd';
+import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, DatePicker,Modal,Radio  } from 'antd';
 import 'chartjs-chart-geo';
 import 'topojson';
 import { ComposableMap, Geographies, Geography,  Marker, Annotation } from 'react-simple-maps';
@@ -224,6 +224,11 @@ const Home = () => {
     setIsModalOpenDate(false);
   };
   
+  const [valueRadio, setValueRadio] = useState(1);
+  const onChangeRadio = (e) => {
+    console.log('radio checked', e.target.valueRadio);
+    setValueRadio(e.target.valueRadio);
+  };
 
   return (
   <>
@@ -242,6 +247,12 @@ const Home = () => {
     <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
       <Space direction="vertical" size={12}>
     <RangePicker />
+    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Others </p>
+  <Radio.Group onChangeRadio={onChangeRadio} value={valueRadio}>
+      <Radio valueRadio={1}>Quarter</Radio>
+      <Radio valueRadio={2}>Month</Radio>
+      <Radio valueRadio={3}>Week</Radio>
+    </Radio.Group>
   </Space>
       </Modal>
     
