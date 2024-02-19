@@ -1,7 +1,7 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
 import React, { useState } from 'react';
-import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal } from 'antd';
+import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker,  } from 'antd';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
@@ -29,6 +29,8 @@ export const dataPie = {
     },
   ],
 };
+
+const { RangePicker } = DatePicker;
 
 const { Title } = Typography;
 
@@ -60,6 +62,17 @@ const Shipments_By_Zone = () => {
     },
   };
 
+  const [isModalOpenDate, setIsModalOpenDate] = useState(false);
+  const showModalDate = () => {
+    setIsModalOpenDate(true);
+  };
+  const handleOkDate = () => {
+    setIsModalOpenDate(false);
+  };
+  const handleCancelDate = () => {
+    setIsModalOpenDate(false);
+  };
+
 return(
 
  
@@ -67,12 +80,18 @@ return(
   <>
 <Row justify="center" align="middle">
     <Space size={16}>
-    <Button type="primary">LAST 12 MONTHS</Button>
-    <Button type="primary">YEAR TO DATE</Button>
-    <Button type="primary">DATE RANGE</Button>
     <Button type="primary"
                            style={{background: '#2d3f7c'}}
-                           >CURRENT MONTH</Button>
+                           >CURRENT MONTH</Button>  
+    <Button type="primary">YEAR TO DATE</Button>                       
+    <Button type="primary">LAST 12 MONTHS</Button>
+    <Button type="primary" onClick={showModalDate}>DATE RANGE</Button>
+    <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
+      <Space direction="vertical" size={12}>
+    <RangePicker />
+  </Space>
+      </Modal>
+    
     </Space>
     </Row>
 

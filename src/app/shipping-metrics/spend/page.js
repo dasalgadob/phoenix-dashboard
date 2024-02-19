@@ -16,17 +16,17 @@ const Home = () => {
     items={[
       
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}> Shipping Spend</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '18px' }}> Shipping Spend</span>,
         key: '1',
         children: <Shipping_Spend />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}> Service Type Breakout</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '18px' }}> Service Type Breakout</span>,
         key: '2',
         children: <Service_Type_Breakout />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>  Shipments by Zone</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '18px' }}>  Shipments by Zone</span>,
         key: '3',
         children: <Shipments_By_Zone />,
       },

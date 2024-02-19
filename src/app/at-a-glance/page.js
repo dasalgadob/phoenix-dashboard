@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import { Line, Doughnut, Chart, Map, ColorScale, Dataset } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { faker } from '@faker-js/faker';
-import { Col, Row, Select, Divider, Tabs, Space, Card, Typography } from 'antd';
+import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, DatePicker,Modal,  } from 'antd';
 import 'chartjs-chart-geo';
 import 'topojson';
 import { ComposableMap, Geographies, Geography,  Marker, Annotation } from 'react-simple-maps';
@@ -21,6 +21,7 @@ import allStates from "./data/allstates.json";
 
 const geoUrl2 = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
+const { RangePicker } = DatePicker;
 
 const offsets = {
   VT: [50, -8],
@@ -212,22 +213,38 @@ const Home = () => {
   console.log(dataSpendByCarrier);
   console.log(dataShippingSpendByServiceType);
 
+  const [isModalOpenDate, setIsModalOpenDate] = useState(false);
+  const showModalDate = () => {
+    setIsModalOpenDate(true);
+  };
+  const handleOkDate = () => {
+    setIsModalOpenDate(false);
+  };
+  const handleCancelDate = () => {
+    setIsModalOpenDate(false);
+  };
   
 
   return (
   <>
     <Row justify="center" align="middle">
     <Space size={16}>
+    <Button type="primary" onClick={() => setFilterType('currentMonth')}
+                           style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
+                           >CURRENT MONTH</Button>  
+    <Button type="primary"onClick={() => setFilterType('yearToDate')}
+                           style={filterType === 'yearToDate' && {background: '#2d3f7c'}}
+                          >YEAR TO DATE</Button>                       
     <Button type="primary" onClick={() => setFilterType('last12Months')}
                            style={filterType === 'last12Months' && {background: '#2d3f7c'}}
                            >LAST 12 MONTHS</Button>
-    <Button type="primary"onClick={() => setFilterType('yearToDate')}
-                           style={filterType === 'yearToDate' && {background: '#2d3f7c'}}
-                          >YEAR TO DATE</Button>
-    <Button type="primary">DATE RANGE</Button>
-    <Button type="primary" onClick={() => setFilterType('currentMonth')}
-                           style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
-                           >CURRENT MONTH</Button>
+    <Button type="primary" onClick={showModalDate}>DATE RANGE</Button>
+    <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
+      <Space direction="vertical" size={12}>
+    <RangePicker />
+  </Space>
+      </Modal>
+    
     </Space>
     </Row>
 

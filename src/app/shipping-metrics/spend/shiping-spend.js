@@ -98,17 +98,18 @@ const Shipping_Spend = () => {
     <div>
     <Row justify="center" align="middle">
     <Space size={16}>
+    <Button type="primary"
+                           style={{background: '#2d3f7c'}}
+                           >CURRENT MONTH</Button>
+    <Button type="primary">YEAR TO DATE</Button>                         
     <Button type="primary">LAST 12 MONTHS</Button>
-    <Button type="primary">YEAR TO DATE</Button>
     <Button type="primary" onClick={showModalDate}>DATE RANGE</Button>
     <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
       <Space direction="vertical" size={12}>
     <RangePicker />
   </Space>
       </Modal>
-    <Button type="primary"
-                           style={{background: '#2d3f7c'}}
-                           >CURRENT MONTH</Button>
+    
     </Space>
     </Row>
 
@@ -119,7 +120,7 @@ const Shipping_Spend = () => {
     <Row>
     <Col span={24}>
     <Button type="primary" onClick={showModal} style={{ minWidth: '180px', marginTop: '15px', marginLeft: '40px' }}>
-        Filters
+        Custom
       </Button>
       <Modal title="Filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
       <Select
@@ -251,6 +252,9 @@ const Shipping_Spend = () => {
       <Radio value={2}># shipments</Radio>
       <Radio value={3}># packages</Radio>
     </Radio.Group>
+    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Date Range: </p>
+    <RangePicker />
+
       </Modal>
     </Col> 
     </Row>      
