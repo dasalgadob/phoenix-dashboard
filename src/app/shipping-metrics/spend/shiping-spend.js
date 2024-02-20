@@ -83,6 +83,12 @@ const Shipping_Spend = () => {
     setValue(e.target.value);
   };
 
+  const [valueCompareTo, setValueCompareTo] = useState(1);
+  const onChangeCompareTo = (e) => {
+    console.log('radio checked', e.target.value);
+    setValueCompareTo(e.target.value);
+  };
+
   const [isModalOpenDate, setIsModalOpenDate] = useState(false);
   const showModalDate = () => {
     setIsModalOpenDate(true);
@@ -248,7 +254,7 @@ const Shipping_Spend = () => {
       <Radio value={4}>$/lb</Radio>
     </Radio.Group>
     <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Compare to: </p>
-  <Radio.Group onChange={onChange} value={value}>
+  <Radio.Group onChangeCompareTo={onChangeCompareTo} valueCompareTo={valueCompareTo}>
       <Radio value={1}>Nothing</Radio>
       <Radio value={2}># shipments</Radio>
       <Radio value={3}># packages</Radio>

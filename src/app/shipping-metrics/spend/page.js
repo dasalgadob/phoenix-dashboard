@@ -13,6 +13,7 @@ const Home = () => {
 
   <Tabs
     defaultActiveKey="1"
+    type="card"
     items={[
       
       {

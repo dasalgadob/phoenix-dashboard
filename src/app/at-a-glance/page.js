@@ -246,13 +246,12 @@ const Home = () => {
     <Button type="primary" onClick={showModalDate}>DATE RANGE</Button>
     <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
       <Space direction="vertical" size={12}>
-    <RangePicker />
-    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Others </p>
-  <Radio.Group onChangeRadio={onChangeRadio} value={valueRadio}>
-      <Radio valueRadio={1}>Quarter</Radio>
-      <Radio valueRadio={2}>Month</Radio>
-      <Radio valueRadio={3}>Week</Radio>
+  <Radio.Group onChangeRadio={onChangeRadio} valueRadio={valueRadio}>
+      <Radio value={1}>Quarter</Radio>
+      <Radio value={2}>Month</Radio>
+      <Radio value={3}>Week</Radio>
     </Radio.Group>
+    <RangePicker />
   </Space>
       </Modal>
     
