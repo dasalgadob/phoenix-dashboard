@@ -89,17 +89,6 @@ const Shipping_Spend = () => {
     setValueCompareTo(e.target.value);
   };
 
-  const [isModalOpenDate, setIsModalOpenDate] = useState(false);
-  const showModalDate = () => {
-    setIsModalOpenDate(true);
-  };
-  const handleOkDate = () => {
-    setIsModalOpenDate(false);
-  };
-  const handleCancelDate = () => {
-    setIsModalOpenDate(false);
-  };
-
   return (
     <div>
     <Divider></Divider>
@@ -110,142 +99,158 @@ const Shipping_Spend = () => {
                            >CURRENT MONTH</Button>
     <Button type="primary">YEAR TO DATE</Button>                         
     <Button type="primary">LAST 12 MONTHS</Button>
-    <Button type="primary" onClick={showModalDate}>DATE RANGE</Button>
-    <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
-      <Space direction="vertical" size={12}>
-    <RangePicker />
-  </Space>
-      </Modal>
-    
-    </Space>
-    </Row>
-
-
-    <Divider></Divider>
-
-
-    <Row>
-    <Col span={24}>
-    <Button type="primary" onClick={showModal} style={{ minWidth: '180px', marginTop: '15px', marginLeft: '40px' }}>
-        Custom
+    <Button type="primary" onClick={showModal} >
+        CUSTOM
       </Button>
       <Modal title="Filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-      <Select
-    labelInValue
-    placeholder="Service Type"
-    style={{
-      width: 240,
-      marginTop: '5px'
-    }}
-    onChange={handleChange}
-    options={[
-      {
-        value: 'all',
-        label: 'All',
-      },
-      {
-        value: 'air',
-        label: 'Air',
-      },
-      {
-        value: 'deferred',
-        label: 'Deferred',
-      },
-      {
-        value: 'ground',
-        label: 'Ground',
-      },
-      {
-        value: 'other',
-        label: 'Other',
-      },
-    ]}
-  />
+      <Row style={{ display: 'flex', alignItems: 'center' }}> 
+       <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
+       <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Service Type</p>
+       </Col>
+       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+        <Select
+          labelInValue
+          placeholder="Service Type"
+          style={{
+          width: 240,
+          marginTop: '0px',
+          marginLeft: '5px'
+          }}
+          onChange={handleChange}
+          options={[
+          {
+            value: 'all',
+            label: 'All',
+          },
+          {
+            value: 'air',
+            label: 'Air',
+          },
+          {
+            value: 'deferred',
+            label: 'Deferred',
+          },
+          {
+            value: 'ground',
+            label: 'Ground',
+          },
+          {
+            value: 'other',
+            label: 'Other',
+          },
+        ]}
+      />
+      </Col>
+      </Row>
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+        <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>  
+          <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Carrier</p>
+        </Col>
+       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}> 
        <Select
-    labelInValue
-    placeholder="Carrier"
-    style={{
-      width: 240,
-      marginTop: '15px'
-    }}
-    onChange={handleChange}
-    options={[
-      {
-        value: 'all',
-        label: 'All',
-      },
-      {
-        value: 'fedex',
-        label: 'FedEx',
-      },
-      {
-        value: 'ups',
-        label: 'UPS',
-      },
-    ]}
-  />
-  <Select
-    labelInValue
-    placeholder="Account #"
-    style={{
-      width: 240,
-      marginTop: '15px'
-    }}
-    onChange={handleChange}
-    options={[
-      {
-        value: 'FUR4859F',
-        label: 'FUR4859F',
-      },
-      {
-        value: '2JZEIF28',
-        label: '2JZEIF28',
-      },
-      {
-        value: '58DIE83D',
-        label: '58DIE83D',
-      },
-      {
-        value: '34IFJ59R',
-        label: '34IFJ59R',
-      },
-      {
-        value: '9984FR79',
-        label: '9984FR79',
-      },
-    ]}
-  />
-  <Select
-    labelInValue
-    placeholder="Zone"
-    style={{
-      width: 240,
-      marginTop: '15px'
-    }}
-    onChange={handleChange}
-    options={[
-      {
-        value: '001',
-        label: '001',
-      },
-      {
-        value: '002',
-        label: '002',
-      },
-      {
-        value: '003',
-        label: '003',
-      },
-      {
-        value: '004',
-        label: '004',
-      },
-      {
-        value: '005',
-        label: '005',
-      },
-    ]}
-  />
+          labelInValue
+          placeholder="Carrier"
+          style={{
+             width: 240,
+             marginTop: '0px',
+             marginLeft: '5px'
+             }}
+           onChange={handleChange}
+           options={[
+           {
+            value: 'all',
+            label: 'All',
+           },
+           {
+            value: 'fedex',
+            label: 'FedEx',
+           },
+           {
+            value: 'ups',
+            label: 'UPS',
+           },
+         ]}
+      />
+      </Col>
+      </Row>
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+      <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>
+        <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Account #</p>
+      </Col>
+      <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+       <Select
+         labelInValue
+         placeholder="Account #"
+         style={{
+                  width: 240,
+                  marginTop: '0px',
+                  marginLeft: '5px'
+                }}
+         onChange={handleChange}
+         options={[
+        {
+          value: 'FUR4859F',
+          label: 'FUR4859F',
+        },
+        {
+          value: '2JZEIF28',
+          label: '2JZEIF28',
+        },
+        {
+          value: '58DIE83D',
+          label: '58DIE83D',
+        },
+        {
+          value: '34IFJ59R',
+          label: '34IFJ59R',
+        },
+        {
+          value: '9984FR79',
+          label: '9984FR79',
+        },
+          ]}
+      />
+      </Col>
+      </Row>
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+        <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>  
+          <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Zone</p>
+        </Col>
+        <Col span={19}>
+       <Select
+         labelInValue
+         placeholder="Zone"
+         style={{
+                 width: 240,
+                 marginTop: '0px',
+                 marginLeft: '5px'
+                }}
+         onChange={handleChange}
+         options={[
+         {
+          value: '001',
+          label: '001',
+         },
+         {
+          value: '002',
+          label: '002',
+         },
+         {
+          value: '003',
+          label: '003',
+         },
+         {
+          value: '004',
+          label: '004',
+         },
+         {
+          value: '005',
+          label: '005',
+         },
+          ]}
+      />
+        </Col>
+       </Row>
   <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Display </p>
   <Radio.Group onChange={onChange} value={value}>
       <Radio value={1}>Total $</Radio>
@@ -263,6 +268,17 @@ const Shipping_Spend = () => {
     <RangePicker />
 
       </Modal>
+    
+    </Space>
+    </Row>
+
+
+    <Divider></Divider>
+
+
+    <Row>
+    <Col span={24}>
+    
     </Col> 
     </Row>      
     <Row style={{marginTop: 40}}>

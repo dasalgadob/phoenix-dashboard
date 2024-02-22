@@ -243,8 +243,8 @@ const Home = () => {
     <Button type="primary" onClick={() => setFilterType('last12Months')}
                            style={filterType === 'last12Months' && {background: '#2d3f7c'}}
                            >LAST 12 MONTHS</Button>
-    <Button type="primary" onClick={showModalDate}>DATE RANGE</Button>
-    <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
+    <Button type="primary" onClick={showModalDate}>CUSTOM</Button>
+    <Modal title="Custom" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
       <Space direction="vertical" size={12}>
   <Radio.Group onChangeRadio={onChangeRadio} valueRadio={valueRadio}>
       <Radio value={1}>Quarter</Radio>
@@ -260,7 +260,7 @@ const Home = () => {
 
     <Divider></Divider>
     
-    <Title level={3} style={{
+    <Title level={4} style={{
               fontWeight: 'bold',
               margin: 0,
             }}>Shipping Metrics</Title>
@@ -706,9 +706,6 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
   />
   */}
   <Divider></Divider>  
-  <div className="App">
-    <Button type="primary">At A Glance</Button>
-  </div>
   </>
 )  
 }

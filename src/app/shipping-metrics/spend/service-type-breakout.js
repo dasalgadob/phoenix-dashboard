@@ -87,7 +87,7 @@ return(
                            >CURRENT MONTH</Button> 
     <Button type="primary">YEAR TO DATE</Button>                        
     <Button type="primary">LAST 12 MONTHS</Button>
-    <Button type="primary" onClick={showModalDate}>DATE RANGE</Button>
+    <Button type="primary" onClick={showModalDate}>CUSTOM</Button>
     <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
       <Space direction="vertical" size={12}>
     <RangePicker />
