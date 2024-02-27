@@ -117,6 +117,10 @@ export const data2 = {
 
 const filter = {currentMonth: 1, lastMonth: 2, last12Months: 4, yearToDate: 3}
 
+const onChangeDatePicker = (date, dateString) => {
+  console.log(date, dateString);
+};
+
 const Home = () => {
 
   const [message, setMessage] = useState(null);
@@ -226,8 +230,8 @@ const Home = () => {
   
   const [valueRadio, setValueRadio] = useState(1);
   const onChangeRadio = (e) => {
-    console.log('radio checked', e.target.valueRadio);
-    setValueRadio(e.target.valueRadio);
+    console.log('radio checked', e.target.value);
+    setValueRadio(e.target.value);
   };
 
   return (
@@ -244,22 +248,22 @@ const Home = () => {
                            style={filterType === 'last12Months' && {background: '#2d3f7c'}}
                            >LAST 12 MONTHS</Button>
     <Button type="primary" onClick={showModalDate}>CUSTOM</Button>
-    <Modal title="Custom" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
-      <Space direction="vertical" size={12}>
-  <Radio.Group onChangeRadio={onChangeRadio} valueRadio={valueRadio}>
+<Modal title="Custom" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
+  <Space direction="vertical" size={12}>
+    <Radio.Group onChange={onChangeRadio} value={valueRadio}>
       <Radio value={1}>Quarter</Radio>
       <Radio value={2}>Month</Radio>
-      <Radio value={3}>Week</Radio>
     </Radio.Group>
-    <RangePicker />
+    {valueRadio === 1 ? (
+      <DatePicker onChange={onChangeDatePicker} picker="quarter" />
+    ) : (
+      <DatePicker onChange={onChangeDatePicker} picker="month" />
+    )}
   </Space>
-      </Modal>
+</Modal>
     
     </Space>
     </Row>
-
-    <Divider></Divider>
-    
     <Title level={4} style={{
               fontWeight: 'bold',
               margin: 0,
@@ -365,9 +369,6 @@ const Home = () => {
       </Card>
     </Col>
   </Row>
-
-  <Divider></Divider>
-
   <Row>
   <Col span={8}>  
   <Title level={4} style={{
@@ -521,65 +522,7 @@ const Home = () => {
         </Card>
         
       </Col>
-      </Row>
-    
-{/*
-    <Divider></Divider>
-
-    <Title level={3} style={{
-              fontWeight: 'bold',
-              margin: 0,
-            }}>Maps</Title>
-
-
-    <Row>
-        <Col span={24}>
-          <Card style={{ margin: 10, borderRadius: '12px', height: 520 }}>
-          <div style={{ display: 'flex', justifyContent: 'center' }}> 
-            <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1000 }}
-             style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}>
-              <Geographies geography={geoUrl}>
-                {({ geographies }) =>
-                  geographies.map((geo) => (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      fill="#EAEAEC"
-                      stroke="#D6D6DA"
-                      style={{
-                        hover: {
-                          fill: '#87CEFA',
-                          stroke: '#FFF',
-                          strokeWidth: 2,
-                        },
-                      }}
-                      onMouseEnter={() => {
-                        const { NAME, postal } = geo.properties;
-                        const shipments = mapData.labels.indexOf(postal) !== -1
-                          ? mapData.datasets[0].data[mapData.labels.indexOf(postal)]
-                          : 0;
-
-                        setTooltipContent(`${NAME}: ${shipments} shipments`);
-                      }}
-                      onMouseLeave={() => {
-                        setTooltipContent('');
-                      }}
-                    />
-                  ))
-                }
-              </Geographies>
-            </ComposableMap>
-            </div> 
-            {tooltipContent && (
-              <div style={{ position: 'absolute', top: '10px', left: '10px', background: '#FFF', padding: '10px', borderRadius: '5px', zIndex: 999 }}>
-                {tooltipContent}
-              </div>
-            )}
-          </Card>
-        </Col>
-      </Row>
-            */}
-  <Divider></Divider>  
+      </Row>  
 
 <Title level={3} style={{
           fontWeight: 'bold',

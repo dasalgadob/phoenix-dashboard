@@ -251,25 +251,43 @@ const Shipping_Spend = () => {
       />
         </Col>
        </Row>
-  <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Display </p>
-  <Radio.Group onChange={onChange} value={value}>
-      <Radio value={1}>Total $</Radio>
-      <Radio value={2}>$/shipment</Radio>
-      <Radio value={3}>$/package</Radio>
-      <Radio value={4}>$/lb</Radio>
-    </Radio.Group>
-    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Compare to: </p>
+       <Row style={{ display: 'flex', alignItems: 'center' }}>
+        <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
+        <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Display </p>
+        </Col>
+        <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>
+       <Radio.Group onChange={onChange} value={value}>
+        <Radio value={1}>Total $</Radio>
+        <Radio value={2}>$/shipment</Radio>
+        <Radio value={3}>$/package</Radio>
+        <Radio value={4}>$/lb</Radio>
+       </Radio.Group>
+       </Col>
+      </Row>
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+      <Col span={5} style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+       <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Compare to: </p>
+      </Col>
+      <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px', alignItems: 'center', display: 'flex',}}>
   <Radio.Group onChangeCompareTo={onChangeCompareTo} valueCompareTo={valueCompareTo}>
       <Radio value={1}>Nothing</Radio>
       <Radio value={2}># shipments</Radio>
       <Radio value={3}># packages</Radio>
     </Radio.Group>
+    </Col>
+    </Row>
+    <Row>
+    <Col span={5} style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
     <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Date Range: </p>
+    </Col>
+    <Col span={19} style={{ fontWeight: 'bold', marginTop: '5px', fontSize: '16px', alignItems: 'center', display: 'flex',}}>
     <RangePicker />
-
+    </Col>
+    </Row>
       </Modal>
     
     </Space>
+    
     </Row>
 
 
