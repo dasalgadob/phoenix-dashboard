@@ -19,32 +19,32 @@ const Home = () => {
     items={[
       
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}> Credentials</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}> Credentials</span>,
         key: '1',
         children: <Credentials />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}> Users</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}> Users</span>,
         key: '2',
         children: <Users />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>  Business</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>  Business</span>,
         key: '3',
         children: <Business />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>  Billing</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>  Billing</span>,
         key: '4',
         children: <Billing />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}> Alerts</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}> Alerts</span>,
         key: '5',
         children: <Alerts />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '16px' }}>  Shipping Labels</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>  Shipping Labels</span>,
         key: '6',
         children: <Shipping_labels />,
       },

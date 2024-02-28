@@ -91,7 +91,6 @@ const Shipping_Spend = () => {
 
   return (
     <div>
-    <Divider></Divider>
     <Row justify="center" align="middle" >
     <Space size={16}>
     <Button type="primary"

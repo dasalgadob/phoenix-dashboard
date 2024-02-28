@@ -266,7 +266,7 @@ const Home = () => {
     </Row>
     <Title level={4} style={{
               fontWeight: 'bold',
-              margin: 0,
+              margin: 10,
             }}>Shipping Metrics</Title>
     <Row>
     <Col span={8}>
@@ -373,19 +373,19 @@ const Home = () => {
   <Col span={8}>  
   <Title level={4} style={{
               fontWeight: 'bold',
-              margin: 0,
+              margin: 10,
             }}>Shipping Spend by Carrier</Title>
   </Col>
   <Col span={8}>  
   <Title level={4} style={{
               fontWeight: 'bold',
-              margin: 0,
+              margin: 10,
             }}>Shipping Spend by Service Type</Title>
   </Col>
   <Col span={8}>  
   <Title level={4} style={{
               fontWeight: 'bold',
-              margin: 0,
+              margin: 10,
             }}>Shipping Spend by Category</Title>
   </Col>
   </Row>         
@@ -526,8 +526,8 @@ const Home = () => {
 
 <Title level={3} style={{
           fontWeight: 'bold',
-          margin: 0,
-        }}>Maps</Title>
+          margin: 10,
+        }}>Map</Title>
 
 <Row>
 <Col span={24}>
