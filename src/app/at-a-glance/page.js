@@ -121,6 +121,15 @@ const onChangeDatePicker = (date, dateString) => {
   console.log(date, dateString);
 };
 
+const disabledDate = (current) => {
+ 
+  const today = new Date();
+  
+  const twoYearsAgo = new Date(today.getFullYear() - 2, today.getMonth(), today.getDate());
+  
+  return current && current < twoYearsAgo;
+};
+
 const Home = () => {
 
   const [message, setMessage] = useState(null);
@@ -255,9 +264,17 @@ const Home = () => {
       <Radio value={2}>Month</Radio>
     </Radio.Group>
     {valueRadio === 1 ? (
-      <DatePicker onChange={onChangeDatePicker} picker="quarter" />
+      <DatePicker
+      onChange={onChangeDatePicker}
+      picker="quarter"
+      disabledDate={disabledDate}
+    />
     ) : (
-      <DatePicker onChange={onChangeDatePicker} picker="month" />
+      <DatePicker
+      onChange={onChangeDatePicker}
+      picker="month"
+      disabledDate={disabledDate}
+/>
     )}
   </Space>
 </Modal>
