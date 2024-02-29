@@ -90,8 +90,8 @@ const Shipping_Spend = () => {
   };
 
   return (
-    <div>
-    <Row justify="center" align="middle" >
+    <>
+    <Row justify="center" align="middle"  style={{marginLeft: '-18px'}} >
     <Space size={16}>
     <Button type="primary"
                            style={{background: '#2d3f7c'}}
@@ -302,7 +302,7 @@ const Shipping_Spend = () => {
           <Col span={24}><Line height={80} options={options} data={data} /></Col>
           </Row>
 
-    </div>
+    </>
 );
 };
 
