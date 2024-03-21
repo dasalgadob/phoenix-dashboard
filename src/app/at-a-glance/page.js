@@ -152,7 +152,7 @@ const Home = () => {
   }, [filterType]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quater':'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
