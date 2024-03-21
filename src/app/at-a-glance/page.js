@@ -115,11 +115,9 @@ export const data2 = {
   ],
 };
 
-const filter = {currentMonth: 1, lastMonth: 2, last12Months: 4, yearToDate: 3}
+const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
-const onChangeDatePicker = (date, dateString) => {
-  console.log(date, dateString);
-};
+
 
 const disabledDate = (current) => {
  
@@ -132,13 +130,29 @@ const disabledDate = (current) => {
 
 const Home = () => {
 
+  const onChangeDatePicker = (date, dateString) => {
+    console.log( dateString);
+    if (valueRadio === 1) {
+      setCustomDate(`${dateString.substr(0,4)}0${dateString.substr(6,1)}`)
+    } 
+    else {
+      setCustomDate(`${dateString.substr(0,4)}${dateString.substr(5,2)}`)
+    }
+
+  };
+
   const [message, setMessage] = useState(null);
   const [dataSpendByCarrier, setDataSpendByCarrier] = useState(data);
   const [dataShippingSpendByServiceType, setDataShippingSpendByServiceType] = useState(data2);
   const [filterType, setFilterType] = useState('currentMonth');
+  const [customDate, setCustomDate] = useState();
 
   useEffect(() => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=${filter[filterType]}`, {
+    getData()
+  }, [filterType]);
+
+  const getData = () => {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quater':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -189,7 +203,8 @@ const Home = () => {
         console.log(data);
       })
       .catch((error) => console.log(error));
-  }, [filterType]);
+
+  }
 
   
 
@@ -231,6 +246,8 @@ const Home = () => {
     setIsModalOpenDate(true);
   };
   const handleOkDate = () => {
+    setFilterType('custom')
+    getData()
     setIsModalOpenDate(false);
   };
   const handleCancelDate = () => {
