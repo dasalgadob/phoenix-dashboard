@@ -122,7 +122,7 @@ useEffect(() => {
       <body>
       <Layout
       style={{
-        minHeight: '100vh',
+        minHeight: '80vh',
       }}
     >
       {!isNotLoggedIn && 
@@ -252,6 +252,7 @@ useEffect(() => {
             margin: '0 0px',
             border: '1rem solid #597ef7',
             background: '#597ef7',
+            height: '100vh',
           }}
         >
           {/*
@@ -275,7 +276,7 @@ useEffect(() => {
               background: 'white',
               borderRadius: '20px',
               overflow: 'auto',
-              height: '90vh',
+              height: '95vh',
             }}
           >
           {children}

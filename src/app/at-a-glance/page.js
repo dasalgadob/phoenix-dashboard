@@ -146,6 +146,7 @@ const Home = () => {
   const [dataShippingSpendByServiceType, setDataShippingSpendByServiceType] = useState(data2);
   const [filterType, setFilterType] = useState('currentMonth');
   const [customDate, setCustomDate] = useState();
+  
 
   useEffect(() => {
     getData()
@@ -259,7 +260,9 @@ const Home = () => {
     console.log('radio checked', e.target.value);
     setValueRadio(e.target.value);
   };
-
+   
+  if(message){console.log(Object.keys(message[0].maps.counting_to_top_3))};
+   
   return (
   <>
     <Row justify="center" align="middle">
@@ -612,7 +615,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                       <Marker coordinates={centroid}>
                         <text y="2" fontSize={14} textAnchor="middle">
-                          {cur.id}
+                        {cur.id}:{message && message[0]?.maps?.counting_to[cur.id]}
                         </text>
                       </Marker>
                     ) : (
@@ -622,7 +625,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
                         dy={offsets[cur.id][1]}
                       >
                         <text x={4} fontSize={14} alignmentBaseline="middle">
-                          {cur.id}
+                        {cur.id}:{message && message[0]?.maps?.counting_to[cur.id]}
                         </text>
                       </Annotation>
                     ))}
@@ -640,24 +643,17 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
       <Col span={24}>
         <p style={{ fontWeight: 'bold', margin: 0, fontSize: '20px'}}>Domestic</p>
       </Col>
+
+      {message && Object.keys(message[0].maps.counting_to_top_3).map((k, i) =>
       <Col span={24} style={{marginTop: '10px'}}>
-        <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
-           1 
-          </Button>
-          <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px', color: '#87CEFA' , display: 'inline-block', marginLeft: '10px'}}>CA 120</p>
-      </Col>
-      <Col span={24} style={{marginTop: '10px'}}>
-        <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
-           2 
-          </Button>
-          <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px', color: '#87CEFA' , display: 'inline-block', marginLeft: '10px'}}>TX 80</p>
-      </Col> 
-      <Col span={24} style={{marginTop: '10px'}}>
-        <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
-           3 
-          </Button>
-          <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px', color: '#87CEFA' , display: 'inline-block', marginLeft: '10px'}}>FL 60</p>
-      </Col>      
+      <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
+         {i + 1}
+        </Button>
+        <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px', color: '#87CEFA' , display: 'inline-block', marginLeft: '10px'}}>
+          {k} {message && message[0]?.maps?.counting_to_top_3?.[k]}  
+        </p>
+    </Col>
+      )}
 
     </Row>
     </Card>
@@ -682,7 +678,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
     ]}
   />
   */}
-  <Divider></Divider>  
+    
   </>
 )  
 }
