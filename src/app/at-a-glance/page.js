@@ -645,7 +645,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
       </Col>
 
       {message && Object.keys(message[0].maps.counting_to_top_3).map((k, i) =>
-      <Col span={24} style={{marginTop: '10px'}}>
+      <Col key={k} span={24} style={{marginTop: '10px'}}>
       <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
          {i + 1}
         </Button>
