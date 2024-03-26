@@ -262,6 +262,7 @@ const Home = () => {
   };
    
   if(message){console.log(Object.keys(message[0].maps.counting_to_top_3))};
+  
    
   return (
   <>
@@ -570,18 +571,25 @@ const Home = () => {
 <Col span={24}>
   <Card style={{ margin: 10, borderRadius: '12px', height: 520 }}>
    <div style={{ display: 'flex', justifyContent: 'center' }}> 
-<Col span={18} style={{ display: 'flex', justifyContent: 'center' }}>
+<Col span={18} style={{ display: 'flex', justifyContent: 'center', marginRight: '5px', }}>
 <ComposableMap projection="geoAlbersUsa"
-style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
+style={{ height: 520, alignItems: 'center',marginLeft: '0px', marginRight: '5px', display: 'flex' }}
 >
       <Geographies geography={geoUrl2}>
         {({ geographies }) => (
           <>
-            {geographies.map(geo => (
+            {geographies.map(geo => {
+              const cur = allStates.find(s => s.val === geo.id);
+              return (
               <Geography
               key={geo.rsmKey}
               geography={geo}
-              fill="#EAEAEC"
+              fill={
+                message && message[0]?.maps?.counting_to_top_3 &&
+                Object.keys(message[0].maps.counting_to_top_3).includes(cur.id)
+                  ? '#87CEFA' 
+                  : '#EAEAEC' 
+              }
               stroke="#D6D6DA"
               style={{
                 hover: {
@@ -603,7 +611,9 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
                 setTooltipContent('');
               }}
             />
-            ))}
+              )
+            })}
+
             {geographies.map(geo => {
               const centroid = geoCentroid(geo);
               const cur = allStates.find(s => s.val === geo.id);
@@ -614,8 +624,16 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
                     centroid[0] < -67 &&
                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                       <Marker coordinates={centroid}>
-                        <text y="2" fontSize={14} textAnchor="middle">
-                        {cur.id}:{message && message[0]?.maps?.counting_to[cur.id]}
+                        <text y="2" fontSize={14} frontWeight="bold" textAnchor="middle">
+                        {message && message[0]?.maps?.counting_to[cur.id] ? (
+                          <>
+                            {cur.id}:&nbsp;{message && message[0]?.maps?.counting_to[cur.id]}
+                          </>
+                        ) : (
+                          <>
+                            {cur.id}
+                          </>
+                        )}
                         </text>
                       </Marker>
                     ) : (
@@ -624,7 +642,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
                         dx={offsets[cur.id][0]}
                         dy={offsets[cur.id][1]}
                       >
-                        <text x={4} fontSize={14} alignmentBaseline="middle">
+                        <text x={4} fontSize={12} alignmentBaseline="middle">
                         {cur.id}:{message && message[0]?.maps?.counting_to[cur.id]}
                         </text>
                       </Annotation>
@@ -634,7 +652,9 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', display: 'flex' }}
             })}
           </>
         )}
+        
       </Geographies>
+      
     </ComposableMap>
     </Col>
     <Col span={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
