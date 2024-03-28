@@ -3,10 +3,13 @@
 import React from 'react';
 import { Button } from 'antd';
 
-const Home = () => (
-  <div className="App">
-    <Button type="primary">FedEx Invoice</Button>
-  </div>
-);
+const Home = () => {
+  
+  
+  return (
+    
+    <img src={'/Fedex.png'} style={{ width: '1300px', display: 'block', margin: 'auto' }} />
+    )
+};
 
 export default Home;
