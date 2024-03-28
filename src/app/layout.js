@@ -100,7 +100,11 @@ useEffect(() => {
   asyncFetch()
 }, []);
   return (
-    <AntdRegistry>
+    <AntdRegistry 
+    style={{
+      minHeight: '100vh',
+    }}
+    >
     <QueryClientProvider client={queryClient}>
 
     <ConfigProvider
@@ -119,18 +123,20 @@ useEffect(() => {
  
 
     <html lang="en">
-      <body>
+      <body style={{ overflow: 'hidden' }}>
       <Layout
       style={{
-        minHeight: '80vh',
+        minHeight: '100vh',
       }}
     >
       {!isNotLoggedIn && 
       
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width={210}>
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width={210} style={{
+        minHeight: '100vh',
+      }}>
         <div className="demo-logo-vertical" />
         <div className='logo' style={{display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-            <img src={'/71lbs_logo.jpg'} style={{borderRadius: '50%'}} width={90} />
+            <img src={'/71lbs_logo.jpg'} style={{borderRadius: '50%'}} width={80} />
           </div>
 
         <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" >
@@ -252,7 +258,7 @@ useEffect(() => {
             margin: '0 0px',
             border: '1rem solid #597ef7',
             background: '#597ef7',
-            height: '100vh',
+            height: '75vh',
           }}
         >
           {/*
@@ -276,7 +282,7 @@ useEffect(() => {
               background: 'white',
               borderRadius: '20px',
               overflow: 'auto',
-              height: '95vh',
+              height: '87vh',
             }}
           >
           {children}
