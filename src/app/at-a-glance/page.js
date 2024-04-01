@@ -261,7 +261,7 @@ const Home = () => {
     setValueRadio(e.target.value);
   };
    
-  if(message){console.log(Object.keys(message[0].maps.counting_to_top_3))};
+  if(message){console.log(Object.keys(message[0].maps.counting_to_top_3|| {} ))};
   
    
   return (
@@ -625,7 +625,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', marginRight: '5px'
                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                       <Marker coordinates={centroid}>
                         <text y="2" fontSize={14} frontWeight="bold" textAnchor="middle">
-                        {message && message[0]?.maps?.counting_to[cur.id] ? (
+                        {message && message[0]?.maps?.counting_to?.[cur.id] ? (
                           <>
                             {cur.id}:&nbsp;{message && message[0]?.maps?.counting_to[cur.id]}
                           </>
@@ -643,7 +643,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', marginRight: '5px'
                         dy={offsets[cur.id][1]}
                       >
                         <text x={4} fontSize={12} alignmentBaseline="middle">
-                        {cur.id}:{message && message[0]?.maps?.counting_to[cur.id]}
+                        {cur.id}:{message && message[0]?.maps?.counting_to?.[cur.id]}
                         </text>
                       </Annotation>
                     ))}
@@ -664,7 +664,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', marginRight: '5px'
         <p style={{ fontWeight: 'bold', margin: 0, fontSize: '20px'}}>Domestic</p>
       </Col>
 
-      {message && Object.keys(message[0].maps.counting_to_top_3).map((k, i) =>
+      {message && Object.keys(message[0].maps.counting_to_top_3 || {}).map((k, i) =>
       <Col key={k} span={24} style={{marginTop: '10px'}}>
       <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
          {i + 1}
