@@ -173,9 +173,12 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       FedEx Use
       </p>
-      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
-      &nbsp;
+      <Row style={{padding: '15px', height: '30px' ,}}>
+      <p style={{  fontSize: '18px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      &nbsp;  
       </p>
+      </Row>
+      
 
       </Col>      
       <Col span={4}>
@@ -215,15 +218,191 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       00000000000/1618/02
       </p>
+      <Row style={{padding: '15px', height: '30px' ,}}>
+      <p style={{  fontSize: '18px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      &nbsp;  
+      </p>
+      </Row>
+
+      </Col>      
+      <Col span={8}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      <strong style={{ fontWeight: '800', textDecoration: 'underline'  }}>Sender </strong>
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       &nbsp;
       </p>
-
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      Transportation Charge
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      Discount 
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      Earned Discount
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      Fuel Surcharge
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      Saturday Delivery
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      Residential Delivery
+      </p>
+      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '-17px',marginTop: '-15px', }}>
+      <strong style={{ fontWeight: '800'  }}>Total Charge</strong>  
+      </p>
+      </Row>
       </Col>      
+      <Col span={4}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      <strong style={{ fontWeight: '800', textDecoration: 'underline'  }}>Recipient </strong>
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp; 
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>  
+      </p>
+      </Row>
+      </Col>            
+      <Col span={2}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp; 
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      <strong style={{ fontWeight: '800'  }}>USD</strong>  
+      </p>
+      </Row>
+      </Col>  
+      <Col span={2} style={{ textAlign: 'right' }}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      332.39
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      -216.05 
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      -16.62
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      20.11
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      16.00
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      6.15
+      </p>
+      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',
+                     justifyContent: 'flex-end' }}>
+      <p style={{  fontSize: '16px', margin: 0, marginRight: '-17px',marginTop: '-15px',}}>
+      <strong style={{ fontWeight: '800'  }}>$141.98</strong>  
+      </p>
+      </Row>
+      </Col>          
 
     </Row>
     </Col>
     </Row>
+    <Divider></Divider>
     <img src={'/Fedex.png'} style={{ width: '1300px', display: 'block', margin: 'auto' }} />
     </>
     )
