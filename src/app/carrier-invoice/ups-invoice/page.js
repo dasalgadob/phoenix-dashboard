@@ -235,7 +235,7 @@ const Home = () => {
 
     <Divider></Divider>
 
-    <img src={'/Ups.png'} style={{ width: '1300px', display: 'block', margin: 'auto' }} />
+    
     </>
     )
 };

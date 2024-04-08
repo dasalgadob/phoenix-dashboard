@@ -403,7 +403,7 @@ const Home = () => {
     </Col>
     </Row>
     <Divider></Divider>
-    <img src={'/Fedex.png'} style={{ width: '1300px', display: 'block', margin: 'auto' }} />
+    
     </>
     )
 };
