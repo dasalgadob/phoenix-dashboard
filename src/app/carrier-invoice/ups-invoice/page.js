@@ -10,7 +10,7 @@ const Home = () => {
     <>
      <Row gutter={16}>
       <Col span={5}>
-      <img src={'/Ups_logo.png'} style={{ width: '165px', display: 'block', margin: 'auto' }} />
+      <img src={'/UPS_logo.png'} style={{ width: '165px', display: 'block', margin: 'auto' }} />
       </Col>
       <Col span={19}>
       &nbsp;
