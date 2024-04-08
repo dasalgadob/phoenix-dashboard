@@ -3,6 +3,12 @@
 import React from 'react';
 import { Button, Card, Divider, Row, Col, Tooltip, Typography, } from 'antd';
 
+const textFedex1 = <span>While the actual weight of the shipment was 7 lbs, the customer is being charged Dim weight of <u>26 lbs</u>, which is (L x W x H) divided by 139 </span>;
+const textFedex2 = <span>The &apos;dim factor&apos; of 139 is List (standard). Most customers don&apos;t know that dim factor is <u>negotiable</u>, depending on your spend and other factors </span>;
+const textFedex3 = <span>FedEx prices most customers with a &apos;base discount&apos;, used to <u>incentivize</u> more shipments via FedEx </span>;
+const textFedex4 = <span>Surcharges like Saturday and Residential Delivery are usually priced at &apos;List rates&apos;. Ask us if you are eligible to <u>negotiate</u> a discount off surcharges  </span>;
+
+
 const Home = () => {
   
   
@@ -123,9 +129,11 @@ const Home = () => {
       <p style={{  fontSize: '14px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Distance Based Pricing. Zone B 
       </p>
+      <Tooltip placement="bottom" title={textFedex2}>
       <p style={{  fontSize: '14px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       We calculated your charges based on a dimensional weight of 26.0 lbs, 27 in x 19 in x 7 in, using a dimensional factor of 139.
       </p>
+      </Tooltip>
       <p style={{  fontSize: '14px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Package Delivered to Recipient Address - Release Authorized
       </p>
@@ -157,10 +165,12 @@ const Home = () => {
       </p> 
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Acutal Weight
-      </p> 
+      </p>
+      <Tooltip placement="topLeft" title={textFedex1}>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Rated Weight
       </p>
+      </Tooltip>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Delivered
       </p>
@@ -379,15 +389,19 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       -216.05 
       </p>
+      <Tooltip placement="left" title={textFedex3 }>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       -16.62
       </p>
+      </Tooltip>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       20.11
       </p>
+      <Tooltip placement="left" title={textFedex4}>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       16.00
       </p>
+      </Tooltip>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       6.15
       </p>
