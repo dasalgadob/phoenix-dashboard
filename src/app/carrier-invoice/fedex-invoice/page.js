@@ -411,12 +411,16 @@ const Home = () => {
       <strong style={{ fontWeight: '800'  }}>$141.98</strong>  
       </p>
       </Row>
-      </Col>          
-
+      </Col>  
     </Row>
     </Col>
     </Row>
     <Divider></Divider>
+      <Row>
+      <Col span={24} style={{ textAlign: 'center' }}>
+      <Button type="primary">Upload file</Button>
+      </Col> 
+      </Row>
     
     </>
     )

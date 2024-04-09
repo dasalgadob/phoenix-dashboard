@@ -3,6 +3,17 @@
 import React from 'react';
 import { Button, Card, Divider, Row, Col, Tooltip, Typography, } from 'antd';
 
+const textUps1 = <span>The $7.41 is the discount off the Published Charge of $20.59, or 35% discount. Is 35% a good or a bad discount?
+                       It depends on a few factors, one of them being your total shipping spend cost.</span>;
+const textUps2 = <span>Residential surcharge and Delivery Area surchage are invoiced at Published (List rates). Some customers have
+                       a discount % off Surcharges. Should you? </span>;
+const textUps3 = <span>Fuel surcharge is also a charge that can be discounted, 22.5%  for this customer. Find out if you&apos;re gettig
+                       the best discounts and terms on your UPS agrement. </span>;                       
+
+
+
+
+
 const Home = () => {
   
   
@@ -151,9 +162,11 @@ const Home = () => {
       <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px',  marginRight: '32px', marginTop: '0px', }}>
       20.59
       </p> 
+      <Tooltip placement="right" title={textUps2}>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
       5.25
       </p> 
+      </Tooltip>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
       7.15
       </p> 
@@ -179,18 +192,22 @@ const Home = () => {
       Credit
       </p>
       </Row>
+      <Tooltip placement="right" title={textUps1}>
       <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px', marginRight: '32px', marginTop: '0px', }}>
       -7.41
       </p> 
+      </Tooltip>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       &nbsp;
       </p> 
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       &nbsp;
       </p> 
+      <Tooltip placement="right" title={textUps3}>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       -1.04
       </p>
+      </Tooltip>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       -0.42
       </p>
@@ -210,9 +227,11 @@ const Home = () => {
       Charge
       </p>
       </Row>
+      
       <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px', marginRight: '32px', marginTop: '0px', }}>
       13.18
       </p> 
+      
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       5.25
       </p> 
@@ -234,7 +253,11 @@ const Home = () => {
      </Row>
 
     <Divider></Divider>
-
+    <Row>
+      <Col span={24} style={{ textAlign: 'center' }}>
+      <Button type="primary">Upload file</Button>
+      </Col> 
+      </Row>
     
     </>
     )
