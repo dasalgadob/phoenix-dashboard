@@ -1,6 +1,6 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table,
    Select, Typography, Modal, Space, Divider, Radio, DatePicker } from 'antd';
@@ -51,7 +51,7 @@ export const data = {
   datasets: [
     {
       fill: true,
-      label: 'Dataset 2',
+      label: ' ',
       data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -59,8 +59,18 @@ export const data = {
   ],
 };
 
+const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
+
+
 
 const Shipping_Spend = () => {
+
+  const [carrier, setCarrier ] = useState (['All']) 
+  const [account, setAccount ] = useState ([])
+  const [zone, setZone ] = useState ([])
+
+  const [filterType, setFilterType] = useState('currentMonth');
+  const [dataShippingSpend, setDataShippingSpend] = useState(data)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -89,15 +99,54 @@ const Shipping_Spend = () => {
     setValueCompareTo(e.target.value);
   };
 
+
+  useEffect(() => {
+    getData()
+  }, [filterType]);
+
+  const getData = () => {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/65/?type_search=${filter[filterType]}`, {
+      method: "GET"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setDataShippingSpend(
+          {
+            labels: data.data[0].year_weeks,
+            datasets: [
+              {
+                fill: true,
+                label: ' ',
+                data: data.data[0].weekly_totals,
+                borderColor: 'rgb(53, 162, 235)',
+                backgroundColor: 'rgba(53, 162, 235, 0.5)',
+              },
+            ],
+          }  
+        )
+        setCarrier(['All'].concat(data.data[0].carriers))
+        setAccount([].concat(data.data[0].account_numbers))
+        setZone([].concat(data.data[0].zones))
+      })
+      .catch((error) => console.log(error));
+
+  }
+  
+  console.log(dataShippingSpend)
+
   return (
     <>
     <Row justify="center" align="middle"  style={{marginLeft: '-18px'}} >
     <Space size={16}>
-    <Button type="primary"
-                           style={{background: '#2d3f7c'}}
+    <Button type="primary" onClick={() => setFilterType('currentMonth')}
+                           style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
                            >CURRENT MONTH</Button>
-    <Button type="primary">YEAR TO DATE</Button>                         
-    <Button type="primary">LAST 12 MONTHS</Button>
+    <Button type="primary" onClick={() => setFilterType('yearToDate')}
+                           style={filterType === 'yearToDate' && {background: '#2d3f7c'}} 
+                            >YEAR TO DATE</Button>                         
+    <Button type="primary" onClick={() => setFilterType('last12Months')}
+                           style={filterType === 'last12Months' && {background: '#2d3f7c'}}
+                            >LAST 12 MONTHS</Button>
     <Button type="primary" onClick={showModal} >
         CUSTOM
       </Button>
@@ -155,20 +204,7 @@ const Shipping_Spend = () => {
              marginLeft: '5px'
              }}
            onChange={handleChange}
-           options={[
-           {
-            value: 'all',
-            label: 'All',
-           },
-           {
-            value: 'fedex',
-            label: 'FedEx',
-           },
-           {
-            value: 'ups',
-            label: 'UPS',
-           },
-         ]}
+           options={carrier.map(e => ({value: e, label: e }))  }
       />
       </Col>
       </Row>
@@ -186,28 +222,7 @@ const Shipping_Spend = () => {
                   marginLeft: '5px'
                 }}
          onChange={handleChange}
-         options={[
-        {
-          value: 'FUR4859F',
-          label: 'FUR4859F',
-        },
-        {
-          value: '2JZEIF28',
-          label: '2JZEIF28',
-        },
-        {
-          value: '58DIE83D',
-          label: '58DIE83D',
-        },
-        {
-          value: '34IFJ59R',
-          label: '34IFJ59R',
-        },
-        {
-          value: '9984FR79',
-          label: '9984FR79',
-        },
-          ]}
+         options={account.map(e => ({value: e, label: e }))}
       />
       </Col>
       </Row>
@@ -225,28 +240,7 @@ const Shipping_Spend = () => {
                  marginLeft: '5px'
                 }}
          onChange={handleChange}
-         options={[
-         {
-          value: '001',
-          label: '001',
-         },
-         {
-          value: '002',
-          label: '002',
-         },
-         {
-          value: '003',
-          label: '003',
-         },
-         {
-          value: '004',
-          label: '004',
-         },
-         {
-          value: '005',
-          label: '005',
-         },
-          ]}
+         options={zone.map(e => ({value: e, label: e }))}
       />
         </Col>
        </Row>
@@ -299,7 +293,7 @@ const Shipping_Spend = () => {
     </Col> 
     </Row>      
     <Row style={{marginTop: 40}}>
-          <Col span={24}><Line height={80} options={options} data={data} /></Col>
+          <Col span={24}><Line height={80} options={options} data={dataShippingSpend} /></Col>
           </Row>
 
     </>
