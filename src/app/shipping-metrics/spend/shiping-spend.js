@@ -72,6 +72,17 @@ const Shipping_Spend = () => {
   const [filterType, setFilterType] = useState('currentMonth');
   const [dataShippingSpend, setDataShippingSpend] = useState(data)
 
+  const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
+  const showModalDateRange = () => {
+    setIsModalOpenDateRange(true);
+  };
+  const handleOkDateRange = () => {
+    setIsModalOpenDateRange(false);
+  };
+  const handleCancelDateRange = () => {
+    setIsModalOpenDateRange(false);
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -150,7 +161,21 @@ const Shipping_Spend = () => {
     <Button type="primary" onClick={showModal} >
         CUSTOM
       </Button>
-      <Modal title="Filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="Custom" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>    
+    <Row>
+    <Col span={5} style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
+    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Date Range: </p>
+    </Col>
+    <Col span={19} style={{ fontWeight: 'bold', marginTop: '5px', fontSize: '16px', alignItems: 'center', display: 'flex',}}>
+    <RangePicker />
+    </Col>
+    </Row>
+      </Modal>
+
+      <Button type="primary" onClick={showModalDateRange} >
+        FILTERS
+      </Button>
+      <Modal title="Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
       <Row style={{ display: 'flex', alignItems: 'center' }}> 
        <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
        <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Service Type</p>
@@ -269,14 +294,7 @@ const Shipping_Spend = () => {
     </Radio.Group>
     </Col>
     </Row>
-    <Row>
-    <Col span={5} style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
-    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Date Range: </p>
-    </Col>
-    <Col span={19} style={{ fontWeight: 'bold', marginTop: '5px', fontSize: '16px', alignItems: 'center', display: 'flex',}}>
-    <RangePicker />
-    </Col>
-    </Row>
+    
       </Modal>
     
     </Space>
