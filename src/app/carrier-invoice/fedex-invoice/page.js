@@ -7,7 +7,8 @@ const textFedex1 = <span>While the actual weight of the shipment was 7 lbs, the 
 const textFedex2 = <span>The &apos;dim factor&apos; of 139 is List (standard). Most customers don&apos;t know that dim factor is <u>negotiable</u>, depending on your spend and other factors </span>;
 const textFedex3 = <span>FedEx prices most customers with a &apos;base discount&apos;, used to <u>incentivize</u> more shipments via FedEx </span>;
 const textFedex4 = <span>Surcharges like Saturday and Residential Delivery are usually priced at &apos;List rates&apos;. Ask us if you are eligible to <u>negotiate</u> a discount off surcharges  </span>;
-
+const textFedexButton = <span>We&apos;ll benchmark your account vs $1 billion in shipping costs, discounts, and surcharges and tell you if you have goood, bad, or
+                              very bad discounts per your spend level  </span>;
 
 const Home = () => {
   
@@ -129,22 +130,33 @@ const Home = () => {
       <p style={{  fontSize: '14px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Distance Based Pricing. Zone B 
       </p>
-      <Tooltip placement="bottom" title={textFedex2}>
+      <Row>
+      <Col span={16}>
       <p style={{  fontSize: '14px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       We calculated your charges based on a dimensional weight of 26.0 lbs, 27 in x 19 in x 7 in, using a dimensional factor of 139.
       </p>
+      </Col>
+      <Col span={8}>
+      <Tooltip placement="bottom" title={textFedex2}>
+      <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '-20px',marginTop: '-25px', }}>
+      2
+      </Button>
       </Tooltip>
-      <p style={{  fontSize: '14px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      </Col>
+      </Row>
+      <p style={{  fontSize: '14px', margin: 0, marginLeft: '0px',marginTop: '-5px', }}>
       Package Delivered to Recipient Address - Release Authorized
       </p>
+      
       </Col>
+      
     </Row>
     <Row style={{ marginTop: '10px'}}>
     <Col span={1}></Col> 
     <Col span ={23}> 
     <Row style={{ border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none', background: '#FFFFFF',
           }}>
-      <Col span={4}>
+      <Col span={3}>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Automation
       </p>
@@ -166,11 +178,9 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Acutal Weight
       </p>
-      <Tooltip placement="topLeft" title={textFedex1}>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Rated Weight
       </p>
-      </Tooltip>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Delivered
       </p>
@@ -183,11 +193,51 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       FedEx Use
       </p>
-      <Row style={{padding: '15px', height: '30px' ,}}>
-      <p style={{  fontSize: '18px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
-      &nbsp;  
+      
+      
+
+      </Col>      
+
+      <Col span={1}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
       </p>
-      </Row>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <Tooltip placement="topLeft" title={textFedex1}>
+      <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '-20px',marginTop: '-25px', }}>
+      1
+      </Button>
+      </Tooltip>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      
       
 
       </Col>      
@@ -272,11 +322,7 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Residential Delivery
       </p>
-      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
-      <p style={{  fontSize: '16px', margin: 0, marginLeft: '-17px',marginTop: '-15px', }}>
-      <strong style={{ fontWeight: '800'  }}>Total Charge</strong>  
-      </p>
-      </Row>
+      
       </Col>      
       <Col span={4}>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
@@ -315,13 +361,9 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
-      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
-      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>  
-      </p>
-      </Row>
+      
       </Col>            
-      <Col span={2}>
+      <Col span={1}>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
       </p>
@@ -358,12 +400,53 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
-      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
-      <strong style={{ fontWeight: '800'  }}>USD</strong>  
+      
+      </Col> 
+
+      <Col span={1} style={{ textAlign: 'right' }}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
       </p>
-      </Row>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp; 
+      </p>
+      <Tooltip placement="left" title={textFedex3 }>
+      <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '-20px',marginTop: '-25px', }}>
+      3
+      </Button>
+      </Tooltip>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <Tooltip placement="left" title={textFedex4}>
+      <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '-20px',marginTop: '-25px', }}>
+      4
+      </Button>
+      </Tooltip>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+     
       </Col>  
+
       <Col span={2} style={{ textAlign: 'right' }}>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
@@ -389,36 +472,89 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       -216.05 
       </p>
-      <Tooltip placement="left" title={textFedex3 }>
+      
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       -16.62
       </p>
-      </Tooltip>
+      
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       20.11
       </p>
-      <Tooltip placement="left" title={textFedex4}>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       16.00
       </p>
-      </Tooltip>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       6.15
       </p>
+      
+      </Col>
+      <Col span={3}>
+      <Row style={{padding: '15px', height: '30px' ,}}>
+      <p style={{  fontSize: '18px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      &nbsp;  
+      </p>
+      </Row>
+      </Col>
+      <Col span={1}>
+      <Row style={{padding: '15px', height: '30px' ,}}>
+      <p style={{  fontSize: '18px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      &nbsp;  
+      </p>
+      </Row>
+      </Col>  
+      <Col span={4}>
+      <Row style={{padding: '15px', height: '30px' ,}}>
+      <p style={{  fontSize: '18px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      &nbsp;  
+      </p>
+      </Row>
+      </Col>
+      <Col span={8}>
+      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '-17px',marginTop: '-15px', }}>
+      <strong style={{ fontWeight: '800'  }}>Total Charge</strong>  
+      </p>
+      </Row>
+      </Col>
+      <Col span={4}>
+      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>  
+      </p>
+      </Row>
+      </Col>
+      <Col span={1}>
+      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',}}>
+      <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '-15px', }}>
+      <strong style={{ fontWeight: '800'  }}>USD</strong>  
+      </p>
+      </Row>
+      </Col>
+      <Col span={1}>
+      <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',
+                     justifyContent: 'flex-end', marginTop: '-0px' }}>
+      <p style={{  fontSize: '16px', margin: 0, marginRight: '-17px',marginTop: '-15px',}}>
+      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>  
+      </p>
+      </Row>
+      </Col>
+      <Col span={2}>
       <Row style={{padding: '15px', height: '30px' , border: '2px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none',
                      justifyContent: 'flex-end' }}>
       <p style={{  fontSize: '16px', margin: 0, marginRight: '-17px',marginTop: '-15px',}}>
       <strong style={{ fontWeight: '800'  }}>$141.98</strong>  
       </p>
-      </Row>
-      </Col>  
+      </Row> 
+      </Col>
     </Row>
     </Col>
     </Row>
     <Divider></Divider>
       <Row>
       <Col span={24} style={{ textAlign: 'center' }}>
-      <Button type="primary">Upload file</Button>
+      <Tooltip placement="top" title={textFedexButton}>
+      <Button type="primary" style={{  background: '#F39C12' }}>Request a Free Shipping Assessment</Button>
+      </Tooltip>
       </Col> 
       </Row>
     

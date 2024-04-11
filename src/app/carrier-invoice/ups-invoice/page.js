@@ -29,233 +29,332 @@ const Home = () => {
      </Row>
      <Row>
       <Col span={1}></Col>
-      <Col span={7}>
+      <Col span={5}>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '0px', }}>
       &nbsp;
       </p> 
       <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none'}}>
-      <p style={{  fontSize: '22px', margin: 0, marginLeft: '14px',marginTop: '-17px', }}>
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '14px',marginTop: '-17px', }}>
       Service
       </p>
       </Row>
-      <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       Ground Residential Third Party
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       Residential Surcharge
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       Delivery Area Surcharge - Extended
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       Fuel Surcharge
       </p>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       Third Party Billing Service
       </p>
-      <Row style={{padding: '15px',  marginLeft: '14px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '-13px',marginTop: '-17px', }}>
-      <strong style={{ fontWeight: '800'  }}>Total</strong>
-      </p>
-      </Row>
+      
       </Col>
       <Col span={2}>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
-      ZIP
+      &nbsp;
       </p> 
       <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none'}}>
-      <p style={{  fontSize: '22px', margin: 0, marginLeft: '14px',marginTop: '-17px', }}>
-      Code
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '14px',marginTop: '-17px', }}>
+       ZIP Code
       </p>
       </Row>
-      <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       96080
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
-      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
-      </p>
-      </Row> 
+      
       </Col>
-      <Col span={2} style={{ textAlign: 'center' }}>
+      <Col span={1} style={{ textAlign: 'center' }}>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p> 
       <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none'}}>
-      <p style={{  fontSize: '22px', margin: 0, marginLeft: '34px',marginTop: '-17px', }}>
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '14px',marginTop: '-17px', }}>
       Zone
       </p>
       </Row>
-      <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       4
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
-      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
-      </p>
-      </Row> 
+      
       </Col>
       <Col span={2} style={{ textAlign: 'center' }}>
       <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p> 
       <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none'}}>
-      <p style={{  fontSize: '22px', margin: 0, marginLeft: '24px',marginTop: '-17px', }}>
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '24px',marginTop: '-17px', }}>
       Weight
       </p>
       </Row>
-      <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       23
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
-      <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
-      </p>
-      </Row> 
-      </Col>
-      <Col span={3} style={{ textAlign: 'right' }}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px', marginRight: '32px',marginTop: '0px', }}>
-      Published
-      </p> 
-      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none',
-                    }}>
-      <p style={{  fontSize: '22px', margin: 0, marginLeft: '71px',marginTop: '-17px', }}>
-      Charge
-      </p>
-      </Row>
-      <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px',  marginRight: '32px', marginTop: '0px', }}>
-      20.59
-      </p> 
-      <Tooltip placement="right" title={textUps2}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
-      5.25
-      </p> 
-      </Tooltip>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
-      7.15
-      </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
-      4.62
-      </p>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
-      1.88
-      </p>
-      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '86px',marginTop: '-17px', }}>
-      <strong style={{ fontWeight: '800'  }}>39.49</strong>
-      </p>
-      </Row> 
-      </Col>
-      <Col span={3} style={{ textAlign: 'right' }}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',  marginRight: '37px', marginTop: '0px', }}>
-      Incentive
-      </p> 
-      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none',
-                    }}>
-      <p style={{  fontSize: '22px', margin: 0, marginLeft: '81px', marginTop: '-17px', }}>
-      Credit
-      </p>
-      </Row>
-      <Tooltip placement="right" title={textUps1}>
-      <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px', marginRight: '32px', marginTop: '0px', }}>
-      -7.41
-      </p> 
-      </Tooltip>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
-      &nbsp;
-      </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
-      &nbsp;
-      </p> 
-      <Tooltip placement="right" title={textUps3}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
-      -1.04
-      </p>
-      </Tooltip>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
-      -0.42
-      </p>
-      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '86px',marginTop: '-17px', }}>
-      <strong style={{ fontWeight: '800'  }}>-8.87</strong>
-      </p>
-      </Row> 
+      
       </Col>
       <Col span={4} style={{ textAlign: 'right' }}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',  marginRight: '30px', marginTop: '0px', }}>
-      Billed
+      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px', marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
       </p> 
       <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none',
                     }}>
-      <p style={{  fontSize: '22px', margin: 0, marginLeft: '134px', marginTop: '-17px', }}>
-      Charge
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '30px',marginTop: '-17px',  }}>
+      Published Charge
+      </p>
+      </Row>
+      <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px',  marginRight: '32px', marginTop: '0px', }}>
+      20.59
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
+      5.25
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
+      7.15
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
+      4.62
+      </p>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
+      1.88
+      </p>
+      
+      </Col>
+      <Col span={1} style={{ textAlign: 'center' }}>
+      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px', marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none',
+                    }}>
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '30px',marginTop: '-17px',  }}>
+      &nbsp;
+      </p>
+      </Row>
+      <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px',  marginRight: '32px', marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <Tooltip placement="topLeft" title={textUps2}>
+      <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '0px',marginTop: '-25px', }}>
+      2
+      </Button>
+      </Tooltip>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px',  marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+       
+      </Col>
+      <Col span={4} style={{ textAlign: 'right' }}>
+      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',  marginRight: '37px', marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none',
+                    }}>
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '45px', marginTop: '-17px', }}>
+      Incentive Credit
+      </p>
+      </Row>
+      <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px', marginRight: '32px', marginTop: '0px', }}>
+      -7.41
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      -1.04
+      </p>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      -0.42
+      </p>
+       
+      </Col>
+      <Col span={1} style={{ textAlign: 'center' }}>
+      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',  marginRight: '30px', marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none',
+                    }}>
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '10px', marginTop: '-17px', }}>
+      &nbsp;
       </p>
       </Row>
       
-      <p style={{  fontSize: '22px',margin: '2px', marginLeft: '14px', marginRight: '32px', marginTop: '0px', }}>
+      <Tooltip placement="topLeft" title={textUps1}>
+      <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '0px',marginTop: '1px', }}>
+      1
+      </Button>
+      </Tooltip>
+      
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      <Tooltip placement="topLeft" title={textUps3}>
+      <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '0px',marginTop: '-25px', }}>
+      3
+      </Button>
+      </Tooltip>
+      </p>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      &nbsp;
+      </p>
+       
+      </Col>      
+      <Col span={3} style={{ textAlign: 'right' }}>
+      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',  marginRight: '30px', marginTop: '0px', }}>
+      &nbsp;
+      </p> 
+      <Row style={{padding: '15px',  marginLeft: '-17px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderTop: 'none',
+                    }}>
+      <p style={{  fontSize: '20px', margin: 0, marginLeft: '10px', marginTop: '-17px', }}>
+      Billed Charge
+      </p>
+      </Row>
+      
+      <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px', marginRight: '32px', marginTop: '0px', }}>
       13.18
       </p> 
       
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       5.25
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       7.15
       </p> 
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       3.58
       </p>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
+      <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
       1.46
       </p>
-      <Row style={{padding: '15px',  marginLeft: '-17px', marginRight: '28px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-      <p style={{  fontSize: '22px', margin: '2px', marginLeft: '142px',marginTop: '-17px', }}>
-      <strong style={{ fontWeight: '800'  }}>30.62</strong>
-      </p>
+       
+      </Col>
       </Row> 
-      </Col>      
-     </Row>
+      <Row>
+        <Col span={1}>
+        </Col>
+        <Col span={5}>
+        <Row style={{padding: '15px',  marginLeft: '14px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '-13px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>Total</strong>
+        </p>
+        </Row> 
+        </Col>
+        <Col span={2}>
+        <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
+        </p>
+        </Row> 
+        </Col>
+        <Col span={1}>
+        <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
+        </p>
+        </Row> 
+        </Col>
+        <Col span={2}>
+        <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
+        </p>
+        </Row> 
+        </Col>
+        <Col span={4}>
+        <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '120px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>39.49</strong>
+        </p>
+        </Row> 
+        </Col>
+        <Col span={1}>
+        <Row style={{padding: '15px',  marginLeft: '-0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '120px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
+        </p>
+        </Row> 
+        </Col>
+        <Col span={4}>
+        <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '120px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>-8.87</strong>
+        </p>
+        </Row> 
+        </Col>
+        <Col span={1}>
+        <Row style={{padding: '15px',  marginLeft: '0px', marginRight: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
+        </p>
+        </Row>
+        </Col>
+        <Col span={3}>
+        <Row style={{padding: '15px',  marginLeft: '0px', marginRight: '28px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '72px',marginTop: '-17px', }}>
+        <strong style={{ fontWeight: '800'  }}>30.62</strong>
+        </p>
+        </Row>
+        </Col>
+
+      </Row>
+     
 
     <Divider></Divider>
     <Row>
       <Col span={24} style={{ textAlign: 'center' }}>
-      <Button type="primary">Upload file</Button>
+      <Button type="primary" style={{  background: '#F39C12' }}>Request a Free Shipping Assessment</Button>
       </Col> 
       </Row>
     
