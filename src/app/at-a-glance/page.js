@@ -403,7 +403,7 @@ const Home = () => {
               fontWeight: 'bold',
               margin: 0,
               color: '#ffffff'
-            }}>{message && message[0]?.average_weight}</Title>
+            }}>{message && message[0]?.average_weight}&nbsp;lbs</Title>
       </Card>
     </Col>
   </Row>

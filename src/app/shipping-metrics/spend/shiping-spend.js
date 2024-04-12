@@ -159,9 +159,9 @@ const Shipping_Spend = () => {
                            style={filterType === 'last12Months' && {background: '#2d3f7c'}}
                             >LAST 12 MONTHS</Button>
     <Button type="primary" onClick={showModal} >
-        CUSTOM
+        CUSTOM DATE
       </Button>
-      <Modal title="Custom" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>    
+      <Modal title="Custom Date" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>    
     <Row>
     <Col span={5} style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
     <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Date Range: </p>
@@ -173,9 +173,9 @@ const Shipping_Spend = () => {
       </Modal>
 
       <Button type="primary" onClick={showModalDateRange} >
-        FILTERS
+        ADVANCED FILTERS
       </Button>
-      <Modal title="Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
+      <Modal title="Advanced Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
       <Row style={{ display: 'flex', alignItems: 'center' }}> 
        <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
        <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Service Type</p>
