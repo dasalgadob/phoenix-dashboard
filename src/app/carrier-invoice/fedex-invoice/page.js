@@ -85,7 +85,7 @@ const Home = () => {
      </Row>  
      </Col>
     </Row>
-    <Row style={{ height: '60px', background: '#797D7F' }}>
+    <Row style={{ height: '60px', background: '#BFC9CA' }}>
     <Col span={1}>
     </Col>
     <Col span={7}>
