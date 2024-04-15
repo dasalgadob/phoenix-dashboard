@@ -15,6 +15,16 @@ const Home = () => {
   
   return (
     <>
+    <Row>
+      <Col span={24}>
+        <p style={{  fontSize: '36px', margin: 0, marginLeft: '0px',marginTop: '11px', marginBottom: '2px',
+         color: '#34495E' }}>
+          <u>Understanding your Carrier&apos;s Shipping Costs</u></p>
+        <p style={{  fontSize: '36px', margin: 0, marginLeft: '0px',marginTop: '2px', marginBottom: '11px',
+         color: '#34495E' }}>
+          Hover on the sections below to view insights into parts of your carrier&apos;s invoice</p>  
+      </Col>
+    </Row>
     <Row gutter={24}>
      <Col span={8}>
        <img src={'/Fedex_logo.jpg'} style={{ width: '280px', display: 'block', margin: 'auto' }} />
