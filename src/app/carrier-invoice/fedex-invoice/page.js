@@ -38,7 +38,10 @@ const Home = () => {
      </Row>
      <Row style={{ border: '2px solid #000000', padding: '15px', background: '#FFFFFF', marginTop:'-2px', marginLeft: '5px', marginRight: '5px',
                   height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-     
+     <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '-11px',
+                 }}>
+        758246589
+        </p>
      </Row> 
 
      
@@ -66,8 +69,11 @@ const Home = () => {
         </p>
      </Row>
      <Row style={{ border: '2px solid #000000', padding: '15px', background: '#FFFFFF', marginTop:'-2px', marginLeft: '5px', marginRight: '5px'
-                  ,height: '30px', }}>
-     
+                  ,height: '30px', alignItems: 'center', justifyContent: 'center' }}>
+     <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '-11px'
+                 }}>
+        1025485
+        </p>
      </Row>  
      </Col>
      <Col span={2} style={{marginTop:'35px'}}>
