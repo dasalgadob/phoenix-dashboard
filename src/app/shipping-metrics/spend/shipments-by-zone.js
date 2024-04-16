@@ -1,33 +1,11 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker,  } from 'antd';
-import {
-  useQuery
-} from '@tanstack/react-query'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-const axios = require('axios');
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-const backgroundColors = [
-  'rgba(255, 99, 132, 0.2)',
-  'rgba(54, 162, 235, 0.2)',
-  'rgba(255, 206, 86, 0.2)',
-  'rgba(75, 192, 192, 0.2)',
-  'rgba(153, 102, 255, 0.2)',
-  'rgba(255, 159, 64, 0.2)',
-]
-
-const borderColors = [
-  'rgba(255, 99, 132, 1)',
-  'rgba(54, 162, 235, 1)',
-  'rgba(255, 206, 86, 1)',
-  'rgba(75, 192, 192, 1)',
-  'rgba(153, 102, 255, 1)',
-  'rgba(255, 159, 64, 1)',
-]
 
 export const dataPie = {
   labels: ['Zone 5', 'Zone 4', 'Zone 2', 'Other Zones'],
@@ -52,61 +30,17 @@ export const dataPie = {
   ],
 };
 
-const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
-
 const { RangePicker } = DatePicker;
 
 const { Title } = Typography;
 
-const ShipmentsByZone = () => {
-
-  const [filterType, setFilterType] = useState('currentMonth');
-  const [account, setAccount ] = useState ()
-  const [onOkClickCount ,setOnOkClickCount] = useState(0)
-  const [graphData, setGraphData] = useState({
-    labels: [],
-    datasets: [
-      {
-        label: 'Charge',
-        data: [],
-        backgroundColor: [],
-        borderColor: [],
-        borderWidth: 1,
-      },
-    ],
-  })
-
-  const { isPending, error, data, isFetching } = useQuery({
-    queryKey: ['repoData', filterType, onOkClickCount],
-    queryFn: () =>
-      axios
-        .get(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/shipments_by_zone/65/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}`)
-        .then((res) => res.data.data)
-  })
-
-  useEffect(() => {
-    console.log('data result has changed')
-    const countPieSegments = Object.keys(data?.[0]?.shipping_spend_by_zone || {}).length
-    setGraphData({
-      labels: Object.keys(data?.[0]?.shipping_spend_by_zone || {}),
-      datasets: [
-        {
-          label: 'Percentage',
-          data: Object.keys(data?.[0]?.shipping_spend_by_zone || {}).map(key => data[0].shipping_spend_by_zone[key].percentage.substr(0,2)),
-          backgroundColor: backgroundColors.slice(0, countPieSegments),
-          borderColor: borderColors.slice(0, countPieSegments),
-          borderWidth: 1,
-        },
-      ],
-    })
-  }, [data])
+const Shipments_By_Zone = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
-    setOnOkClickCount(onOkClickCount + 1);
     setIsModalOpen(false);
   };
   const handleCancel = () => {
@@ -114,8 +48,7 @@ const ShipmentsByZone = () => {
   };
 
   const handleChange = (value) => {
-    console.log(value.value)
-    setAccount(value.value)
+    console.log(value);
   };
 
   const optionsPie = {
@@ -140,12 +73,6 @@ const ShipmentsByZone = () => {
     setIsModalOpenDate(false);
   };
 
-  if (isPending) console.log( 'Loading...')
-
-  if (error) console.log( 'An error has occurred: ' + error.message)
-
-  if (data) console.log(data)
-
 return(
 
  
@@ -153,15 +80,11 @@ return(
   <>
 <Row justify="center" align="middle">
     <Space size={16}>
-    <Button type="primary" onClick={() => setFilterType('currentMonth')}
-                           style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
+    <Button type="primary"
+                           style={{background: '#2d3f7c'}}
                            >CURRENT MONTH</Button>  
-    <Button type="primary" onClick={() => setFilterType('yearToDate')}
-    style={filterType === 'yearToDate' && {background: '#2d3f7c'}}
-    >YEAR TO DATE</Button>                       
-    <Button type="primary" onClick={() => setFilterType('last12Months')}
-    style={filterType === 'last12Months' && {background: '#2d3f7c'}}
-    >LAST 12 MONTHS</Button>
+    <Button type="primary">YEAR TO DATE</Button>                       
+    <Button type="primary">LAST 12 MONTHS</Button>
     <Button type="primary" onClick={showModalDate}>CUSTOM</Button>
     <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
       <Space direction="vertical" size={12}>
@@ -205,8 +128,28 @@ return(
                         width: 240,
                        }}
                        onChange={handleChange}
-                    options={data?.[0].account_numbers.map(e => ({value: e, label: e}) || [])
-                      }
+                    options={[
+                      {
+                        value: 'FUR4859F',
+                        label: 'FUR4859F',
+                      },
+                      {
+                        value: '2JZEIF28',
+                        label: '2JZEIF28',
+                      },
+                      {
+                        value: '58DIE83D',
+                        label: '58DIE83D',
+                      },
+                      {
+                        value: '34IFJ59R',
+                        label: '34IFJ59R',
+                      },
+                      {
+                        value: '9984FR79',
+                        label: '9984FR79',
+                      },
+                   ]}
                  />
                </Modal>                         
               </Col>
@@ -217,7 +160,7 @@ return(
                                       flexDirection: 'column',
                                      }}>
               <div style={{ display: 'flex', justifyContent: 'center' }}>                        
-              <Pie data={graphData} options={optionsPie} width={400} height={400} />
+              <Pie data={dataPie} options={optionsPie} width={400} height={400} />
               </div>
               </Col>
               </Row>
@@ -232,4 +175,4 @@ return(
 
 };
 
-export default ShipmentsByZone;
+export default Shipments_By_Zone;
