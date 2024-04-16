@@ -4,7 +4,7 @@ import React from 'react';
 import { Button, Tabs, Divider } from 'antd';
 import Shipping_Spend from './shiping-spend';
 import Service_Type_Breakout from './service-type-breakout';
-import ShipmentsByZone from './shipments-by-zone';
+import Shipments_By_Zone from './shipments-by-zone';
 
 const Home = () => {
 
@@ -29,7 +29,7 @@ const Home = () => {
       {
         label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>  Shipments by Zone</span>,
         key: '3',
-        children: <ShipmentsByZone />,
+        children: <Shipments_By_Zone />,
       },
     ]}
   />
