@@ -153,7 +153,7 @@ const Home = () => {
       </p>
       </Col>
       <Col span={8}>
-      <Tooltip placement="bottom" title={textFedex2}>
+      <Tooltip placement="bottom" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textFedex2}</span>}>
       <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '-20px',marginTop: '-25px', }}>
       2
       </Button>
@@ -236,7 +236,7 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <Tooltip placement="topLeft" title={textFedex1}>
+      <Tooltip placement="topLeft" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textFedex1}</span>}>
       <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '-20px',marginTop: '-25px', }}>
       1
       </Button>
@@ -444,7 +444,7 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       &nbsp; 
       </p>
-      <Tooltip placement="left" title={textFedex3 }>
+      <Tooltip placement="left" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textFedex3}</span>}>
       <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '-20px',marginTop: '-25px', }}>
       3
       </Button>
@@ -452,7 +452,7 @@ const Home = () => {
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       &nbsp;
       </p>
-      <Tooltip placement="left" title={textFedex4}>
+      <Tooltip placement="left" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textFedex4}</span>}>
       <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '-20px',marginTop: '-25px', }}>
       4
       </Button>
@@ -568,7 +568,7 @@ const Home = () => {
     <Divider></Divider>
       <Row>
       <Col span={24} style={{ textAlign: 'center' }}>
-      <Tooltip placement="top" title={textFedexButton}>
+      <Tooltip placement="top" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textFedexButton}</span>}>
       <Button type="primary" style={{  background: '#F39C12' }}>Request a Free Shipping Assessment</Button>
       </Tooltip>
       </Col> 
