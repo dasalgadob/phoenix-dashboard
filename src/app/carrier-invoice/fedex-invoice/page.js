@@ -280,7 +280,7 @@ const Home = () => {
       7.0 lbs, 3.2 kgs
       </p> 
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
-      26.o lbs, 11.8 kgs 
+      26.0 lbs, 11.8 kgs 
       </p>
       <p style={{  fontSize: '16px', margin: 0, marginLeft: '0px',marginTop: '0px', }}>
       Mar 22, 2024

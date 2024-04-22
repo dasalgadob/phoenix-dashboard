@@ -167,13 +167,36 @@ const ShipmentsByZone = () => {
           <Button type="primary" onClick={() => setFilterType('last12Months')}
             style={filterType === 'last12Months' && {background: '#2d3f7c'}}
           >LAST 12 MONTHS</Button>
-          <Button type="primary" onClick={showModalDate}>CUSTOM</Button>
+          <Button type="primary" onClick={showModalDate}>CUSTOM DATE</Button>
           <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
             <Space direction="vertical" size={12}>
               <RangePicker />
             </Space>
           </Modal>
-
+          <Button type="primary" onClick={showModal}>
+                  ADVANCED FILTERS
+                </Button>
+                
+                <Modal title="Advanced filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <Row style={{ display: 'flex', alignItems: 'center' }}>  
+                <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>
+                  <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Account #</p>
+                </Col>
+                <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+                  <Select
+                    labelInValue
+                    placeholder="Account #"
+                    style={{
+                      width: 240,
+                    }}
+                    onChange={handleChange}
+                    options={data.data?.[0]?.account_numbers.map(e => ({value: e, label: e}) || [])
+                      }
+                  />
+                </Col>  
+                </Row>  
+                </Modal>
+                
         </Space>
       </Row>
 
@@ -199,21 +222,7 @@ const ShipmentsByZone = () => {
                   fontWeight: 'bold',
                   margin: 0,
                 }}>Shipments by Zone</Title>
-                <Button type="primary" onClick={showModal} style={{ minWidth: '180px', marginTop: '15px' }}>
-                  Account #
-                </Button>
-                <Modal title="Account #" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                  <Select
-                    labelInValue
-                    placeholder="Account #"
-                    style={{
-                      width: 240,
-                    }}
-                    onChange={handleChange}
-                    options={data.data?.[0]?.account_numbers.map(e => ({value: e, label: e}) || [])
-                      }
-                  />
-                </Modal>
+                
               </Col>
               <Col span={16} style={{
                 display: 'flex',
