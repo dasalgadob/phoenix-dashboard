@@ -243,7 +243,7 @@ const ShipmentsByZone = () => {
               </Col>
               <Col span={4}>
               {Object.keys(data?.data?.[0]?.shipping_spend_by_zone || {}).map((e, i) => 
-                <PieLabels borderColor= {borderColors[i]} backgroundColor= {backgroundColors[i]} zone= {e}
+                <PieLabels key={i} borderColor= {borderColors[i]} backgroundColor= {backgroundColors[i]} zone= {e}
                 values={data?.data?.[0] ? data.data[0].shipping_spend_by_zone[e] : {}}/>
               )}
                
