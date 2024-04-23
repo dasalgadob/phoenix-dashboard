@@ -4,6 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker, } from 'antd';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import {
+  BorderOutlined,
+} from '@ant-design/icons';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -211,7 +214,7 @@ const ShipmentsByZone = () => {
           }}
           >
             <Row>
-              <Col span={8} style={{
+              <Col span={6} style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -224,7 +227,7 @@ const ShipmentsByZone = () => {
                 }}>Shipments by Zone</Title>
                 
               </Col>
-              <Col span={16} style={{
+              <Col span={14} style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -234,8 +237,61 @@ const ShipmentsByZone = () => {
                   <Pie data={graphData} options={optionsPie} width={400} height={400} />
                 </div>
               </Col>
-            </Row>
+              <Col span={4}>
+              <Row style={{marginTop: '15px'}}>
+                <Col span={10}>
+                <Row style={{border: '2px solid rgba(255, 99, 132, 1', backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                              height: '15px', width: '40px', marginTop:'5px'}}></Row>
+                </Col>
+                <Col span={14}>
+                  <p style={{ margin: '0px', fontSize: '16px', }}>Zone </p>
+                  <p style={{ margin: '0px'}}>Charge: $749</p>
+                  <p style={{ margin: '0px'}}>$/lbs: $1.37</p>
+                  <p style={{ margin: '0px'}}>#shipments: 21</p>
+                </Col>
+             </Row> 
+             <Row style={{marginTop: '15px'}}>
+                <Col span={10}>
+                <Row style={{border: '2px solid rgba(54, 162, 235, 1)', backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                              height: '15px', width: '40px', marginTop:'5px'}}></Row>
+                </Col>
+                <Col span={14}>
+                  <p style={{ margin: '0px', fontSize: '16px', }}>Zone </p>
+                  <p style={{ margin: '0px'}}>Charge: $749</p>
+                  <p style={{ margin: '0px'}}>$/lbs: $1.37</p>
+                  <p style={{ margin: '0px'}}>#shipments: 21</p>
+                </Col>
+             </Row> 
+             <Row style={{marginTop: '15px'}}>
+                <Col span={10}>
+                <Row style={{border: '2px solid rgba(255, 206, 86, 1)', backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                              height: '15px', width: '40px', marginTop:'5px'}}></Row>
+                </Col>
+                <Col span={14}>
+                  <p style={{ margin: '0px', fontSize: '16px', }}>Zone </p>
+                  <p style={{ margin: '0px'}}>Charge: $749</p>
+                  <p style={{ margin: '0px'}}>$/lbs: $1.37</p>
+                  <p style={{ margin: '0px'}}>#shipments: 21</p>
+                </Col>
+             </Row> 
+             <Row style={{marginTop: '15px'}}>
+                <Col span={10}>
+                <Row style={{border: '2px solid rgba(75, 192, 192, 1)', backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                              height: '15px', width: '40px', marginTop:'5px'}}></Row>
+                </Col>
+                <Col span={14}>
+                  <p style={{ margin: '0px', fontSize: '16px', }}>Zone </p>
+                  <p style={{ margin: '0px'}}>Charge: $749</p>
+                  <p style={{ margin: '0px'}}>$/lbs: $1.37</p>
+                  <p style={{ margin: '0px'}}>#shipments: 21</p>
+                </Col>
+             </Row> 
 
+              </Col>
+            </Row>
+            
+
+            
           </Card>
         </Col>
       </Row>
