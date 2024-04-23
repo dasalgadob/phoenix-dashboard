@@ -7,6 +7,7 @@ import { Pie } from 'react-chartjs-2';
 import {
   BorderOutlined,
 } from '@ant-design/icons';
+import PieLabels from './pie-labels';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -59,6 +60,7 @@ const { Title } = Typography;
 
 const ShipmentsByZone = () => {
 
+  const [message, setMessage] = useState(null);
   const [filterType, setFilterType] = useState('currentMonth');
   const [account, setAccount] = useState()
   const [onOkClickCount, setOnOkClickCount] = useState(0)
@@ -86,6 +88,7 @@ const ShipmentsByZone = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        setMessage(data.data);
         setData(data)
         const countPieSegments = Object.keys(data.data?.[0]?.shipping_spend_by_zone || {}).length
         console.log("response:")
@@ -135,6 +138,7 @@ const ShipmentsByZone = () => {
     responsive: false,
     plugins: {
       legend: {
+        display: false,
         position: 'bottom',
         onClick: () => false,
       },
@@ -238,54 +242,12 @@ const ShipmentsByZone = () => {
                 </div>
               </Col>
               <Col span={4}>
-              <Row style={{marginTop: '15px'}}>
-                <Col span={10}>
-                <Row style={{border: '2px solid rgba(255, 99, 132, 1', backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                              height: '15px', width: '40px', marginTop:'5px'}}></Row>
-                </Col>
-                <Col span={14}>
-                  <p style={{ margin: '0px', fontSize: '16px', }}>Zone </p>
-                  <p style={{ margin: '0px'}}>Charge: $749</p>
-                  <p style={{ margin: '0px'}}>$/lbs: $1.37</p>
-                  <p style={{ margin: '0px'}}>#shipments: 21</p>
-                </Col>
-             </Row> 
-             <Row style={{marginTop: '15px'}}>
-                <Col span={10}>
-                <Row style={{border: '2px solid rgba(54, 162, 235, 1)', backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                              height: '15px', width: '40px', marginTop:'5px'}}></Row>
-                </Col>
-                <Col span={14}>
-                  <p style={{ margin: '0px', fontSize: '16px', }}>Zone </p>
-                  <p style={{ margin: '0px'}}>Charge: $749</p>
-                  <p style={{ margin: '0px'}}>$/lbs: $1.37</p>
-                  <p style={{ margin: '0px'}}>#shipments: 21</p>
-                </Col>
-             </Row> 
-             <Row style={{marginTop: '15px'}}>
-                <Col span={10}>
-                <Row style={{border: '2px solid rgba(255, 206, 86, 1)', backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                              height: '15px', width: '40px', marginTop:'5px'}}></Row>
-                </Col>
-                <Col span={14}>
-                  <p style={{ margin: '0px', fontSize: '16px', }}>Zone </p>
-                  <p style={{ margin: '0px'}}>Charge: $749</p>
-                  <p style={{ margin: '0px'}}>$/lbs: $1.37</p>
-                  <p style={{ margin: '0px'}}>#shipments: 21</p>
-                </Col>
-             </Row> 
-             <Row style={{marginTop: '15px'}}>
-                <Col span={10}>
-                <Row style={{border: '2px solid rgba(75, 192, 192, 1)', backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                              height: '15px', width: '40px', marginTop:'5px'}}></Row>
-                </Col>
-                <Col span={14}>
-                  <p style={{ margin: '0px', fontSize: '16px', }}>Zone </p>
-                  <p style={{ margin: '0px'}}>Charge: $749</p>
-                  <p style={{ margin: '0px'}}>$/lbs: $1.37</p>
-                  <p style={{ margin: '0px'}}>#shipments: 21</p>
-                </Col>
-             </Row> 
+              {Object.keys(data?.data?.[0]?.shipping_spend_by_zone || {}).map((e, i) => 
+                <PieLabels borderColor= {borderColors[i]} backgroundColor= {backgroundColors[i]} zone= {e}
+                values={data?.data?.[0] ? data.data[0].shipping_spend_by_zone[e] : {}}/>
+              )}
+               
+             
 
               </Col>
             </Row>
