@@ -1,11 +1,32 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker } from 'antd';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import PieLabelsBreakout from './pie-labels-breakout';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+const backgroundColors = [
+  'rgba(255, 99, 132, 0.2)',
+  'rgba(54, 162, 235, 0.2)',
+  'rgba(255, 206, 86, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+]
+
+const borderColors = [
+  'rgba(255, 99, 132, 1)',
+  'rgba(54, 162, 235, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 159, 64, 1)',
+]
+
+const filter = { currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3 }
 
 export const dataPie = {
   labels: ['Deferred', 'Ground', 'Intl', 'Air'],
@@ -36,11 +57,66 @@ const { RangePicker } = DatePicker;
 
 const Service_Type_Breakout = () => {
 
+  const [filterType, setFilterType] = useState('currentMonth');
+  const [onOkClickCount, setOnOkClickCount] = useState(0)
+  const [account, setAccount] = useState()
+  const [data, setData] = useState({})
+  const [graphData, setGraphData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: 'Charge',
+        data: [],
+        backgroundColor: [],
+        borderColor: [],
+        borderWidth: 1,
+      },
+    ],
+  })
+
+  useEffect(() => {
+    getData()
+  }, [filterType, onOkClickCount]);
+
+  const getData = () => {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/service_type_breakout/65/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}`, {
+      method: "GET"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data)
+        const countPieSegments = Object.keys(data.data?.[0]?.shipping_spend_by_zone || {}).length
+        console.log("response:")
+        console.log(data.data)
+        console.log("labels:" + Object.keys(data.data?.[0]?.shipping_spend_by_zone || {}))
+        setGraphData(
+          {
+            labels: Object.keys(data.data?.[0]?.shipping_spend_by_zone || {}),
+            datasets: [
+              {
+                fill: true,
+                label: 'Percentage',
+                data: Object.keys(data.data?.[0]?.shipping_spend_by_zone || {}).map(key => data.data[0].shipping_spend_by_zone[key].percentage.substr(0, 2)),
+                borderColor: borderColors.slice(0, countPieSegments),
+                backgroundColor: backgroundColors.slice(0, countPieSegments),
+              },
+            ],
+          }
+        )
+        // setCarrier(['All'].concat(data.data[0].carriers))
+        // setAccount([].concat(data.data[0].account_numbers))
+        // setZone([].concat(data.data[0].zones))
+      })
+      .catch((error) => console.log(error));
+
+  }
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
+    setOnOkClickCount(onOkClickCount + 1);
     setIsModalOpen(false);
   };
   const handleCancel = () => {
@@ -49,6 +125,7 @@ const Service_Type_Breakout = () => {
 
   const handleChange = (value) => {
     console.log(value);
+    setAccount(value.value)
   };
 
   const optionsPie = {
@@ -56,6 +133,7 @@ const Service_Type_Breakout = () => {
     responsive: false,  
     plugins: {
       legend: {
+        display: false,
         position: 'bottom',
         onClick: () => false,
       },
@@ -82,18 +160,36 @@ return(
   <>
    <Row justify="center" align="middle">
     <Space size={16}>
-    <Button type="primary"
-                           style={{background: '#2d3f7c'}}
+    <Button type="primary" onClick={() => setFilterType('currentMonth')}
+            style={filterType === 'currentMonth' && { background: '#2d3f7c' }}
                            >CURRENT MONTH</Button> 
-    <Button type="primary">YEAR TO DATE</Button>                        
-    <Button type="primary">LAST 12 MONTHS</Button>
-    <Button type="primary" onClick={showModalDate}>CUSTOM</Button>
+    <Button type="primary" onClick={() => setFilterType('yearToDate')}
+            style={filterType === 'yearToDate' && { background: '#2d3f7c' }}
+            >YEAR TO DATE</Button>                        
+    <Button type="primary" onClick={() => setFilterType('last12Months')}
+            style={filterType === 'last12Months' && {background: '#2d3f7c'}}
+            >LAST 12 MONTHS</Button>
+    <Button type="primary" onClick={showModalDate}>CUSTOM DATE</Button>
     <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
       <Space direction="vertical" size={12}>
     <RangePicker />
   </Space>
       </Modal>
-    
+      <Button type="primary" onClick={showModal} >
+                    ADVANCED FILTERS
+               </Button>
+               <Modal title="Advanced filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                  <Select
+                       labelInValue
+                       placeholder="Account #"
+                       style={{
+                        width: 240,
+                       }}
+                       onChange={handleChange}
+                    options={data.data?.[0]?.account_numbers.map(e => ({value: e, label: e}) || [])
+                  }
+                 />
+               </Modal>             
     </Space>
     </Row>
 
@@ -110,7 +206,7 @@ return(
             }}
             >
               <Row>
-               <Col span={8} style={{
+               <Col span={6} style={{
                                       display: 'flex',
                                       alignItems: 'center',
                                       justifyContent: 'center',
@@ -121,51 +217,23 @@ return(
                                         fontWeight: 'bold',
                                         margin: 0,
                                         }}>Shipments by Breakout</Title>                        
-               <Button type="primary" onClick={showModal} style={{ minWidth: '180px', marginTop: '15px' }}>
-                    Account #
-               </Button>
-               <Modal title="Account #" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                  <Select
-                       labelInValue
-                       placeholder="Account #"
-                       style={{
-                        width: 240,
-                       }}
-                       onChange={handleChange}
-                    options={[
-                      {
-                        value: 'FUR4859F',
-                        label: 'FUR4859F',
-                      },
-                      {
-                        value: '2JZEIF28',
-                        label: '2JZEIF28',
-                      },
-                      {
-                        value: '58DIE83D',
-                        label: '58DIE83D',
-                      },
-                      {
-                        value: '34IFJ59R',
-                        label: '34IFJ59R',
-                      },
-                      {
-                        value: '9984FR79',
-                        label: '9984FR79',
-                      },
-                   ]}
-                 />
-               </Modal>                         
+                           
               </Col>
-              <Col span={16} style={{
+              <Col span={14} style={{
                                       display: 'flex',
                                       alignItems: 'center',
                                       justifyContent: 'center',
                                       flexDirection: 'column',
                                      }}>
               <div style={{ display: 'flex', justifyContent: 'center' }}>                        
-              <Pie data={dataPie} options={optionsPie} width={400} height={400} />
+              <Pie data={graphData} options={optionsPie} width={400} height={400} />
               </div>
+              </Col>
+              <Col span={4}>
+              {Object.keys(data?.data?.[0]?.shipping_spend_by_zone || {}).map((e, i) => 
+                <PieLabelsBreakout key={i} borderColor= {borderColors[i]} backgroundColor= {backgroundColors[i]} zone= {e}
+                values={data?.data?.[0] ? data.data[0].shipping_spend_by_zone[e] : {}}/>
+              )}
               </Col>
               </Row>
 

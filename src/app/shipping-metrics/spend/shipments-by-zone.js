@@ -60,7 +60,7 @@ const { Title } = Typography;
 
 const ShipmentsByZone = () => {
 
-  const [message, setMessage] = useState(null);
+  
   const [filterType, setFilterType] = useState('currentMonth');
   const [account, setAccount] = useState()
   const [onOkClickCount, setOnOkClickCount] = useState(0)
@@ -88,7 +88,6 @@ const ShipmentsByZone = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setMessage(data.data);
         setData(data)
         const countPieSegments = Object.keys(data.data?.[0]?.shipping_spend_by_zone || {}).length
         console.log("response:")
