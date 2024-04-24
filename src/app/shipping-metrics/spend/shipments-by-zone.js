@@ -1,13 +1,15 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker, } from 'antd';
+import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker, Radio } from 'antd';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import {
   BorderOutlined,
 } from '@ant-design/icons';
 import PieLabels from './pie-labels';
+import CustomDateButtonFilter from './custom-date-button-filter';
+ 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -54,17 +56,26 @@ export const dataPie = {
   ],
 };
 
-const { RangePicker } = DatePicker;
-
 const { Title } = Typography;
 
 const ShipmentsByZone = () => {
 
+  const onChangeDatePicker = (date, dateString) => {
+    console.log( dateString);
+    if (valueRadio === 1) {
+      setCustomDate(`${dateString.substr(0,4)}0${dateString.substr(6,1)}`)
+    } 
+    else {
+      setCustomDate(`${dateString.substr(0,4)}${dateString.substr(5,2)}`)
+    }
+
+  };
   
   const [filterType, setFilterType] = useState('currentMonth');
   const [account, setAccount] = useState()
   const [onOkClickCount, setOnOkClickCount] = useState(0)
   const [data, setData] = useState({})
+  const [customDate, setCustomDate] = useState('');
   const [graphData, setGraphData] = useState({
     labels: [],
     datasets: [
@@ -83,7 +94,7 @@ const ShipmentsByZone = () => {
   }, [filterType, onOkClickCount]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/shipments_by_zone/65/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/shipments_by_zone/65/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -149,10 +160,18 @@ const ShipmentsByZone = () => {
     setIsModalOpenDate(true);
   };
   const handleOkDate = () => {
+    setOnOkClickCount(onOkClickCount+1)
+    setFilterType('custom')
     setIsModalOpenDate(false);
   };
   const handleCancelDate = () => {
     setIsModalOpenDate(false);
+  };
+
+  const [valueRadio, setValueRadio] = useState(1);
+  const onChangeRadio = (e) => {
+    console.log('radio checked', e.target.value);
+    setValueRadio(e.target.value);
   };
 
   console.log(data)
@@ -173,12 +192,11 @@ const ShipmentsByZone = () => {
           <Button type="primary" onClick={() => setFilterType('last12Months')}
             style={filterType === 'last12Months' && {background: '#2d3f7c'}}
           >LAST 12 MONTHS</Button>
-          <Button type="primary" onClick={showModalDate}>CUSTOM DATE</Button>
-          <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
-            <Space direction="vertical" size={12}>
-              <RangePicker />
-            </Space>
-          </Modal>
+          
+          <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
+                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
+                                  onChangeDatePicker={onChangeDatePicker}/>
+
           <Button type="primary" onClick={showModal}>
                   ADVANCED FILTERS
                 </Button>

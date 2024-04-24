@@ -17,6 +17,7 @@ import {
 import useSWR from 'swr'
 import { geoCentroid } from "d3-geo";
 import allStates from "./data/allstates.json";
+import { disabledDate } from '../constants';
 
 
 const geoUrl2 = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
@@ -117,16 +118,6 @@ export const data2 = {
 
 const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
-
-
-const disabledDate = (current) => {
- 
-  const today = new Date();
-  
-  const twoYearsAgo = new Date(today.getFullYear() - 2, today.getMonth(), today.getDate());
-  
-  return current && current < twoYearsAgo;
-};
 
 const Home = () => {
 
