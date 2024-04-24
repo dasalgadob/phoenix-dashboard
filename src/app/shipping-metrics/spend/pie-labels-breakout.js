@@ -10,7 +10,7 @@ return (
                 <Col span={14}>
                   <p style={{ margin: '0px', fontSize: '16px', textTransform: 'capitalize', }}>{props.zone} </p>
                   <p style={{ margin: '0px'}}>Charge:&nbsp;{props.values.charge}</p>
-                  <p style={{ margin: '0px'}}>$/lbs:&nbsp;{props.values.cost_per_lbs}</p>
+                  <p style={{ margin: '0px'}}>$/lbs:&nbsp;{props.values.price_per_lbs}</p>
                   <p style={{ margin: '0px'}}>#shipments:&nbsp;{props.values.number_of_shipments}</p>
                 </Col>
              </Row> 
