@@ -5,6 +5,7 @@ import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import PieLabelsBreakout from './pie-labels-breakout';
+import CustomDateButtonFilter from './custom-date-button-filter';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -57,6 +58,18 @@ const { RangePicker } = DatePicker;
 
 const Service_Type_Breakout = () => {
 
+  const onChangeDatePicker = (date, dateString) => {
+    console.log( dateString);
+    if (valueRadio === 1) {
+      setCustomDate(`${dateString.substr(0,4)}0${dateString.substr(6,1)}`)
+    } 
+    else {
+      setCustomDate(`${dateString.substr(0,4)}${dateString.substr(5,2)}`)
+    }
+
+  };
+
+  const [customDate, setCustomDate] = useState('');
   const [filterType, setFilterType] = useState('currentMonth');
   const [onOkClickCount, setOnOkClickCount] = useState(0)
   const [account, setAccount] = useState()
@@ -79,7 +92,7 @@ const Service_Type_Breakout = () => {
   }, [filterType, onOkClickCount]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/service_type_breakout/65/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/service_type_breakout/65/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -145,10 +158,18 @@ const Service_Type_Breakout = () => {
     setIsModalOpenDate(true);
   };
   const handleOkDate = () => {
+    setOnOkClickCount(onOkClickCount+1)
+    setFilterType('custom')
     setIsModalOpenDate(false);
   };
   const handleCancelDate = () => {
     setIsModalOpenDate(false);
+  };
+
+  const [valueRadio, setValueRadio] = useState(1);
+  const onChangeRadio = (e) => {
+    console.log('radio checked', e.target.value);
+    setValueRadio(e.target.value);
   };
 
 return(
@@ -169,12 +190,9 @@ return(
     <Button type="primary" onClick={() => setFilterType('last12Months')}
             style={filterType === 'last12Months' && {background: '#2d3f7c'}}
             >LAST 12 MONTHS</Button>
-    <Button type="primary" onClick={showModalDate}>CUSTOM DATE</Button>
-    <Modal title="Date Range" open={isModalOpenDate} onOk={handleOkDate} onCancel={handleCancelDate}>
-      <Space direction="vertical" size={12}>
-    <RangePicker />
-  </Space>
-      </Modal>
+    <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
+                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
+                                  onChangeDatePicker={onChangeDatePicker}/>
       <Button type="primary" onClick={showModal} >
                     ADVANCED FILTERS
                </Button>
