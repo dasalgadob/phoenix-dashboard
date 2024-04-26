@@ -569,7 +569,7 @@ const Home = () => {
       <Row>
       <Col span={24} style={{ textAlign: 'center' }}>
       <Tooltip placement="top" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textFedexButton}</span>}>
-      <Button type="primary" style={{  background: '#F39C12' }}>Request a Free Shipping Assessment</Button>
+      <Button type="primary" style={{  background: '#F39C12', fontSize: '18px' }}>Request a Free Shipping Assessment</Button>
       </Tooltip>
       </Col> 
       </Row>
