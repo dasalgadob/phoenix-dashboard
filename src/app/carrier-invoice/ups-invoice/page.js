@@ -21,14 +21,15 @@ const Home = () => {
     <>
     <Row>
       <Col span={24}>
-        <p style={{  fontSize: '36px', margin: 0, marginLeft: '0px',marginTop: '11px', marginBottom: '2px',
+        <p style={{  fontSize: '32px', margin: 0, marginLeft: '0px',marginTop: '11px', marginBottom: '2px',
          color: '#34495E' }}>
           <u>Understanding your Carrier&apos;s Shipping Costs</u></p>
-        <p style={{  fontSize: '36px', margin: 0, marginLeft: '0px',marginTop: '2px', marginBottom: '11px',
+        <p style={{  fontSize: '32px', margin: 0, marginLeft: '0px',marginTop: '2px', marginBottom: '11px',
          color: '#34495E' }}>
           Hover on the sections below to view insights into parts of your carrier&apos;s invoice</p>  
       </Col>
     </Row>
+    <Divider></Divider>
      <Row gutter={16}>
       <Col span={5}>
       <img src={'/UPS_logo.png'} style={{ width: '165px', display: 'block', margin: 'auto' }} />
@@ -296,37 +297,39 @@ const Home = () => {
         </Col>
         <Col span={5}>
         <Row style={{padding: '15px',  marginLeft: '14px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '-13px',marginTop: '-17px', }}>
-        <strong style={{ fontWeight: '800'  }}>Total</strong>
+        <p style={{  fontSize: '16px', margin: '2px', marginLeft: '-13px',marginTop: '0px', }}>
+        Total
         </p>
         </Row> 
         </Col>
         <Col span={2}>
         <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '0px', }}>
         <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
         </p>
         </Row> 
         </Col>
         <Col span={1}>
         <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '0px', }}>
         <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
         </p>
         </Row> 
         </Col>
         <Col span={2}>
         <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '0px', }}>
         <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
         </p>
         </Row> 
         </Col>
-        <Col span={4}>
-        <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '120px',marginTop: '-17px', }}>
-        <strong style={{ fontWeight: '800'  }}>39.49</strong>
+        <Col span={4} >
+        <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none', }}>
+        <Col span={24} style={{textAlign: 'right'}}>
+        <p style={{  fontSize: '16px', margin: '2px', marginLeft: '0px',marginTop: '0px',  marginRight: '16px'  }}>
+        39.49
         </p>
+        </Col>
         </Row> 
         </Col>
         <Col span={1}>
@@ -338,23 +341,27 @@ const Home = () => {
         </Col>
         <Col span={4}>
         <Row style={{padding: '15px',  marginLeft: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '120px',marginTop: '-17px', }}>
-        <strong style={{ fontWeight: '800'  }}>-8.87</strong>
+        <Col span={24} style={{textAlign: 'right'}}>
+        <p style={{  fontSize: '16px', margin: '2px', marginLeft: '0px',marginTop: '0px',  marginRight: '16px'  }}>
+        -8.87
         </p>
+        </Col>
         </Row> 
         </Col>
         <Col span={1}>
         <Row style={{padding: '15px',  marginLeft: '0px', marginRight: '0px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '-17px', }}>
+        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '0px',marginTop: '0px', }}>
         <strong style={{ fontWeight: '800'  }}>&nbsp;</strong>
         </p>
         </Row>
         </Col>
         <Col span={3}>
         <Row style={{padding: '15px',  marginLeft: '0px', marginRight: '28px', height: '30px' , border: '4px solid #000000', borderRight: 'none', borderLeft: 'none', borderBottom: 'none'}}>
-        <p style={{  fontSize: '22px', margin: '2px', marginLeft: '72px',marginTop: '-17px', }}>
-        <strong style={{ fontWeight: '800'  }}>30.62</strong>
+        <Col span={24} style={{textAlign: 'right'}}>
+        <p style={{  fontSize: '16px', margin: '2px', marginLeft: '0px',marginTop: '0px',  marginRight: '-12px'  }}>
+        30.62
         </p>
+        </Col>
         </Row>
         </Col>
 
@@ -364,7 +371,8 @@ const Home = () => {
     <Divider></Divider>
     <Row>
       <Col span={24} style={{ textAlign: 'center' }}>
-      <Button type="primary" style={{  background: '#F39C12' }}>Request a Free Shipping Assessment</Button>
+      <Button type="primary" style={{  background: '#F39C12', fontSize: '18px' }}>
+        Request a Free Shipping Assessment</Button>
       </Col> 
       </Row>
     
