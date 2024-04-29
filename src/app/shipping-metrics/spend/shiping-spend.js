@@ -17,6 +17,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
+import CustomDateButtonFilter from './custom-date-button-filter';
 
 ChartJS.register(
   CategoryScale,
@@ -65,10 +66,21 @@ const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
 const Shipping_Spend = () => {
 
+  const onChangeDatePicker = (date, dateString) => {
+    console.log( dateString);
+    if (valueRadio === 1) {
+      setCustomDate(`${dateString.substr(0,4)}0${dateString.substr(6,1)}`)
+    } 
+    else {
+      setCustomDate(`${dateString.substr(0,4)}${dateString.substr(5,2)}`)
+    }
+
+  };
+
   const [carrier, setCarrier ] = useState (['All']) 
   const [account, setAccount ] = useState ([])
   const [zone, setZone ] = useState ([])
-
+  const [customDate, setCustomDate] = useState('');
   const [filterType, setFilterType] = useState('currentMonth');
   const [dataShippingSpend, setDataShippingSpend] = useState(data)
 
@@ -110,13 +122,15 @@ const Shipping_Spend = () => {
     setValueCompareTo(e.target.value);
   };
 
+  const [onOkClickCount, setOnOkClickCount] = useState(0)
+
 
   useEffect(() => {
     getData()
-  }, [filterType]);
+  }, [filterType, onOkClickCount]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/65/?type_search=${filter[filterType]}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -138,12 +152,36 @@ const Shipping_Spend = () => {
         setCarrier(['All'].concat(data.data[0].carriers))
         setAccount([].concat(data.data[0].account_numbers))
         setZone([].concat(data.data[0].zones))
+        
       })
       .catch((error) => console.log(error));
 
   }
   
   console.log(dataShippingSpend)
+
+  const [isModalOpenDate, setIsModalOpenDate] = useState(false);
+
+  const handleOkDate = () => {
+    setOnOkClickCount(onOkClickCount+1)
+    setFilterType('custom')
+    setIsModalOpenDate(false);
+  };
+
+  const handleCancelDate = () => {
+    setIsModalOpenDate(false);
+  };
+
+  const onChangeRadio = (e) => {
+    console.log('radio checked', e.target.value);
+    setValueRadio(e.target.value);
+  };
+
+  const [valueRadio, setValueRadio] = useState(1);
+
+  const showModalDate = () => {
+    setIsModalOpenDate(true);
+  };
 
   return (
     <>
@@ -158,19 +196,10 @@ const Shipping_Spend = () => {
     <Button type="primary" onClick={() => setFilterType('last12Months')}
                            style={filterType === 'last12Months' && {background: '#2d3f7c'}}
                             >LAST 12 MONTHS</Button>
-    <Button type="primary" onClick={showModal} >
-        CUSTOM DATE
-      </Button>
-      <Modal title="Custom Date" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>    
-    <Row>
-    <Col span={5} style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
-    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Date Range: </p>
-    </Col>
-    <Col span={19} style={{ fontWeight: 'bold', marginTop: '5px', fontSize: '16px', alignItems: 'center', display: 'flex',}}>
-    <RangePicker />
-    </Col>
-    </Row>
-      </Modal>
+
+    <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
+                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
+                                  onChangeDatePicker={onChangeDatePicker}/>
 
       <Button type="primary" onClick={showModalDateRange} >
         ADVANCED FILTERS
