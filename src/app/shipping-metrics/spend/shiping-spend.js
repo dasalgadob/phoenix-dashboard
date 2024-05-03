@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table,
-   Select, Typography, Modal, Space, Divider, Radio, DatePicker } from 'antd';
+   Select, Typography, Modal, Space, Divider, Radio, DatePicker, Form } from 'antd';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -66,6 +66,26 @@ const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
 const Shipping_Spend = () => {
 
+  const [form] = Form.useForm();
+
+  const values = Form.useWatch([], form);
+
+  const onFinish = (values) => {
+    setIsModalOpenDateRange(false);
+    form.setFieldsValue({
+      serviceType: filterValue.serviceType,
+    });
+    console.log(values);
+    console.log(filterValue);
+  };
+
+  const resetForm = () => {
+    setFilterValue({})
+    setValue('total')
+    setValueCompareTo('nothing')
+
+  }
+
   const onChangeDatePicker = (date, dateString) => {
     console.log( dateString);
     if (valueRadio === 1) {
@@ -83,12 +103,13 @@ const Shipping_Spend = () => {
   const [customDate, setCustomDate] = useState('');
   const [filterType, setFilterType] = useState('currentMonth');
   const [dataShippingSpend, setDataShippingSpend] = useState(data)
-
+  const [filterValue, setFilterValue] =useState({})
   const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
   const showModalDateRange = () => {
     setIsModalOpenDateRange(true);
   };
   const handleOkDateRange = () => {
+    setOnOkClickCount(onOkClickCount+1)
     setIsModalOpenDateRange(false);
   };
   const handleCancelDateRange = () => {
@@ -100,37 +121,59 @@ const Shipping_Spend = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
+    setOnOkClickCount(onOkClickCount+1)
     setIsModalOpen(false);
+    
   };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
-  const handleChange = (value) => {
+  const handleChangeServiceType = (value) => {
+    setFilterValue({...filterValue, serviceType: value?.value})
     console.log(value);
   };
 
-  const [value, setValue] = useState(1);
-  const onChange = (e) => {
+  const handleChangeCarrier = (value) => {
+    setFilterValue({...filterValue, carrier: value?.value})
+    console.log(value);
+  };
+
+  const handleChangeAccount = (value) => {
+    setFilterValue({...filterValue, account: value?.value})
+    console.log(value);
+  };
+
+  const handleChangeZone = (value) => {
+    setFilterValue({...filterValue, zone: value?.value})
+    console.log(value);
+  };
+
+  const [value, setValue] = useState('total');
+  const onChangeDisplay = (e) => {
+    setFilterValue({...filterValue, display: e.target.value})
     console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
 
-  const [valueCompareTo, setValueCompareTo] = useState(1);
+  const [valueCompareTo, setValueCompareTo] = useState('nothing');
   const onChangeCompareTo = (e) => {
+    setFilterValue({...filterValue, compareTo: e.target.value})
     console.log('radio checked', e.target.value);
     setValueCompareTo(e.target.value);
   };
 
   const [onOkClickCount, setOnOkClickCount] = useState(0)
-
+ 
+  
+  
 
   useEffect(() => {
     getData()
-  }, [filterType, onOkClickCount]);
+  }, [filterType, onOkClickCount, form, values]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&service_type_search=${filterValue.serviceType || ''}&carrier_search=${filterValue.carrier || ''}&account_number_search=${filterValue.account || ''}&zone_search=${filterValue.zone || ''}&display_search=${value || ''}&compare_search=${valueCompareTo || ''}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -149,7 +192,7 @@ const Shipping_Spend = () => {
             ],
           }  
         )
-        setCarrier(['All'].concat(data.data[0].carriers))
+        setCarrier([].concat(data.data[0].carriers))
         setAccount([].concat(data.data[0].account_numbers))
         setZone([].concat(data.data[0].zones))
         
@@ -183,6 +226,8 @@ const Shipping_Spend = () => {
     setIsModalOpenDate(true);
   };
 
+  console.log(filterValue);
+
   return (
     <>
     <Row justify="center" align="middle"  style={{marginLeft: '-18px'}} >
@@ -204,26 +249,29 @@ const Shipping_Spend = () => {
       <Button type="primary" onClick={showModalDateRange} >
         ADVANCED FILTERS
       </Button>
+      <Form form={form} onFinish={onFinish}>
       <Modal title="Advanced Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
       <Row style={{ display: 'flex', alignItems: 'center' }}> 
        <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
        <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Service Type</p>
        </Col>
        <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+       
         <Select
           labelInValue
-          placeholder="Service Type"
+          placeholder="All"
+          allowClear
+          value={filterValue.serviceType}
           style={{
           width: 240,
           marginTop: '0px',
           marginLeft: '5px'
           }}
-          onChange={handleChange}
+          onChange={handleChangeServiceType}
+          name='serviceType'
+          id='serviceType'
           options={[
-          {
-            value: 'all',
-            label: 'All',
-          },
+          
           {
             value: 'air',
             label: 'Air',
@@ -242,6 +290,7 @@ const Shipping_Spend = () => {
           },
         ]}
       />
+      
       </Col>
       </Row>
       <Row style={{ display: 'flex', alignItems: 'center' }}>
@@ -251,13 +300,15 @@ const Shipping_Spend = () => {
        <Col span={19} style={{ display: 'flex', alignItems: 'center' }}> 
        <Select
           labelInValue
-          placeholder="Carrier"
+          placeholder="All"
+          allowClear
+          value={filterValue.carrier}
           style={{
              width: 240,
              marginTop: '0px',
              marginLeft: '5px'
              }}
-           onChange={handleChange}
+           onChange={handleChangeCarrier}
            options={carrier.map(e => ({value: e, label: e }))  }
       />
       </Col>
@@ -269,13 +320,15 @@ const Shipping_Spend = () => {
       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
        <Select
          labelInValue
-         placeholder="Account #"
+         placeholder="All"
+         allowClear
+         value={filterValue.account}
          style={{
                   width: 240,
                   marginTop: '0px',
                   marginLeft: '5px'
                 }}
-         onChange={handleChange}
+         onChange={handleChangeAccount}
          options={account.map(e => ({value: e, label: e }))}
       />
       </Col>
@@ -287,13 +340,15 @@ const Shipping_Spend = () => {
         <Col span={19}>
        <Select
          labelInValue
-         placeholder="Zone"
+         placeholder="All"
+         allowClear
+         value={filterValue.zone}
          style={{
                  width: 240,
                  marginTop: '0px',
                  marginLeft: '5px'
                 }}
-         onChange={handleChange}
+         onChange={handleChangeZone}
          options={zone.map(e => ({value: e, label: e }))}
       />
         </Col>
@@ -303,11 +358,11 @@ const Shipping_Spend = () => {
         <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Display </p>
         </Col>
         <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>
-       <Radio.Group onChange={onChange} value={value}>
-        <Radio value={1}>Total $</Radio>
-        <Radio value={2}>$/shipment</Radio>
-        <Radio value={3}>$/package</Radio>
-        <Radio value={4}>$/lb</Radio>
+       <Radio.Group onChange={onChangeDisplay} value={value} >
+        <Radio value={'total'}>Total $</Radio>
+        <Radio value={'shipment'}>$/shipment</Radio>
+        <Radio value={'package'}>$/package</Radio>
+        <Radio value={'lbs'}>$/lb</Radio>
        </Radio.Group>
        </Col>
       </Row>
@@ -316,16 +371,22 @@ const Shipping_Spend = () => {
        <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Compare to: </p>
       </Col>
       <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px', alignItems: 'center', display: 'flex',}}>
-  <Radio.Group onChangeCompareTo={onChangeCompareTo} valueCompareTo={valueCompareTo}>
-      <Radio value={1}>Nothing</Radio>
-      <Radio value={2}># shipments</Radio>
-      <Radio value={3}># packages</Radio>
+  <Radio.Group onChange={onChangeCompareTo} value={valueCompareTo}>
+      <Radio value={'nothing'}>Nothing</Radio>
+      <Radio value={'shipments'}># shipments</Radio>
+      <Radio value={'packages'}># packages</Radio>
     </Radio.Group>
     </Col>
     </Row>
-    
+    <Row>
+      <Col offset={18}>
+    <Button type="primary" onClick={resetForm} style={{marginLeft: '-12px'}}  >
+        Reset
+      </Button>
+      </Col>
+    </Row>
       </Modal>
-    
+      </Form>
     </Space>
     
     </Row>
