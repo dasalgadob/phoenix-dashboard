@@ -191,7 +191,7 @@ return(
             style={filterType === 'last12Months' && {background: '#2d3f7c'}}
             >LAST 12 MONTHS</Button>
     <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
-                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
+                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} filterType={filterType}
                                   onChangeDatePicker={onChangeDatePicker}/>
       <Button type="primary" onClick={showModal} >
                     ADVANCED FILTERS
@@ -199,7 +199,7 @@ return(
                <Modal title="Advanced filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                   <Select
                        labelInValue
-                       placeholder="Account #"
+                       placeholder="All"
                        style={{
                         width: 240,
                        }}
@@ -220,7 +220,7 @@ return(
     <Card style={{
               margin: 10,
               borderRadius: '12px',
-              height:530,
+              height:480,
             }}
             >
               <Row>

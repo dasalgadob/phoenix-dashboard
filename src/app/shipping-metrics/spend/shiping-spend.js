@@ -226,11 +226,12 @@ const Shipping_Spend = () => {
     setIsModalOpenDate(true);
   };
 
-  console.log(filterValue);
+  console.log(filterType);
+
 
   return (
     <>
-    <Row justify="center" align="middle"  style={{marginLeft: '-18px'}} >
+    <Row justify="center" align="middle" >
     <Space size={16}>
     <Button type="primary" onClick={() => setFilterType('currentMonth')}
                            style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
@@ -244,7 +245,8 @@ const Shipping_Spend = () => {
 
     <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
                                   onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
-                                  onChangeDatePicker={onChangeDatePicker}/>
+                                  onChangeDatePicker={onChangeDatePicker} filterType={filterType}
+                             />
 
       <Button type="primary" onClick={showModalDateRange} >
         ADVANCED FILTERS
@@ -293,6 +295,7 @@ const Shipping_Spend = () => {
       
       </Col>
       </Row>
+      
       <Row style={{ display: 'flex', alignItems: 'center' }}>
         <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>  
           <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Carrier</p>

@@ -194,7 +194,7 @@ const ShipmentsByZone = () => {
           >LAST 12 MONTHS</Button>
           
           <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
-                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
+                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} filterType={filterType}
                                   onChangeDatePicker={onChangeDatePicker}/>
 
           <Button type="primary" onClick={showModal}>
@@ -209,7 +209,7 @@ const ShipmentsByZone = () => {
                 <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
                   <Select
                     labelInValue
-                    placeholder="Account #"
+                    placeholder="All"
                     style={{
                       width: 240,
                     }}
@@ -231,7 +231,7 @@ const ShipmentsByZone = () => {
           <Card style={{
             margin: 10,
             borderRadius: '12px',
-            height: 530,
+            height: 480,
           }}
           >
             <Row>
