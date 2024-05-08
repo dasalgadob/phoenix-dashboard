@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Button, Card, Divider, Row, Col, Tooltip, Typography, } from 'antd';
+import RequestFreeShippingAssessment from '../request-a-free-shipping-assessment'
 
 const textUps1 = <span>The $7.41 is the discount off the Published Charge of $20.59, or 35% discount. Is 35% a good or a bad discount?
                        It depends on a few factors, one of them being your total shipping spend cost.</span>;
@@ -9,7 +10,8 @@ const textUps2 = <span>Residential surcharge and Delivery Area surchage are invo
                        a discount % off Surcharges. Should you? </span>;
 const textUps3 = <span>Fuel surcharge is also a charge that can be discounted, 22.5%  for this customer. Find out if you&apos;re gettig
                        the best discounts and terms on your UPS agrement. </span>;                       
-
+const textUpsButton = <span>We&apos;ll benchmark your account vs $1 billion in shipping costs, discounts, and surcharges and tell you if you have goood, bad, or
+very bad discounts per your spend level  </span>;
 
 
 
@@ -371,8 +373,8 @@ const Home = () => {
     <Divider></Divider>
     <Row>
       <Col span={24} style={{ textAlign: 'center' }}>
-      <Button type="primary" style={{  background: '#F39C12', fontSize: '18px' }}>
-        Request a Free Shipping Assessment</Button>
+      <RequestFreeShippingAssessment textButton={textUpsButton}
+                                     />
       </Col> 
       </Row>
     

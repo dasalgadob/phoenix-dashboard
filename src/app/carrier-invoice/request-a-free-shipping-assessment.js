@@ -41,7 +41,7 @@ const RequestFreeShippingAssessment=(props) => {
 
   return (
     <>
-    <Tooltip placement="top" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{props.textFedexButton}</span>}>
+    <Tooltip placement="top" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{props.textButton}</span>}>
     <Button type="primary" onClick={showModal} style={{  background: '#F39C12', fontSize: '18px' }}>Request a Free Shipping Assessment</Button>
     </Tooltip>
     <Modal title=" " open={isModalOpen} onOk={handleOk} onCancel={handleCancel}

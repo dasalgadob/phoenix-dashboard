@@ -570,7 +570,7 @@ const Home = () => {
       <Row>
       <Col span={24} style={{ textAlign: 'center' }}>
       
-      <RequestFreeShippingAssessment textFedexButton={textFedexButton}
+      <RequestFreeShippingAssessment textButton={textFedexButton}
                                      
                                      />
       
