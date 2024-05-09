@@ -186,7 +186,7 @@ const Home = () => {
       <p style={{  fontSize: '16px',margin: '2px', marginLeft: '14px',  marginRight: '32px', marginTop: '0px', }}>
       &nbsp;
       </p> 
-      <Tooltip placement="topLeft" title={textUps2}>
+      <Tooltip placement="topLeft" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textUps2}</span>}>
       <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '0px',marginTop: '-25px', }}>
       2
       </Button>
@@ -240,7 +240,7 @@ const Home = () => {
       </p>
       </Row>
       
-      <Tooltip placement="topLeft" title={textUps1}>
+      <Tooltip placement="topLeft" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textUps1}</span>}>
       <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '0px',marginTop: '1px', }}>
       1
       </Button>
@@ -253,7 +253,7 @@ const Home = () => {
       &nbsp;
       </p> 
       <p style={{  fontSize: '16px', margin: '2px', marginLeft: '14px', marginRight: '32px',marginTop: '0px', }}>
-      <Tooltip placement="topLeft" title={textUps3}>
+      <Tooltip placement="topLeft" color={'#FFFFFF'} borderColor={'10px solid #C0392B'} title={<span style={{ color: '#C0392B' }}>{textUps3}</span>}>
       <Button type="primary" shape="circle" danger ghost style={{   margin: 0, marginLeft: '0px',marginTop: '-25px', }}>
       3
       </Button>
