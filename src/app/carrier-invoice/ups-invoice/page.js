@@ -373,7 +373,7 @@ const Home = () => {
     <Divider></Divider>
     <Row>
       <Col span={24} style={{ textAlign: 'center' }}>
-      <RequestFreeShippingAssessment textButton={textUpsButton}
+      <RequestFreeShippingAssessment textButton={textUpsButton} carrier='ups'
                                      />
       </Col> 
       </Row>
