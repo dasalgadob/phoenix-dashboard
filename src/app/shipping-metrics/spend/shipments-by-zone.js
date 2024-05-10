@@ -140,7 +140,7 @@ const ShipmentsByZone = () => {
 
   const handleChange = (value) => {
     console.log(value);
-    setAccount(value.value)
+    setAccount(value?.value)
   };
 
   const optionsPie = {
@@ -210,6 +210,7 @@ const ShipmentsByZone = () => {
                   <Select
                     labelInValue
                     placeholder="All"
+                    allowClear
                     style={{
                       width: 240,
                     }}

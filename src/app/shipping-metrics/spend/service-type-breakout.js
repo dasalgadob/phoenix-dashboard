@@ -138,7 +138,7 @@ const Service_Type_Breakout = () => {
 
   const handleChange = (value) => {
     console.log(value);
-    setAccount(value.value)
+    setAccount(value?.value)
   };
 
   const optionsPie = {
@@ -200,6 +200,7 @@ return(
                   <Select
                        labelInValue
                        placeholder="All"
+                       allowClear
                        style={{
                         width: 240,
                        }}
