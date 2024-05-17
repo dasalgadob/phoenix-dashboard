@@ -173,7 +173,7 @@ const Shipping_Spend = () => {
   }, [filterType, onOkClickCount, form, values]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&service_type_search=${filterValue.serviceType || ''}&carrier_search=${filterValue.carrier || ''}&account_number_search=${filterValue.account || ''}&zone_search=${filterValue.zone || ''}&display_search=${value || ''}&compare_search=${valueCompareTo || ''}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/5165/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&service_type_search=${filterValue.serviceType || ''}&carrier_search=${filterValue.carrier || ''}&account_number_search=${filterValue.account || ''}&zone_search=${filterValue.zone || ''}&display_search=${value || ''}&compare_search=${valueCompareTo || ''}`, {
       method: "GET"
     })
       .then((response) => response.json())

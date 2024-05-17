@@ -92,7 +92,7 @@ const Service_Type_Breakout = () => {
   }, [filterType, onOkClickCount]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/service_type_breakout/65/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/service_type_breakout/5165/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())

@@ -64,7 +64,7 @@ const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
 
 
-const Lost_Damaged_Refunds_Processing = () => {
+const Refunds = () => {
 
   const [form] = Form.useForm();
 
@@ -173,7 +173,7 @@ const Lost_Damaged_Refunds_Processing = () => {
   }, [filterType, onOkClickCount, form, values]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&service_type_search=${filterValue.serviceType || ''}&carrier_search=${filterValue.carrier || ''}&account_number_search=${filterValue.account || ''}&zone_search=${filterValue.zone || ''}&display_search=${value || ''}&compare_search=${valueCompareTo || ''}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/refund/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&service_type_search=${filterValue.serviceType || ''}&carrier_search=${filterValue.carrier || ''}&display_search=${value || ''}&compare_search=${valueCompareTo || ''}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -261,7 +261,7 @@ const Lost_Damaged_Refunds_Processing = () => {
       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
        <Select
          labelInValue
-         placeholder="All"
+         placeholder="All refunds"
          allowClear
          value={filterValue.account}
          style={{
@@ -271,10 +271,6 @@ const Lost_Damaged_Refunds_Processing = () => {
                 }}
          onChange={handleChangeAccount}
          options={[
-          {
-            value: 'All refunds',
-            label: 'All refunds',
-          },
           {
             value: 'Money back guarantee',
             label: 'Money back guarantee',
@@ -411,4 +407,4 @@ const Lost_Damaged_Refunds_Processing = () => {
 );
 };
 
-export default Lost_Damaged_Refunds_Processing;
+export default Refunds;

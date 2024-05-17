@@ -39,7 +39,7 @@ const offsets = {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const fetchShippingSpend = async () => {
-  const response = await fetch('http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=1');
+  const response = await fetch('http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/5165/?type_search=1');
   const data = await response.json();
   console.log(fetchShippingSpend)
   console.log(data)
@@ -133,6 +133,7 @@ const Home = () => {
   };
 
   const [message, setMessage] = useState(null);
+  const [messageMap, setMessageMap] = useState(null);
   const [dataSpendByCarrier, setDataSpendByCarrier] = useState(data);
   const [dataShippingSpendByServiceType, setDataShippingSpendByServiceType] = useState(data2);
   const [filterType, setFilterType] = useState('currentMonth');
@@ -141,10 +142,24 @@ const Home = () => {
 
   useEffect(() => {
     getData()
+    getDataMap()
   }, [filterType]);
 
+  const getDataMap = () => {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/maps/5165/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
+      method: "GET"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setMessageMap(data.data);
+        
+      })
+      .catch((error) => console.log(error));
+
+  }
+
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/5165/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -576,8 +591,8 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', marginRight: '5px'
               key={geo.rsmKey}
               geography={geo}
               fill={
-                message && message[0]?.maps?.counting_to_top_3 &&
-                Object.keys(message[0].maps.counting_to_top_3).includes(cur.id)
+                messageMap && messageMap[0]?.maps?.counting_to_top_3 &&
+                Object.keys(messageMap[0].maps.counting_to_top_3).includes(cur.id)
                   ? '#87CEFA' 
                   : '#EAEAEC' 
               }
@@ -616,9 +631,9 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', marginRight: '5px'
                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                       <Marker coordinates={centroid}>
                         <text y="2" fontSize={14} frontWeight="bold" textAnchor="middle">
-                        {message && message[0]?.maps?.counting_to?.[cur.id] ? (
+                        {messageMap && messageMap[0]?.maps?.[cur.id] ? (
                           <>
-                            {cur.id}:&nbsp;{message && message[0]?.maps?.counting_to[cur.id]}
+                            {cur.id}:&nbsp;{messageMap && messageMap[0]?.maps?.[cur.id]}
                           </>
                         ) : (
                           <>
@@ -634,7 +649,7 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', marginRight: '5px'
                         dy={offsets[cur.id][1]}
                       >
                         <text x={4} fontSize={12} alignmentBaseline="middle">
-                        {cur.id}:{message && message[0]?.maps?.counting_to?.[cur.id]}
+                        {cur.id}:{messageMap && messageMap[0]?.maps?.[cur.id]}
                         </text>
                       </Annotation>
                     ))}
@@ -655,13 +670,13 @@ style={{ height: 520, alignItems: 'center',marginLeft: '0px', marginRight: '5px'
         <p style={{ fontWeight: 'bold', margin: 0, fontSize: '20px'}}>Domestic</p>
       </Col>
 
-      {message && Object.keys(message[0].maps.counting_to_top_3 || {}).map((k, i) =>
+      {messageMap && Object.keys(messageMap[0].counting_to_top_3 || {}).map((k, i) =>
       <Col key={k} span={24} style={{marginTop: '10px'}}>
       <Button type="primary" shape="circle" style={{ fontWeight: 'bold', background: '#87CEFA', cursor: 'default'}} >
          {i + 1}
         </Button>
         <p style={{ fontWeight: 'bold', margin: 0, fontSize: '18px', color: '#87CEFA' , display: 'inline-block', marginLeft: '10px'}}>
-          {k} {message && message[0]?.maps?.counting_to_top_3?.[k]}  
+          {k} {messageMap && messageMap[0]?.counting_to_top_3?.[k]}  
         </p>
     </Col>
       )}
