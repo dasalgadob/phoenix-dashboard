@@ -83,7 +83,7 @@ const Refunds = () => {
     setFilterValue({})
     setValue('total')
     setValueCompareTo('nothing')
-
+    setRefundType({})
   }
 
   const onChangeDatePicker = (date, dateString) => {
@@ -98,7 +98,7 @@ const Refunds = () => {
   };
 
   const [carrier, setCarrier ] = useState (['All']) 
-  const [account, setAccount ] = useState ([])
+  const [refundType, setRefundType ] = useState ([])
   const [zone, setZone ] = useState ([])
   const [customDate, setCustomDate] = useState('');
   const [filterType, setFilterType] = useState('currentMonth');
@@ -139,8 +139,8 @@ const Refunds = () => {
     console.log(value);
   };
 
-  const handleChangeAccount = (value) => {
-    setFilterValue({...filterValue, account: value?.value})
+  const handleChangeRefundType = (value) => {
+    setFilterValue({...filterValue, refundType: value?.value})
     console.log(value);
   };
 
@@ -173,7 +173,7 @@ const Refunds = () => {
   }, [filterType, onOkClickCount, form, values]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/refund/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&service_type_search=${filterValue.serviceType || ''}&carrier_search=${filterValue.carrier || ''}&display_search=${value || ''}&compare_search=${valueCompareTo || ''}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/refund/3023/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&refund_type_search=${filterValue.refundType || ''}&service_type_search=${filterValue.serviceType || ''}&carrier_search=${filterValue.carrier || ''}&display_search=${value || ''}&compare_to_search=${valueCompareTo || ''}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -184,15 +184,22 @@ const Refunds = () => {
             datasets: [
               {
                 fill: true,
-                label: ' ',
+                label: value,
                 data: data.data[0].weekly_totals,
                 borderColor: 'rgb(53, 162, 235)',
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
               },
+              {
+                fill: true,
+                label: valueCompareTo === 'nothing' ? '' : valueCompareTo ,
+                data: data.data[0].weekly_totals_comparing,
+                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+              },
             ],
           }  
         )
-        setCarrier([].concat(data.data[0].carriers))
+        setCarrier([].concat(data.data[0].carrier_list))
         setAccount([].concat(data.data[0].account_numbers))
         setZone([].concat(data.data[0].zones))
         
@@ -263,24 +270,24 @@ const Refunds = () => {
          labelInValue
          placeholder="All refunds"
          allowClear
-         value={filterValue.account}
+         value={filterValue.refundType}
          style={{
                   width: 240,
                   marginTop: '0px',
                   marginLeft: '5px'
                 }}
-         onChange={handleChangeAccount}
+         onChange={handleChangeRefundType}
          options={[
           {
-            value: 'Money back guarantee',
+            value: 'money',
             label: 'Money back guarantee',
           },
           {
-            value: 'Invoice Audits',
+            value: 'audits',
             label: 'Invoice Audits',
           },
           {
-            value: 'Lost or damaged',
+            value: 'lost_damaged',
             label: 'Lost or damaged',
           },
         ]}
@@ -358,9 +365,9 @@ const Refunds = () => {
         </Col>
         <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>
        <Radio.Group onChange={onChangeDisplay} value={value} >
-        <Radio value={'approved'}>$ approved  </Radio>
-        <Radio value={'percent'}>% approved</Radio>
-        <Radio value={'number'}># approved</Radio>
+        <Radio value={'amount'}>$ approved  </Radio>
+        <Radio value={'percentage'}>% approved</Radio>
+        <Radio value={'count'}># approved</Radio>
        </Radio.Group>
        </Col>
       </Row>
@@ -371,9 +378,9 @@ const Refunds = () => {
       <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px', alignItems: 'center', display: 'flex',}}>
   <Radio.Group onChange={onChangeCompareTo} value={valueCompareTo}>
       <Radio value={'nothing'}>Nothing</Radio>
-      <Radio value={'shipments'}># shipments</Radio>
-      <Radio value={'packages'}># packages</Radio>
-      <Radio value={'prevyear'}>Prev. year</Radio>
+      <Radio value={'shipment'}># shipments</Radio>
+      <Radio value={'package'}># packages</Radio>
+      <Radio value={'previous'}>Prev. year</Radio>
     </Radio.Group>
     </Col>
     </Row>

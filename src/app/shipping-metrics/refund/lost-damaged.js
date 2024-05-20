@@ -64,7 +64,7 @@ const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
 
 
-const Lost_Damaged_Refunds_Processing = () => {
+const Lost_Damaged = () => {
 
   const [form] = Form.useForm();
 
@@ -320,4 +320,4 @@ const Lost_Damaged_Refunds_Processing = () => {
 );
 };
 
-export default Lost_Damaged_Refunds_Processing;
+export default Lost_Damaged;

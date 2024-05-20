@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button, Tabs, Divider } from 'antd';
 import Refunds from './refunds';
-import Lost_Damaged_Refunds_Processing from './lost-damaged-refunds-processing';
+import Lost_Damaged from './lost-damaged';
 
 const Home = () => {
 
@@ -21,9 +21,9 @@ const Home = () => {
         children: <Refunds />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}> Lost & Damaged Refunds Processing</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}> Lost & Damaged</span>,
         key: '2',
-        children: <Lost_Damaged_Refunds_Processing />,
+        children: <Lost_Damaged />,
       },
     ]}
   />
