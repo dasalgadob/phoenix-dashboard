@@ -9,13 +9,13 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
-  LineElement,
+  BarElement,
   Title,
   Tooltip,
   Filler,
   Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import CustomDateButtonFilter from '../spend/custom-date-button-filter';
 
@@ -23,7 +23,7 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  LineElement,
+  BarElement,
   Title,
   Tooltip,
   Filler,
@@ -33,14 +33,19 @@ ChartJS.register(
 const { RangePicker } = DatePicker;
 
 export const options = {
-  responsive: true,
   plugins: {
-    legend: {
-      position: 'top',
-    },
     title: {
       display: true,
-      text: 'Lost & Damaged Refunds Processing',
+      text: 'Lost & Damaged',
+    },
+  },
+  responsive: true,
+  scales: {
+    x: {
+      stacked: true,
+    },
+    y: {
+      stacked: true,
     },
   },
 };
@@ -51,11 +56,19 @@ export const data = {
   labels,
   datasets: [
     {
-      fill: true,
-      label: ' ',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      label: 'Pending',
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      backgroundColor: 'rgb(255, 99, 132)',
+    },
+    {
+      label: 'Approved',
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      backgroundColor: 'rgb(75, 192, 192)',
+    },
+    {
+      label: 'Denied',
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      backgroundColor: 'rgb(53, 162, 235)',
     },
   ],
 };
@@ -81,8 +94,9 @@ const Lost_Damaged = () => {
 
   const resetForm = () => {
     setFilterValue({})
-    setValue('total')
+    setValue('All')
     setValueCompareTo('nothing')
+    
 
   }
 
@@ -102,7 +116,7 @@ const Lost_Damaged = () => {
   const [zone, setZone ] = useState ([])
   const [customDate, setCustomDate] = useState('');
   const [filterType, setFilterType] = useState('currentMonth');
-  const [dataShippingSpend, setDataShippingSpend] = useState(data)
+  const [dataLostDamaged, setDataLostDamaged] = useState(data)
   const [filterValue, setFilterValue] =useState({})
   const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
   const showModalDateRange = () => {
@@ -149,7 +163,7 @@ const Lost_Damaged = () => {
     console.log(value);
   };
 
-  const [value, setValue] = useState('damaged');
+  const [value, setValue] = useState('All');
   const onChangeDisplay = (e) => {
     setFilterValue({...filterValue, display: e.target.value})
     console.log('radio checked', e.target.value);
@@ -173,26 +187,34 @@ const Lost_Damaged = () => {
   }, [filterType, onOkClickCount, form, values]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/refund/lost_damaged/3023/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&service_type_search=${filterValue.serviceType || ''}&carrier_search=${filterValue.carrier || ''}&account_number_search=${filterValue.account || ''}&zone_search=${filterValue.zone || ''}&display_search=${value || ''}&compare_search=${valueCompareTo || ''}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/refund/lost_damaged/3023/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&carrier_search=${filterValue.carrier || ''}&display_search=${value || ''}`, {
       method: "GET"
     })
       .then((response) => response.json())
       .then((data) => {
-        setDataShippingSpend(
+        setDataLostDamaged(
           {
             labels: data.data?.[0].year_weeks,
             datasets: [
               {
-                fill: true,
-                label: ' ',
-                data: data.data?.[0].weekly_totals,
-                borderColor: 'rgb(53, 162, 235)',
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                label: 'Pending',
+                data: data.data?.[0].weekly_totals.map(e => e['Pending']),
+                backgroundColor: 'rgb(255, 99, 132)',
+              },
+              {
+                label: 'Approved',
+                data: data.data?.[0].weekly_totals.map(e => e['Approved']),
+                backgroundColor: 'rgb(75, 192, 192)',
+              },
+              {
+                label: 'Denied',
+                data: data.data?.[0].weekly_totals.map(e => e['Denied']),
+                backgroundColor: 'rgb(53, 162, 235)',
               },
             ],
           }  
         )
-        setCarrier([].concat(data.data[0].carriers))
+        setCarrier([].concat(data.data[0].carrier_list))
         setAccount([].concat(data.data[0].account_numbers))
         setZone([].concat(data.data[0].zones))
         
@@ -201,7 +223,7 @@ const Lost_Damaged = () => {
 
   }
   
-  console.log(dataShippingSpend)
+  console.log(dataLostDamaged)
 
   const [isModalOpenDate, setIsModalOpenDate] = useState(false);
 
@@ -283,9 +305,10 @@ const Lost_Damaged = () => {
         </Col>
         <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>
        <Radio.Group onChange={onChangeDisplay} value={value} >
+        <Radio value={'All'}>All LND Claims</Radio>
         <Radio value={'damaged'}>Damaged Claims</Radio>
         <Radio value={'lost'}>Lost Claims</Radio>
-        <Radio value={'All'}>All LND Claims</Radio>
+        
        </Radio.Group>
        </Col>
       </Row>
@@ -313,7 +336,7 @@ const Lost_Damaged = () => {
     </Col> 
     </Row>      
     <Row style={{marginTop: 40}}>
-          <Col span={24}><Line height={80} options={options} data={dataShippingSpend} /></Col>
+          <Col span={24}><Bar height={80} options={options} data={dataLostDamaged} /></Col>
           </Row>
 
     </>
