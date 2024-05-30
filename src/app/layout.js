@@ -243,7 +243,7 @@ export default function RootLayout({
 
                         }
                       </Col>
-                      <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>
+                      <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px', marginLeft:'80px', marginBottom:'10px', marginRight:'-80px' }}>
                         {!isNotLoggedIn &&
                           <>
 
