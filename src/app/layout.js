@@ -268,18 +268,21 @@ export default function RootLayout({
                         }
                         {!isNotLoggedIn &&
                           <>
+                          {/*
                             <Badge count={2} style={{ fontSize: '10px', marginTop: '-3px', marginRight: '25px' }}>
                               <Dropdown menu={menuProps} placement="bottomCenter">
                                 <BellOutlined
                                   style={{ fontSize: '24px', alignItems: 'center', marginTop: '5px', marginRight: '25px', color: '' }} />
                               </Dropdown>
                             </Badge>
+                            */}
                             <Tooltip title="Logout">
                               <Button
                                 type="primary" href="/"
                                 icon={<PoweroffOutlined />}
                               />
                             </Tooltip>
+                            
                           </>
                         }
                       </Col>
