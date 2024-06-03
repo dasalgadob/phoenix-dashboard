@@ -3,10 +3,10 @@
 import React from 'react';
 import { Button } from 'antd';
 
-const Billing = () => (
+const Manage_Billing = () => (
   <div className="App">
-    <Button type="primary">Billing</Button>
+    <Button type="primary">Manage Billing</Button>
   </div>
 );
 
-export default Billing;
+export default Manage_Billing;

@@ -3,10 +3,10 @@
 import React from 'react';
 import { Button } from 'antd';
 
-const Shipping_labels = () => (
+const Add_New_Business = () => (
   <div className="App">
-    <Button type="primary">Shipping Labels</Button>
+    <Button type="primary">Add New Business</Button>
   </div>
 );
 
-export default Shipping_labels;
+export default Add_New_Business;

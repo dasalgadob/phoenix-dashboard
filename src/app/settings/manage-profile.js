@@ -3,10 +3,10 @@
 import React from 'react';
 import { Button } from 'antd';
 
-const Users = () => (
+const Manage_Profile = () => (
   <div className="App">
-    <Button type="primary">Users</Button>
+    <Button type="primary">Manage Profile</Button>
   </div>
 );
 
-export default Users;
+export default Manage_Profile;

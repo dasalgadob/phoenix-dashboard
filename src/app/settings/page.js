@@ -3,11 +3,11 @@
 import React from 'react';
 import { Button, Tabs, Divider } from 'antd';
 import Credentials from './credentials';
-import Users from './users';
-import Business from './business';
-import Billing from './billing';
+import Add_New_Business from './add-new-business';
+import Manage_Billing from './manage-billing';
 import Alerts from './alerts';
-import Shipping_labels from './shipping-labels';
+import Manage_Users from './manage-users';
+import Manage_Profile from './manage-profile';
 
 const Home = () => {
 
@@ -24,30 +24,31 @@ const Home = () => {
         children: <Credentials />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}> Users</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>Add New Business</span>,
         key: '2',
-        children: <Users />,
+        children: <Add_New_Business />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>  Business</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}> Manage Profile</span>,
         key: '3',
-        children: <Business />,
+        children: <Manage_Profile />,
       },
       {
-        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>  Billing</span>,
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>  Manage Users</span>,
         key: '4',
-        children: <Billing />,
+        children: <Manage_Users />,
+      },
+      {
+        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>Manage Billing</span>,
+        key: '5',
+        children: <Manage_Billing />,
       },
       {
         label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}> Alerts</span>,
-        key: '5',
+        key: '6',
         children: <Alerts />,
       },
-      {
-        label: <span style={{ fontWeight: 'bold', fontSize: '20px' }}>  Shipping Labels</span>,
-        key: '6',
-        children: <Shipping_labels />,
-      },
+      
     ]}
   />
   

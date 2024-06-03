@@ -162,11 +162,11 @@ export default function RootLayout({
                         <Menu.Item key='9'><Link href="/refunds/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Breakdown</Title></Link></Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key='sub4' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Billing</Title>}>
-                        <Menu.Item key='10'><Link href="/billing/invoice-report"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice Report</Title></Link></Menu.Item>
-                        <Menu.Item key='11'><Link href="/billing/payments"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payments</Title></Link></Menu.Item>
-                        <Menu.Item key='12'><Link href="/billing/payment-methods"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment Methods</Title></Link></Menu.Item>
-                        <Menu.Item key='13'><Link href="/billing/payment-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment History</Title></Link></Menu.Item>
+                      <SubMenu key='sub4' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice</Title>}>
+                        <Menu.Item key='10'><Link href="/invoice/invoice-report"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice Report</Title></Link></Menu.Item>
+                        <Menu.Item key='11'><Link href="/invoice/payments"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payments</Title></Link></Menu.Item>
+                        <Menu.Item key='12'><Link href="/invoice/payment-methods"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment Methods</Title></Link></Menu.Item>
+                        <Menu.Item key='13'><Link href="/invoice/payment-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment History</Title></Link></Menu.Item>
                       </SubMenu>
 
                       <SubMenu key='sub5' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Premium</Title>}>
