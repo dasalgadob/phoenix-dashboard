@@ -189,7 +189,7 @@ export default function RootLayout({
 
 
                       <Menu.Item key='23'><Link href="/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
-                      <Menu.Item key='24'><Link href="/help"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Help</Title></Link></Menu.Item>
+                      
 
                     </Menu>
                   </Sider>
