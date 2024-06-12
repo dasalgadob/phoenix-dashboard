@@ -68,7 +68,7 @@ function getItem(label, key, icon, children) {
 export default function RootLayout({
   children,
 }) {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);  
   const [data, setData] = useState([]);
   const asyncFetch = () => {
     fetch('https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json')
@@ -131,12 +131,12 @@ export default function RootLayout({
               >
                 {!isNotLoggedIn &&
 
-                  <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width={210} style={{
+                  <Sider /*collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}*/ width={210} style={{
                     minHeight: '100vh',
                   }}>
                     <div className="demo-logo-vertical" />
-                    <div className='logo' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px',
-                                                  marginBottom: '30px' }} >
+                    <div className='logo' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px',
+                                                  marginBottom: '20px' }} >
                       <img src={'/71lbs_logo.jpg'} style={{ borderRadius: '50%' }} width={80} />
                     </div>
 
@@ -190,7 +190,9 @@ export default function RootLayout({
 
                       
                       <SubMenu key='sub8' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title>}>
+                          {/*
                           <Menu.Item key='23'><Link href="/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
+                          */}
                           <Menu.Item key='24'><Link href="/settings/fedex-creds"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Fedex Creds</Title></Link></Menu.Item>
                           <Menu.Item key='25'><Link href="/settings/ups-creds"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>UPS Creds</Title></Link></Menu.Item>
                           <Menu.Item key='26'><Link href="/settings/add-new-business"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Add New business</Title></Link></Menu.Item>
