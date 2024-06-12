@@ -188,8 +188,17 @@ export default function RootLayout({
 
 
 
-                      <Menu.Item key='23'><Link href="/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
                       
+                      <SubMenu key='sub8' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title>}>
+                          <Menu.Item key='23'><Link href="/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
+                          <Menu.Item key='24'><Link href="/settings/fedex-creds"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Fedex Creds</Title></Link></Menu.Item>
+                          <Menu.Item key='25'><Link href="/settings/ups-creds"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>UPS Creds</Title></Link></Menu.Item>
+                          <Menu.Item key='26'><Link href="/settings/add-new-business"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Add New business</Title></Link></Menu.Item>
+                          <Menu.Item key='27'><Link href="/settings/manage-profile"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Manage Profile</Title></Link></Menu.Item>
+                          <Menu.Item key='28'><Link href="/settings/manage-users"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Manage Users</Title></Link></Menu.Item>
+                          <Menu.Item key='29'><Link href="/settings/manage-billing"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Manage Billing</Title></Link></Menu.Item>
+                          <Menu.Item key='30'><Link href="/settings/alerts"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Alerts</Title></Link></Menu.Item>
+                        </SubMenu> 
 
                     </Menu>
                   </Sider>
