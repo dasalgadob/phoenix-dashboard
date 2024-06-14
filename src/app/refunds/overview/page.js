@@ -15,6 +15,7 @@ const Home = () => {
   return (
   <div className="App">
     <Divider></Divider>
+
     <Row gutter={24}>
       <Col span={8}>
       
@@ -65,54 +66,7 @@ const Home = () => {
               </Row>
               
             </Card>
-
-            <Card style={{marginTop: '24px',
-              borderTopLeftRadius: '12px',
-              borderTopRightRadius: '12px',
-              height: '50px',
               
-              background: '#ffd700'}}>
-              <Row>
-              <Col span={18}> 
-              <Row style={{ marginTop: '0px' }}> 
-              {<AppstoreOutlined
-                style={{ fontSize: '22px', alignItems: 'center', marginTop: '-13px', marginRight: '0px', color: '#FFFFFF' }} />}
-              </Row>
-              </Col>
-              </Row>    
-              </Card>
-
-              <Card style={{
-              margin: 0,
-              borderBottomLeftRadius: '12px',
-              borderBottomRightRadius: '12px',
-              background: ''
-            }}>
-              <Row>
-                <Col span={18}>
-                 <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>Current Month</p> 
-                 <Title level={4} style={{
-                        fontWeight: '',
-                        color: '#383f46',
-                        marginTop: '0px',
-                        }}>UPS Shipments Refunded
-                 </Title>
-                 <Title level={2} style={{
-                        fontWeight: 'bold',
-                        marginTop: '0px',
-                        color: ''
-                        }}>
-                        0
-                        </Title>
-                </Col>
-
-                <Col span={6}>
-                {<AppstoreOutlined  
-                style={{ fontSize: '54px', alignItems: 'center', marginTop: '30px', marginRight: '0px', color: '#383f46' }} />}
-                </Col>
-              </Row>
-              
-            </Card>
       </Col>
 
       <Col span={8}>
@@ -147,54 +101,6 @@ const Home = () => {
                         color: '#383f46',
                         marginTop: '0px',
                         }}>FedEx Average Refund
-                 </Title>
-                 <Title level={2} style={{
-                        fontWeight: 'bold',
-                        marginTop: '0px',
-                        color: ''
-                        }}>
-                        $0
-                        </Title>
-                </Col>
-
-                <Col span={6}>
-                {<DollarOutlined 
-                style={{ fontSize: '54px', alignItems: 'center', marginTop: '30px', marginRight: '0px', color: '#383f46' }} />}
-                </Col>
-              </Row>
-              
-            </Card>
-
-            <Card style={{marginTop: '24px',
-              borderTopLeftRadius: '12px',
-              borderTopRightRadius: '12px',
-              height: '50px',
-              
-              background: '#ffd700'}}>
-              <Row>
-              <Col span={18}> 
-              <Row style={{ marginTop: '0px' }}> 
-              {<DollarOutlined
-                style={{ fontSize: '22px', alignItems: 'center', marginTop: '-13px', marginRight: '0px', color: '#FFFFFF' }} />}
-              </Row>
-              </Col>
-              </Row>  
-              </Card>
-
-              <Card style={{
-              margin: 0,
-              borderBottomLeftRadius: '12px',
-              borderBottomRightRadius: '12px',
-              background: ''
-            }}>
-              <Row>
-                <Col span={18}>
-                 <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>Current Month</p> 
-                 <Title level={4} style={{
-                        fontWeight: '',
-                        color: '#383f46',
-                        marginTop: '0px',
-                        }}>UPS Average Refund
                  </Title>
                  <Title level={2} style={{
                         fontWeight: 'bold',
@@ -277,6 +183,119 @@ const Home = () => {
               </Row>
               
             </Card>
+
+            
+      </Col>
+      
+    </Row>
+
+    <Row gutter={24}>
+      <Col span={8}>
+      
+             
+
+            <Card style={{marginTop: '24px',
+              borderTopLeftRadius: '12px',
+              borderTopRightRadius: '12px',
+              height: '50px',
+              
+              background: '#ffd700'}}>
+              <Row>
+              <Col span={18}> 
+              <Row style={{ marginTop: '0px' }}> 
+              {<AppstoreOutlined
+                style={{ fontSize: '22px', alignItems: 'center', marginTop: '-13px', marginRight: '0px', color: '#FFFFFF' }} />}
+              </Row>
+              </Col>
+              </Row>    
+              </Card>
+
+              <Card style={{
+              margin: 0,
+              borderBottomLeftRadius: '12px',
+              borderBottomRightRadius: '12px',
+              background: ''
+            }}>
+              <Row>
+                <Col span={18}>
+                 <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>Current Month</p> 
+                 <Title level={4} style={{
+                        fontWeight: '',
+                        color: '#383f46',
+                        marginTop: '0px',
+                        }}>UPS Shipments Refunded
+                 </Title>
+                 <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: ''
+                        }}>
+                        0
+                        </Title>
+                </Col>
+
+                <Col span={6}>
+                {<AppstoreOutlined  
+                style={{ fontSize: '54px', alignItems: 'center', marginTop: '30px', marginRight: '0px', color: '#383f46' }} />}
+                </Col>
+              </Row>
+              
+            </Card>
+      </Col>
+
+      <Col span={8}>
+      
+
+            <Card style={{marginTop: '24px',
+              borderTopLeftRadius: '12px',
+              borderTopRightRadius: '12px',
+              height: '50px',
+              
+              background: '#ffd700'}}>
+              <Row>
+              <Col span={18}> 
+              <Row style={{ marginTop: '0px' }}> 
+              {<DollarOutlined
+                style={{ fontSize: '22px', alignItems: 'center', marginTop: '-13px', marginRight: '0px', color: '#FFFFFF' }} />}
+              </Row>
+              </Col>
+              </Row>  
+              </Card>
+
+              <Card style={{
+              margin: 0,
+              borderBottomLeftRadius: '12px',
+              borderBottomRightRadius: '12px',
+              background: ''
+            }}>
+              <Row>
+                <Col span={18}>
+                 <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>Current Month</p> 
+                 <Title level={4} style={{
+                        fontWeight: '',
+                        color: '#383f46',
+                        marginTop: '0px',
+                        }}>UPS Average Refund
+                 </Title>
+                 <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: ''
+                        }}>
+                        $0
+                        </Title>
+                </Col>
+
+                <Col span={6}>
+                {<DollarOutlined 
+                style={{ fontSize: '54px', alignItems: 'center', marginTop: '30px', marginRight: '0px', color: '#383f46' }} />}
+                </Col>
+              </Row>
+              
+            </Card>
+      </Col>
+
+      <Col span={8}>
 
             <Card style={{marginTop: '24px',
               borderTopLeftRadius: '12px',
