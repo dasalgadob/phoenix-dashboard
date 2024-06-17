@@ -15,7 +15,11 @@ const Home = () => {
   return (
   <div className="App">
     <Divider></Divider>
-
+    <Title level={4} style={{
+              fontWeight: '',
+              marginBottom: 20,
+              color: '#383f46',
+            }}>Refunds Overview</Title>
     <Row gutter={24}>
       <Col span={8}>
       
@@ -199,7 +203,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#ffd700'}}>
+              background: '#ffb11b'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
@@ -251,7 +255,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#ffd700'}}>
+              background: '#ffb11b'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
@@ -302,7 +306,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#ffd700'}}>
+              background: '#ffb11b'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
@@ -361,6 +365,130 @@ const Home = () => {
       </Col>
       
     </Row>
+
+    <Title level={4} style={{
+              fontWeight: '',
+              marginBottom: 20,
+              color: '#383f46',
+            }}>Your Shipping Facts</Title>
+    <Card style={{
+              margin: 0,
+              borderRadius: '12px',
+              background: ''
+            }}>       
+    <Row gutter={24}>
+    <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: '#4b0082',
+                        
+                        }}>
+                        FedEx
+                        </Title>
+    </Col>
+    <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
+    
+    <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>LARGEST REFUND</p>
+    
+    
+    <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: '#4b0082',
+                        
+                        }}>
+                        $0.00
+                        </Title>
+    </Col>
+    
+    <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
+    
+    <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>SMALLEST REFUND</p>
+    
+    
+    <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: '#4b0082',
+                        
+                        }}>
+                        $0.00
+                        </Title>
+    </Col>
+    <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
+    
+    <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>FREQ. SHIPPED TO</p>
+    
+    
+    <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: '#4b0082',
+                        
+                        }}>
+                        N/A
+                        </Title>
+    </Col> 
+    </Row>
+
+    <Row gutter={24}>
+    <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: '#ffb11b',
+                        
+                        }}>
+                        FedEx
+                        </Title>
+    </Col>
+    <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
+    
+    <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>LARGEST REFUND</p>
+    
+    
+    <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: '#ffb11b',
+                        
+                        }}>
+                        $0.00
+                        </Title>
+    </Col>
+    
+    <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
+    
+    <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>SMALLEST REFUND</p>
+    
+    
+    <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: '#ffb11b',
+                        
+                        }}>
+                        $0.00
+                        </Title>
+    </Col>
+    <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
+    
+    <p style={{ fontWeight: '', margin: 0, color: '#383f46' }}>FREQ. SHIPPED TO</p>
+    
+    
+    <Title level={2} style={{
+                        fontWeight: 'bold',
+                        marginTop: '0px',
+                        color: '#ffb11b',
+                        
+                        }}>
+                        N/A
+                        </Title>
+    </Col> 
+    </Row>
+    
+    </Card>         
   </div>
   )
 };
