@@ -21,7 +21,7 @@ const Home = () => {
               color: '#383f46',
             }}>Refunds Overview</Title>
     <Row gutter={24}>
-      <Col span={8}>
+      <Col span={8} xs={{ span: 24,}} lg={{ span: 8,}}>
       
               <Card style={{margin: 0,
               borderTopLeftRadius: '12px',
@@ -73,7 +73,7 @@ const Home = () => {
               
       </Col>
 
-      <Col span={8}>
+      <Col span={8} xs={{ span: 24,}} lg={{ span: 8,}}>
       
               <Card style={{margin: 0,
               borderTopLeftRadius: '12px',
@@ -124,7 +124,7 @@ const Home = () => {
             </Card>
       </Col>
 
-      <Col span={8}>
+      <Col span={8} xs={{ span: 24,}} lg={{ span: 8,}}>
       
               <Card style={{margin: 0,
               borderTopLeftRadius: '12px',
@@ -194,7 +194,7 @@ const Home = () => {
     </Row>
 
     <Row gutter={24}>
-      <Col span={8}>
+      <Col span={8} xs={{ span: 24,}} lg={{ span: 8,}}>
       
              
 
@@ -247,7 +247,7 @@ const Home = () => {
             </Card>
       </Col>
 
-      <Col span={8}>
+      <Col span={8} xs={{ span: 24,}} lg={{ span: 8,}}>
       
 
             <Card style={{marginTop: '24px',
@@ -299,7 +299,7 @@ const Home = () => {
             </Card>
       </Col>
 
-      <Col span={8}>
+      <Col span={8} xs={{ span: 24,}} lg={{ span: 8,}}>
 
             <Card style={{marginTop: '24px',
               borderTopLeftRadius: '12px',
