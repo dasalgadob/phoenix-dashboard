@@ -1,20 +1,168 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React from 'react';
-import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, DatePicker,Modal,Radio, Button  } from 'antd';
+import React, { useState } from 'react';
+import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, DatePicker,Modal,Radio, Button, Form } from 'antd';
 import {
   AppstoreOutlined,
   DollarOutlined,
   CreditCardOutlined 
 } from '@ant-design/icons';
 
+
 const { Title } = Typography;
+
+
+const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
 const Home = () => {
 
+  const [form] = Form.useForm();
+
+  const onFinish = (values) => {
+    setIsModalOpenDateRange(false);
+    form.setFieldsValue({
+      serviceType: filterValue.serviceType,
+    });
+    console.log(values);
+    console.log(filterValue);
+  };
+
+  const [filterType, setFilterType] = useState('currentMonth');
+  const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
+
+  const showModalDateRange = () => {
+    setIsModalOpenDateRange(true);
+  };
+
+  const handleOkDate = () => {
+    setOnOkClickCount(onOkClickCount+1)
+    setFilterType('custom')
+    setIsModalOpenDate(false);
+  };
+
+  const handleOkDateRange = () => {
+    setOnOkClickCount(onOkClickCount+1)
+    setIsModalOpenDateRange(false);
+  };
+
+  const handleCancelDateRange = () => {
+    setIsModalOpenDateRange(false);
+  };
+
+  const [onOkClickCount, setOnOkClickCount] = useState(0)
+
   return (
   <div className="App">
-    <Divider></Divider>
+    <Row justify="center" align="middle" >
+    <Space size={16}>
+    <Button type="primary" onClick={() => setFilterType('currentMonth')}
+                           style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
+                           >CURRENT MONTH</Button>
+    <Button type="primary" onClick={() => setFilterType('yearToDate')}
+                           style={filterType === 'yearToDate' && {background: '#2d3f7c'}} 
+                            >YEAR TO DATE</Button>
+    <Button type="primary" onClick={() => setFilterType('last12Months')}
+                           style={filterType === 'last12Months' && {background: '#2d3f7c'}}
+                            >LAST 12 MONTHS</Button> 
+    <Button type="primary" onClick={showModalDateRange} >
+        ADVANCED FILTERS
+    </Button>                                                                 
+    <Form form={form} onFinish={onFinish}>
+      <Modal title="Advanced Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
+      <Row style={{ display: 'flex', alignItems: 'center' }}> 
+       <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
+       <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Date Range</p>
+       </Col>
+       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+       
+        <Select
+          labelInValue
+          placeholder="All"
+          allowClear
+          style={{
+          width: 240,
+          marginTop: '0px',
+          marginLeft: '5px'
+          }}
+          options={[
+          
+          {
+            value: 'current_month',
+            label: 'Current Month',
+          },
+          {
+            value: 'last_month',
+            label: 'Last Month',
+          },
+          {
+            value: 'last_quarter',
+            label: 'Last Quarter',
+          },
+          {
+            value: 'last_12_month',
+            label: 'Last 12 Month',
+          },
+          {
+            value: 'year_to_date',
+            label: 'Year to Date',
+          },
+          {
+            value: 'monthly',
+            label: 'Monthly',
+          },
+          {
+            value: 'life_to_date ',
+            label: 'Life To Date',
+          },
+        ]}
+      />
+      
+      </Col>
+      </Row>
+
+      <Row style={{ display: 'flex', alignItems: 'center' }}> 
+       <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
+       <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Refund Category</p>
+       </Col>
+       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+       
+        <Select
+          labelInValue
+          placeholder="All"
+          allowClear
+          style={{
+          width: 240,
+          marginTop: '0px',
+          marginLeft: '5px'
+          }}
+          options={[
+          
+          {
+            value: 'late_refunds_mbg/gsr',
+            label: 'Late Refunds - MGB/GSR',
+          },
+          {
+            value: 'invoice_audits',
+            label: 'Invoice Audits',
+          },
+          {
+            value: 'lost_or_damaged',
+            label: 'Lost Or Damaged',
+          },
+          
+        ]}
+      />
+      
+      </Col>
+      </Row>
+      
+    
+      </Modal>
+      </Form>
+    </Space>
+    </Row>
+
+    
     <Title level={4} style={{
               fontWeight: '',
               marginBottom: 20,
