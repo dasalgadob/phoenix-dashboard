@@ -1,6 +1,6 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, DatePicker,Modal,Radio, Button, Form } from 'antd';
 import {
   AppstoreOutlined,
@@ -29,6 +29,7 @@ const Home = () => {
 
   const [filterType, setFilterType] = useState('currentMonth');
   const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
+  const [dataRefunds, setDataRefunds] = useState()
 
   const showModalDateRange = () => {
     setIsModalOpenDateRange(true);
@@ -50,6 +51,26 @@ const Home = () => {
   };
 
   const [onOkClickCount, setOnOkClickCount] = useState(0)
+
+  useEffect(() => {
+    getData()
+  }, [filterType]);
+
+
+  const getData = () => {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/overview/65/?type_search=${filter[filterType]}`, {
+      method: "GET"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setDataRefunds([].concat(data.data[0]))
+        
+        
+      })
+      .catch((error) => console.log(error));
+    
+  }
+      console.log(dataRefunds)
 
   return (
   <div className="App">
@@ -85,11 +106,6 @@ const Home = () => {
           marginLeft: '5px'
           }}
           options={[
-          
-          {
-            value: 'current_month',
-            label: 'Current Month',
-          },
           {
             value: 'last_month',
             label: 'Last Month',
@@ -97,14 +113,6 @@ const Home = () => {
           {
             value: 'last_quarter',
             label: 'Last Quarter',
-          },
-          {
-            value: 'last_12_month',
-            label: 'Last 12 Month',
-          },
-          {
-            value: 'year_to_date',
-            label: 'Year to Date',
           },
           {
             value: 'monthly',
@@ -207,7 +215,7 @@ const Home = () => {
                         marginTop: '0px',
                         color: ''
                         }}>
-                        0
+                        {dataRefunds && dataRefunds[0]?.fedex_shipments_refunded}
                         </Title>
                 </Col>
 
@@ -259,7 +267,7 @@ const Home = () => {
                         marginTop: '0px',
                         color: ''
                         }}>
-                        $0
+                        ${dataRefunds && dataRefunds[0]?.fedex_average_refund}
                         </Title>
                 </Col>
 
@@ -324,7 +332,7 @@ const Home = () => {
                         marginTop: '0px',
                         color: ''
                         }}>
-                        $0
+                        ${dataRefunds && dataRefunds[0]?.fedex_total_refunds}
                         </Title>
                 </Col>
 
@@ -382,7 +390,7 @@ const Home = () => {
                         marginTop: '0px',
                         color: ''
                         }}>
-                        0
+                        {dataRefunds && dataRefunds[0]?.ups_shipments_refunded}
                         </Title>
                 </Col>
 
@@ -434,7 +442,7 @@ const Home = () => {
                         marginTop: '0px',
                         color: ''
                         }}>
-                        $0
+                        ${dataRefunds && dataRefunds[0]?.ups_average_refund}
                         </Title>
                 </Col>
 
@@ -499,7 +507,7 @@ const Home = () => {
                         marginTop: '0px',
                         color: ''
                         }}>
-                        $0
+                        ${dataRefunds && dataRefunds[0]?.ups_total_refunds}
                         </Title>
                 </Col>
 
@@ -546,7 +554,7 @@ const Home = () => {
                         color: '#4b0082',
                         
                         }}>
-                        $0.00
+                        ${dataRefunds && dataRefunds[0]?.fedex_largest_refund}
                         </Title>
     </Col>
     
@@ -561,7 +569,7 @@ const Home = () => {
                         color: '#4b0082',
                         
                         }}>
-                        $0.00
+                        ${dataRefunds && dataRefunds[0]?.fedex_smallest_refund}
                         </Title>
     </Col>
     <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
@@ -575,7 +583,7 @@ const Home = () => {
                         color: '#4b0082',
                         
                         }}>
-                        N/A
+                        {dataRefunds && dataRefunds[0]?.fedex_freq_shipped_to}
                         </Title>
     </Col> 
     </Row>
@@ -588,7 +596,7 @@ const Home = () => {
                         color: '#ffb11b',
                         
                         }}>
-                        FedEx
+                        UPS
                         </Title>
     </Col>
     <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
@@ -602,7 +610,7 @@ const Home = () => {
                         color: '#ffb11b',
                         
                         }}>
-                        $0.00
+                        ${dataRefunds && dataRefunds[0]?.ups_largest_refund}
                         </Title>
     </Col>
     
@@ -617,7 +625,7 @@ const Home = () => {
                         color: '#ffb11b',
                         
                         }}>
-                        $0.00
+                        ${dataRefunds && dataRefunds[0]?.ups_smallest_refund}
                         </Title>
     </Col>
     <Col span={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection:'column',}}>
@@ -631,7 +639,7 @@ const Home = () => {
                         color: '#ffb11b',
                         
                         }}>
-                        N/A
+                        {dataRefunds && dataRefunds[0]?.ups_freq_shipped_to}
                         </Title>
     </Col> 
     </Row>
