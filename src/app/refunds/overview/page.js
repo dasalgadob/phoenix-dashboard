@@ -9,6 +9,12 @@ import {
 } from '@ant-design/icons';
 
 
+
+
+import CustomDateButtonFilter from '../../shipping-metrics/spend/custom-date-button-filter'
+
+
+
 const { Title } = Typography;
 
 
@@ -17,6 +23,8 @@ const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 const Home = () => {
 
   const [form] = Form.useForm();
+
+  const values = Form.useWatch([], form);
 
   const onFinish = (values) => {
     setIsModalOpenDateRange(false);
@@ -30,6 +38,8 @@ const Home = () => {
   const [filterType, setFilterType] = useState('currentMonth');
   const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
   const [dataRefunds, setDataRefunds] = useState()
+  const [isModalOpenDate, setIsModalOpenDate] = useState(false);
+  const [customDate, setCustomDate] = useState('');
 
   const showModalDateRange = () => {
     setIsModalOpenDateRange(true);
@@ -38,6 +48,10 @@ const Home = () => {
   const handleOkDate = () => {
     setOnOkClickCount(onOkClickCount+1)
     setFilterType('custom')
+    setIsModalOpenDate(false);
+  };
+
+  const handleCancelDate = () => {
     setIsModalOpenDate(false);
   };
 
@@ -50,15 +64,37 @@ const Home = () => {
     setIsModalOpenDateRange(false);
   };
 
+  const onChangeRadio = (e) => {
+    console.log('radio checked', e.target.value);
+    setValueRadio(e.target.value);
+  };
+
+  const [valueRadio, setValueRadio] = useState(1);
+
+  const showModalDate = () => {
+    setIsModalOpenDate(true);
+  };
+
+  const onChangeDatePicker = (date, dateString) => {
+    console.log( dateString);
+    if (valueRadio === 1) {
+      setCustomDate(`${dateString.substr(0,4)}0${dateString.substr(6,1)}`)
+    } 
+    else {
+      setCustomDate(`${dateString.substr(0,4)}${dateString.substr(5,2)}`)
+    }
+
+  };
+
   const [onOkClickCount, setOnOkClickCount] = useState(0)
 
   useEffect(() => {
     getData()
-  }, [filterType]);
+  }, [filterType, onOkClickCount, form, values]);
 
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/overview/65/?type_search=${filter[filterType]}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/overview/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -85,6 +121,11 @@ const Home = () => {
     <Button type="primary" onClick={() => setFilterType('last12Months')}
                            style={filterType === 'last12Months' && {background: '#2d3f7c'}}
                             >LAST 12 MONTHS</Button> 
+
+    <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
+                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
+                                  onChangeDatePicker={onChangeDatePicker} filterType={filterType}
+                             />                        
     <Button type="primary" onClick={showModalDateRange} >
         ADVANCED FILTERS
     </Button>                                                                 
