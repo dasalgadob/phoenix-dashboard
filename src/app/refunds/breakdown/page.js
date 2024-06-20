@@ -1,7 +1,15 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
-import React from 'react';
-import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table  } from 'antd';
+import React , { useState, useEffect } from 'react';
+
+import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Tooltip,  } from 'antd';
+
+import {
+  CheckOutlined,
+  SwapOutlined,
+  SettingOutlined
+  
+} from '@ant-design/icons';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -27,46 +35,57 @@ const columns = [
   },
 
   {
+    title: 'ACCOUNT',
+    dataIndex: 'account',
+    key: 'account',
+  },
+  {
+    title: 'INVOICE #',
+    dataIndex: 'invoice',
+    key: 'invoice',
+  },
+  {
     title: 'TRACKING #',
     dataIndex: 'tracking',
     key: 'tracking',
   },
   {
-    title: 'SERVICE TYPE',
-    dataIndex: 'serviceType',
-    key: 'serviceType',
+    title: 'REFUND TYPE',
+    dataIndex: 'refundType',
+    key: 'refundType',
   },
   {
-    title: 'SERVICE DESCRIPTION',
-    dataIndex: 'serviceDescription',
-    key: 'serviceDescription',
+    title: 'POSTED CREDIT',
+    dataIndex: 'postedCredit',
+    key: 'postedCredit',
   },
   {
-    title: 'SHIPPED ON',
-    dataIndex: 'shippedOn',
-    key: 'shippedOn',
-  },
-  {
-    title: 'DELIVERED ON',
-    dataIndex: 'deliveredOn',
+    title: 'POSTED DATE',
+    dataIndex: 'postedDate',
     key: 'deliveredOn',
   },
   {
-    title: 'STATUS',
-    dataIndex: 'status',
-    key: 'status',
+    title: 'SOURCE',
+    dataIndex: 'source',
+    key: 'source',
   },
   {
-    title: 'CLAIM STATUS',
-    dataIndex: 'claimStatus',
-    key: 'claimStatus',
+    title: 'MONTH OF REFUNDS',
+    dataIndex: 'monthOfRefunds',
+    key: 'monthOfRefunds',
   },
   {
-    title: 'test ',
+    title: ' ',
     dataIndex: 'configTable',
     key: 'configTable',
     render: () => 
-    <Button type="primary" size='small'>Test</Button>
+    <Tooltip title="Shipments details" placement="left" >
+      <Button
+        type="primary" shape="default" icon={<SettingOutlined />}
+        size="small"
+        style={{ alignItems: 'center', marginRight: '3px', marginLeft: '10px', backgroundColor: '#339CFF',cursor: 'pointer', }}
+      />
+    </Tooltip>
   },
 ];
 
@@ -74,35 +93,38 @@ const datatable = [
   {
     key: '1',
     carrier: 'FedEx',
+    account: '632968639',
+    invoice: '852840250',
     tracking: 786222625440,
-    serviceType: 'Ground',
-    serviceDescription: 'Home delivery',
-    shippedOn: '11/08/23',
-    deliveredOn: '11/10/23',
-    status: 'Unprocessed',
-    claimStatus: 'Unprocessed',
+    refundType: 'Lost or damaged',
+    postedCredit: '$8.56',
+    postedDate: '11/10/23',
+    source: '71lbs-Script',
+    monthOfRefunds: 'Unprocessed',
   },
   {
     key: '2',
     carrier: 'UPS',
+    account: '374100572',
+    invoice: '852090912',
     tracking: 786222403510,
-    serviceType: 'Air',
-    serviceDescription: 'Ground',
-    shippedOn: '11/08/23',
-    deliveredOn: '11/10/23',
-    status: 'Unprocessed',
-    claimStatus: 'Unprocessed',
+    refundType: 'Lost or damaged',
+    postedCredit: '$9.30',
+    postedDate: '11/10/23',
+    source: '71lbs-Script',
+    monthOfRefunds: 'Unprocessed',
   },
   {
     key: '3',
     carrier: 'FedEx',
+    account: '374100572',
+    invoice: '850774623',
     tracking: 786192785165,
-    serviceType: 'Ground',
-    serviceDescription: 'Home delivery',
-    shippedOn: '11/08/23',
-    deliveredOn: '11/10/23',
-    status: 'Unprocessed',
-    claimStatus: 'Unprocessed',
+    refundType: 'MBG',
+    postedCredit: '$111.78',
+    postedDate: '11/10/23',
+    source: '71lbs-Script',
+    monthOfRefunds: 'Unprocessed',
   },
 ];
 
@@ -113,10 +135,40 @@ const onChange = (pagination, filters, sorter, extra) => {
 
 const Home = () => {
 
+  const [breakdownData, setBreakdownData] =useState([])
+
+  
+
+  useEffect(() => {
+    getData()
+  }, []);
+
+
+  const getData = () => {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/breakdown/65/?type_search=`, {
+      method: "GET"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setBreakdownData([].concat(data.data[0].table).map(e => ({carrier: e[0], account: e[1], invoice: e[2],
+                                                                   tracking: e[3], refundType: e[4], postedCredit: e[5],
+                                                                   postedDate: e[6], source: e[7], monthOfRefunds: e[8],
+                                                                  })))
+
+        
+        
+        
+      })
+      .catch((error) => console.log(error));
+    
+  }
+
+   console.log(breakdownData)
+
 return (
 
           <Row style={{marginTop: 40}}>
-          <Col span={24}><Table columns={columns} dataSource={datatable} size='small' /></Col>
+          <Col span={24}><Table columns={columns} dataSource={breakdownData} size='small' /></Col>
           </Row>
 
 );
