@@ -35,6 +35,7 @@ const Home = () => {
     console.log(filterValue);
   };
 
+  const [filterValue, setFilterValue] =useState({})
   const [filterType, setFilterType] = useState('currentMonth');
   const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
   const [dataRefunds, setDataRefunds] = useState()
@@ -75,6 +76,11 @@ const Home = () => {
     setIsModalOpenDate(true);
   };
 
+  const handleChangeRefundCategory = (value) => {
+    setFilterValue({...filterValue, refundsCategory: value?.value})
+    console.log(value);
+  };
+
   const onChangeDatePicker = (date, dateString) => {
     console.log( dateString);
     if (valueRadio === 1) {
@@ -94,7 +100,7 @@ const Home = () => {
 
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/overview/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/overview/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&refund_type_search=${filterValue.refundsCategory || ''}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -131,43 +137,7 @@ const Home = () => {
     </Button>                                                                 
     <Form form={form} onFinish={onFinish}>
       <Modal title="Advanced Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
-      <Row style={{ display: 'flex', alignItems: 'center' }}> 
-       <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
-       <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Date Range</p>
-       </Col>
-       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
-       
-        <Select
-          labelInValue
-          placeholder="All"
-          allowClear
-          style={{
-          width: 240,
-          marginTop: '0px',
-          marginLeft: '5px'
-          }}
-          options={[
-          {
-            value: 'last_month',
-            label: 'Last Month',
-          },
-          {
-            value: 'last_quarter',
-            label: 'Last Quarter',
-          },
-          {
-            value: 'monthly',
-            label: 'Monthly',
-          },
-          {
-            value: 'life_to_date ',
-            label: 'Life To Date',
-          },
-        ]}
-      />
       
-      </Col>
-      </Row>
 
       <Row style={{ display: 'flex', alignItems: 'center' }}> 
        <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
@@ -179,23 +149,27 @@ const Home = () => {
           labelInValue
           placeholder="All"
           allowClear
+          value={filterValue.refundsCategory}
           style={{
           width: 240,
           marginTop: '0px',
           marginLeft: '5px'
           }}
+          onChange={handleChangeRefundCategory}
+          name='refundCategory'
+          id='refundCategory'
           options={[
           
           {
-            value: 'late_refunds_mbg/gsr',
+            value: 'money',
             label: 'Late Refunds - MGB/GSR',
           },
           {
-            value: 'invoice_audits',
+            value: 'audits',
             label: 'Invoice Audits',
           },
           {
-            value: 'lost_or_damaged',
+            value: 'lost_damaged',
             label: 'Lost Or Damaged',
           },
           
