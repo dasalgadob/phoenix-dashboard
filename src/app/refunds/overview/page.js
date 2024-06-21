@@ -199,7 +199,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#4b0082'}}>
+              background: 'linear-gradient(to right, #4B0082, #6F2DA8)'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
@@ -251,7 +251,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#4b0082'}}>
+              background: 'linear-gradient(to right, #4B0082, #6F2DA8)'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
@@ -302,7 +302,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#4b0082'}}>
+              background: 'linear-gradient(to right, #4B0082, #6F2DA8)'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
@@ -374,7 +374,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#ffb11b'}}>
+              background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
@@ -426,7 +426,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#ffb11b'}}>
+              background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
@@ -477,7 +477,7 @@ const Home = () => {
               borderTopRightRadius: '12px',
               height: '50px',
               
-              background: '#ffb11b'}}>
+              background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'}}>
               <Row>
               <Col span={18}> 
               <Row style={{ marginTop: '0px' }}> 
