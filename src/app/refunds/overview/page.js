@@ -552,7 +552,7 @@ const Home = () => {
     <Title level={2} style={{
                         fontWeight: 'bold',
                         marginTop: '0px',
-                        color: '#4b0082',
+                        color: '#4B0082',
                         
                         }}>
                         FedEx
@@ -566,7 +566,7 @@ const Home = () => {
     <Title level={2} style={{
                         fontWeight: 'bold',
                         marginTop: '0px',
-                        color: '#4b0082',
+                        color: '#4B0082',
                         
                         }}>
                         ${dataRefunds && dataRefunds[0]?.fedex_largest_refund}
@@ -581,7 +581,7 @@ const Home = () => {
     <Title level={2} style={{
                         fontWeight: 'bold',
                         marginTop: '0px',
-                        color: '#4b0082',
+                        color: '#4B0082',
                         
                         }}>
                         ${dataRefunds && dataRefunds[0]?.fedex_smallest_refund}
@@ -595,7 +595,7 @@ const Home = () => {
     <Title level={2} style={{
                         fontWeight: 'bold',
                         marginTop: '0px',
-                        color: '#4b0082',
+                        color: '#4B0082',
                         
                         }}>
                         {dataRefunds && dataRefunds[0]?.fedex_freq_shipped_to}
@@ -608,7 +608,7 @@ const Home = () => {
     <Title level={2} style={{
                         fontWeight: 'bold',
                         marginTop: '0px',
-                        color: '#ffb11b',
+                        color: '#0a5cb8',
                         
                         }}>
                         UPS
@@ -622,7 +622,7 @@ const Home = () => {
     <Title level={2} style={{
                         fontWeight: 'bold',
                         marginTop: '0px',
-                        color: '#ffb11b',
+                        color: '#0a5cb8',
                         
                         }}>
                         ${dataRefunds && dataRefunds[0]?.ups_largest_refund}
@@ -637,7 +637,7 @@ const Home = () => {
     <Title level={2} style={{
                         fontWeight: 'bold',
                         marginTop: '0px',
-                        color: '#ffb11b',
+                        color: '#0a5cb8',
                         
                         }}>
                         ${dataRefunds && dataRefunds[0]?.ups_smallest_refund}
@@ -651,7 +651,7 @@ const Home = () => {
     <Title level={2} style={{
                         fontWeight: 'bold',
                         marginTop: '0px',
-                        color: '#ffb11b',
+                        color: '#0a5cb8',
                         
                         }}>
                         {dataRefunds && dataRefunds[0]?.ups_freq_shipped_to}
