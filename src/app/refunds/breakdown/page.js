@@ -2,7 +2,9 @@
 
 import React , { useState, useEffect } from 'react';
 
-import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Tooltip,  } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Tooltip, Space  } from 'antd';
+
+import CustomDateButtonFilter from '../../shipping-metrics/spend/custom-date-button-filter'
 
 import {
   CheckOutlined,
@@ -132,20 +134,65 @@ const onChange = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
 
+const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
 const Home = () => {
 
   const [breakdownData, setBreakdownData] =useState([])
+  const [filterType, setFilterType] = useState('currentMonth');
+  const [isModalOpenDate, setIsModalOpenDate] = useState(false);
+  const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
+  const [valueRadio, setValueRadio] = useState(1);
+  const [customDate, setCustomDate] = useState('');
+  const [onOkClickCount, setOnOkClickCount] = useState(0)
+ 
 
+  const handleOkDate = () => {
+    setOnOkClickCount(onOkClickCount+1)
+    setFilterType('custom')
+    setIsModalOpenDate(false);
+  };
+
+  const showModalDate = () => {
+    setIsModalOpenDate(true);
+  };
+
+  const handleCancelDateRange = () => {
+    setIsModalOpenDateRange(false);
+  };
+
+  const handleOkDateRange = () => {
+    setOnOkClickCount(onOkClickCount+1)
+    setIsModalOpenDateRange(false);
+  };
+
+  const handleCancelDate = () => {
+    setIsModalOpenDate(false);
+  };
   
+  const onChangeRadio = (e) => {
+    console.log('radio checked', e.target.value);
+    setValueRadio(e.target.value);
+  };
+
+  const onChangeDatePicker = (date, dateString) => {
+    console.log( dateString);
+    if (valueRadio === 1) {
+      setCustomDate(`${dateString.substr(0,4)}0${dateString.substr(6,1)}`)
+    } 
+    else {
+      setCustomDate(`${dateString.substr(0,4)}${dateString.substr(5,2)}`)
+    }
+
+  };
 
   useEffect(() => {
     getData()
-  }, []);
+  }, [filterType, onOkClickCount, ]);
 
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/breakdown/65/?type_search=`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/breakdown/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -166,11 +213,29 @@ const Home = () => {
    console.log(breakdownData)
 
 return (
-
+  <>
+          
+          <Row justify="center" align="middle" >
+           <Space size={16}>
+           <Button type="primary" onClick={() => setFilterType('currentMonth')}
+                           style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
+                           >CURRENT MONTH</Button>
+           <Button type="primary" onClick={() => setFilterType('yearToDate')}
+                           style={filterType === 'yearToDate' && {background: '#2d3f7c'}} 
+                            >YEAR TO DATE</Button>
+           <Button type="primary" onClick={() => setFilterType('last12Months')}
+                           style={filterType === 'last12Months' && {background: '#2d3f7c'}}
+                            >LAST 12 MONTHS</Button> 
+           <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
+                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
+                                  onChangeDatePicker={onChangeDatePicker} filterType={filterType}
+                             />
+           </Space>
+          </Row>
           <Row style={{marginTop: 40}}>
           <Col span={24}><Table columns={columns} dataSource={breakdownData} size='small' /></Col>
           </Row>
-
+  </>
 );
 };
 
