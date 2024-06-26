@@ -2,7 +2,7 @@
 
 import React , { useState, useEffect } from 'react';
 
-import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Tooltip, Space  } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table, Tooltip, Space, Form, Modal, Select  } from 'antd';
 
 import CustomDateButtonFilter from '../../shipping-metrics/spend/custom-date-button-filter'
 
@@ -138,14 +138,35 @@ const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
 const Home = () => {
 
+  const [form] = Form.useForm();
+
+  const values = Form.useWatch([], form);
+
+  const onFinish = (values) => {
+    setIsModalOpenDateRange(false);
+    form.setFieldsValue({
+      serviceType: filterValue.serviceType,
+    });
+    console.log(values);
+    console.log(filterValue);
+  };
+
+  const [filterValue, setFilterValue] =useState({})
   const [breakdownData, setBreakdownData] =useState([])
   const [filterType, setFilterType] = useState('currentMonth');
+  const [account, setAccount ] = useState ([])
+  const [carrier, setCarrier ] = useState ([])
+  const [serviceType, setServiceType ] = useState ([])
+  const [trackingNumber, setTrakingNumber ] = useState ([])
   const [isModalOpenDate, setIsModalOpenDate] = useState(false);
   const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
   const [valueRadio, setValueRadio] = useState(1);
   const [customDate, setCustomDate] = useState('');
   const [onOkClickCount, setOnOkClickCount] = useState(0)
  
+  const showModalDateRange = () => {
+    setIsModalOpenDateRange(true);
+  };
 
   const handleOkDate = () => {
     setOnOkClickCount(onOkClickCount+1)
@@ -175,6 +196,31 @@ const Home = () => {
     setValueRadio(e.target.value);
   };
 
+  const handleChangeRefundType = (value) => {
+    setFilterValue({...filterValue, refundsType: value?.value})
+    console.log(value);
+  };
+
+  const handleChangeAccount = (value) => {
+    setFilterValue({...filterValue, account: value?.value})
+    console.log(value);
+  };
+
+  const handleChangeCarrier = (value) => {
+    setFilterValue({...filterValue, carrier: value?.value})
+    console.log(value);
+  };
+
+  const handleChangeServiceType = (value) => {
+    setFilterValue({...filterValue, serviceType: value?.value})
+    console.log(value);
+  };
+
+  const handleChangeTrackingNumber = (value) => {
+    setFilterValue({...filterValue, trackingNumber: value?.value})
+    console.log(value);
+  };
+
   const onChangeDatePicker = (date, dateString) => {
     console.log( dateString);
     if (valueRadio === 1) {
@@ -188,11 +234,11 @@ const Home = () => {
 
   useEffect(() => {
     getData()
-  }, [filterType, onOkClickCount, ]);
+  }, [filterType, onOkClickCount, form, , values ]);
 
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/breakdown/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/refunds/breakdown/65/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&refund_type_search=${filterValue.refundsType || ''}&account_number_search=${filterValue.account || ''}&carrier_search=${filterValue.carrier || ''}&service_type_search=${filterValue.serviceType || ''}&tracking_number_search=${filterValue.trackingNumber || ''}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -201,7 +247,10 @@ const Home = () => {
                                                                    tracking: e[3], refundType: e[4], postedCredit: e[5],
                                                                    postedDate: e[6], source: e[7], monthOfRefunds: e[8],
                                                                   })))
-
+        setAccount([].concat(data.data[0].account_numbers))
+        setCarrier([].concat(data.data[0].carriers))
+        setServiceType([].concat(data.data[0].service_types))
+        setTrakingNumber([].concat(data.data[0].tracking_numbers))
         
         
         
@@ -230,6 +279,137 @@ return (
                                   onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
                                   onChangeDatePicker={onChangeDatePicker} filterType={filterType}
                              />
+           <Button type="primary" onClick={showModalDateRange} >
+             ADVANCED FILTERS
+           </Button>                  
+           <Form form={form} onFinish={onFinish}>
+      <Modal title="Advanced Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
+      
+
+      <Row style={{ display: 'flex', alignItems: 'center' }}> 
+       <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
+       <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Refund type</p>
+       </Col>
+       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+       
+        <Select
+          labelInValue
+          placeholder="All"
+          allowClear
+          value={filterValue.refundsType}
+          style={{
+          width: 240,
+          marginTop: '0px',
+          marginLeft: '5px'
+          }}
+          onChange={handleChangeRefundType}
+          name='refundType'
+          id='refundType'
+          options={[
+          
+          {
+            value: 'money',
+            label: 'Money back guarantee',
+          },
+          {
+            value: 'audits',
+            label: 'Invoice audits',
+          },
+          {
+            value: 'lost_damaged',
+            label: 'Lost or damaged',
+          },
+          
+        ]}
+      />
+      
+      </Col>
+      </Row>
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+      <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>
+        <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Account #</p>
+      </Col>
+      <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+       <Select
+         labelInValue
+         placeholder="All"
+         allowClear
+         value={filterValue.account}
+         style={{
+                  width: 240,
+                  marginTop: '0px',
+                  marginLeft: '5px'
+                }}
+         onChange={handleChangeAccount}
+         options={account.map(e => ({value: e, label: e }))}
+      />
+      </Col>
+      </Row>
+
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+        <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>  
+          <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Carrier</p>
+        </Col>
+       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}> 
+       <Select
+          labelInValue
+          placeholder="All"
+          allowClear
+          value={filterValue.carrier}
+          style={{
+             width: 240,
+             marginTop: '0px',
+             marginLeft: '5px'
+             }}
+           onChange={handleChangeCarrier}
+           options={carrier.map(e => ({value: e, label: e }))  }
+      />
+      </Col>
+      </Row>
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+        <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>  
+          <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Service Type</p>
+        </Col>
+       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}> 
+       <Select
+          labelInValue
+          placeholder="All"
+          allowClear
+          value={filterValue.serviceType}
+          style={{
+             width: 240,
+             marginTop: '0px',
+             marginLeft: '5px'
+             }}
+           onChange={handleChangeServiceType}
+           options={serviceType.map(e => ({value: e, label: e }))  }
+      />
+      </Col>
+      </Row>
+      <Row style={{ display: 'flex', alignItems: 'center' }}>
+        <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>  
+          <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Tracking number</p>
+        </Col>
+       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}> 
+       <Select
+          labelInValue
+          placeholder="All"
+          allowClear
+          value={filterValue.serviceType}
+          style={{
+             width: 240,
+             marginTop: '0px',
+             marginLeft: '5px'
+             }}
+           onChange={handleChangeTrackingNumber}
+           options={trackingNumber.map(e => ({value: e, label: e }))  }
+      />
+      </Col>
+      </Row>
+      
+    
+      </Modal>
+      </Form>                  
            </Space>
           </Row>
           <Row style={{marginTop: 40}}>

@@ -214,7 +214,7 @@ const Lost_Damaged = () => {
             ],
           }  
         )
-        setCarrier([].concat(data.data[0].carrier_list))
+        setCarrier([].concat(data.data[0].carriers))
         setAccount([].concat(data.data[0].account_numbers))
         setZone([].concat(data.data[0].zones))
         
