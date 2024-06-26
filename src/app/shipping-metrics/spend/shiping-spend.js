@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table,
-   Select, Typography, Modal, Space, Divider, Radio, DatePicker, Form } from 'antd';
+   Select, Typography, Modal, Space, Divider, Radio, DatePicker, Form, 
+   Descriptions} from 'antd';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -32,22 +33,9 @@ ChartJS.register(
 
 const { RangePicker } = DatePicker;
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Shipping Spend',
-    },
-  },
-};
-
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
+export const dataGraph = {
   labels,
   datasets: [
     {
@@ -62,13 +50,28 @@ export const data = {
 
 const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
 
-
+const keyToUpperCase = (key) => {
+  const resultText = key.replace(/([A-Z])/g, " $1");
+  return resultText.charAt(0).toUpperCase() + resultText.slice(1);
+}
 
 const Shipping_Spend = () => {
 
   const [form] = Form.useForm();
 
   const values = Form.useWatch([], form);
+  const [graphOptions, setGraphOptions] = useState({
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: '',
+      },
+    },
+  });
 
   const onFinish = (values) => {
     setIsModalOpenDateRange(false);
@@ -102,7 +105,8 @@ const Shipping_Spend = () => {
   const [zone, setZone ] = useState ([])
   const [customDate, setCustomDate] = useState('');
   const [filterType, setFilterType] = useState('currentMonth');
-  const [dataShippingSpend, setDataShippingSpend] = useState(data)
+  const [dataShippingSpend, setDataShippingSpend] = useState(dataGraph)
+  const [data, setData] = useState({})
   const [filterValue, setFilterValue] =useState({})
   const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
   const showModalDateRange = () => {
@@ -152,14 +156,12 @@ const Shipping_Spend = () => {
   const [value, setValue] = useState('total');
   const onChangeDisplay = (e) => {
     setFilterValue({...filterValue, display: e.target.value})
-    console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
 
   const [valueCompareTo, setValueCompareTo] = useState('nothing');
   const onChangeCompareTo = (e) => {
     setFilterValue({...filterValue, compareTo: e.target.value})
-    console.log('radio checked', e.target.value);
     setValueCompareTo(e.target.value);
   };
 
@@ -178,6 +180,7 @@ const Shipping_Spend = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        setData(data.data[0])
         setDataShippingSpend(
           {
             labels: data.data[0].year_weeks,
@@ -200,8 +203,6 @@ const Shipping_Spend = () => {
       .catch((error) => console.log(error));
 
   }
-  
-  console.log(dataShippingSpend)
 
   const [isModalOpenDate, setIsModalOpenDate] = useState(false);
 
@@ -216,7 +217,6 @@ const Shipping_Spend = () => {
   };
 
   const onChangeRadio = (e) => {
-    console.log('radio checked', e.target.value);
     setValueRadio(e.target.value);
   };
 
@@ -225,9 +225,6 @@ const Shipping_Spend = () => {
   const showModalDate = () => {
     setIsModalOpenDate(true);
   };
-
-  console.log(filterType);
-
 
   return (
     <>
@@ -400,12 +397,17 @@ const Shipping_Spend = () => {
 
     <Row>
     <Col span={24}>
-    
+    <Descriptions>
+    {!['Current month', 'Last 12 months', 'Year to date'].includes(data['date_range']) && <Descriptions.Item label="Date Range">{data['date_range']}</Descriptions.Item>}
+      {Object.keys(filterValue).filter(e => filterValue[e]).map((e) => (
+        <Descriptions.Item label={keyToUpperCase(e)}>{filterValue[e]}</Descriptions.Item>
+      ))}
+    </Descriptions>
     </Col> 
     </Row>      
-    <Row style={{marginTop: 40}}>
-          <Col span={24}><Line height={80} options={options} data={dataShippingSpend} /></Col>
-          </Row>
+    <Row style={{marginTop: 0}}>
+      <Col span={24}><Line height={80} options={graphOptions} data={dataShippingSpend} /></Col>
+    </Row>
 
     </>
 );
