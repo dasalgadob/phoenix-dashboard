@@ -400,7 +400,7 @@ const Shipping_Spend = () => {
     <Descriptions>
     {!['Current month', 'Last 12 months', 'Year to date'].includes(data['date_range']) && <Descriptions.Item label="Date Range">{data['date_range']}</Descriptions.Item>}
       {Object.keys(filterValue).filter(e => filterValue[e]).map((e) => (
-        <Descriptions.Item label={keyToUpperCase(e)}>{filterValue[e]}</Descriptions.Item>
+        <Descriptions.Item key={e} label={keyToUpperCase(e)}>{filterValue[e]}</Descriptions.Item>
       ))}
     </Descriptions>
     </Col> 
