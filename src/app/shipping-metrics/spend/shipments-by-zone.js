@@ -1,7 +1,7 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker, Radio } from 'antd';
+import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker, Radio, Descriptions } from 'antd';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import {
@@ -226,6 +226,15 @@ const ShipmentsByZone = () => {
       </Row>
 
       <Divider></Divider>
+
+      <Row>
+        <Col span={24}>
+          <Descriptions column={7}>
+            <Descriptions.Item label="Date Range">{data.data?.[0]['date_range']}</Descriptions.Item>
+            {account && <Descriptions.Item label="Account #">{account}</Descriptions.Item>}
+          </Descriptions>
+        </Col>
+      </Row>
 
       <Row>
         <Col span={24}>

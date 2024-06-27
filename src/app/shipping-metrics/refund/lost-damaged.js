@@ -2,8 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table,
-   Select, Typography, Modal, Space, Divider, Radio, DatePicker, Form } from 'antd';
+import {
+  Breadcrumb, Layout, Menu, theme, Button, Dropdown, Flex, Col, Row, Table,
+  Select, Typography, Modal, Space, Divider, Radio, DatePicker, Form,
+  Descriptions
+} from 'antd';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -18,6 +21,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import CustomDateButtonFilter from '../spend/custom-date-button-filter';
+import { displayOptionsLostAndDamaged } from './constants';
 
 ChartJS.register(
   CategoryScale,
@@ -52,7 +56,7 @@ export const options = {
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
+export const graphData = {
   labels,
   datasets: [
     {
@@ -73,7 +77,7 @@ export const data = {
   ],
 };
 
-const filter = {currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3}
+const filter = { currentMonth: 1, custom: 2, last12Months: 4, yearToDate: 3 }
 
 
 
@@ -96,34 +100,35 @@ const Lost_Damaged = () => {
     setFilterValue({})
     setValue('All')
     setValueCompareTo('nothing')
-    
+
 
   }
 
   const onChangeDatePicker = (date, dateString) => {
-    console.log( dateString);
+    console.log(dateString);
     if (valueRadio === 1) {
-      setCustomDate(`${dateString.substr(0,4)}0${dateString.substr(6,1)}`)
-    } 
+      setCustomDate(`${dateString.substr(0, 4)}0${dateString.substr(6, 1)}`)
+    }
     else {
-      setCustomDate(`${dateString.substr(0,4)}${dateString.substr(5,2)}`)
+      setCustomDate(`${dateString.substr(0, 4)}${dateString.substr(5, 2)}`)
     }
 
   };
 
-  const [carrier, setCarrier ] = useState (['All']) 
-  const [account, setAccount ] = useState ([])
-  const [zone, setZone ] = useState ([])
+  const [data, setData] = useState({})
+  const [carrier, setCarrier] = useState(['All'])
+  const [account, setAccount] = useState([])
+  const [zone, setZone] = useState([])
   const [customDate, setCustomDate] = useState('');
   const [filterType, setFilterType] = useState('currentMonth');
-  const [dataLostDamaged, setDataLostDamaged] = useState(data)
-  const [filterValue, setFilterValue] =useState({})
+  const [dataLostDamaged, setDataLostDamaged] = useState(graphData)
+  const [filterValue, setFilterValue] = useState({})
   const [isModalOpenDateRange, setIsModalOpenDateRange] = useState(false);
   const showModalDateRange = () => {
     setIsModalOpenDateRange(true);
   };
   const handleOkDateRange = () => {
-    setOnOkClickCount(onOkClickCount+1)
+    setOnOkClickCount(onOkClickCount + 1)
     setIsModalOpenDateRange(false);
   };
   const handleCancelDateRange = () => {
@@ -135,63 +140,64 @@ const Lost_Damaged = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
-    setOnOkClickCount(onOkClickCount+1)
+    setOnOkClickCount(onOkClickCount + 1)
     setIsModalOpen(false);
-    
+
   };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
   const handleChangeServiceType = (value) => {
-    setFilterValue({...filterValue, serviceType: value?.value})
+    setFilterValue({ ...filterValue, serviceType: value?.value })
     console.log(value);
   };
 
   const handleChangeCarrier = (value) => {
-    setFilterValue({...filterValue, carrier: value?.value})
+    setFilterValue({ ...filterValue, carrier: value?.value })
     console.log(value);
   };
 
   const handleChangeAccount = (value) => {
-    setFilterValue({...filterValue, account: value?.value})
+    setFilterValue({ ...filterValue, account: value?.value })
     console.log(value);
   };
 
   const handleChangeZone = (value) => {
-    setFilterValue({...filterValue, zone: value?.value})
+    setFilterValue({ ...filterValue, zone: value?.value })
     console.log(value);
   };
 
   const [value, setValue] = useState('All');
   const onChangeDisplay = (e) => {
-    setFilterValue({...filterValue, display: e.target.value})
+    setFilterValue({ ...filterValue, display: e.target.value })
     console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
 
   const [valueCompareTo, setValueCompareTo] = useState('nothing');
   const onChangeCompareTo = (e) => {
-    setFilterValue({...filterValue, compareTo: e.target.value})
+    setFilterValue({ ...filterValue, compareTo: e.target.value })
     console.log('radio checked', e.target.value);
     setValueCompareTo(e.target.value);
   };
 
   const [onOkClickCount, setOnOkClickCount] = useState(0)
- 
-  
-  
+
+
+
 
   useEffect(() => {
     getData()
   }, [filterType, onOkClickCount, form, values]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/refund/lost_damaged/3023/?type_search=${filter[filterType]}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}&carrier_search=${filterValue.carrier || ''}&display_search=${value || ''}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/refund/lost_damaged/3023/?type_search=${filter[filterType]}&${valueRadio === 1 ? 'quarter' : 'month'}_search=${customDate}&carrier_search=${filterValue.carrier || ''}&display_search=${value || ''}`, {
       method: "GET"
     })
       .then((response) => response.json())
       .then((data) => {
+        setData(data.data?.[0])
         setDataLostDamaged(
           {
             labels: data.data?.[0].year_weeks,
@@ -212,23 +218,23 @@ const Lost_Damaged = () => {
                 backgroundColor: 'rgb(53, 162, 235)',
               },
             ],
-          }  
+          }
         )
         setCarrier([].concat(data.data[0].carriers))
         setAccount([].concat(data.data[0].account_numbers))
         setZone([].concat(data.data[0].zones))
-        
+
       })
       .catch((error) => console.log(error));
 
   }
-  
+
   console.log(dataLostDamaged)
 
   const [isModalOpenDate, setIsModalOpenDate] = useState(false);
 
   const handleOkDate = () => {
-    setOnOkClickCount(onOkClickCount+1)
+    setOnOkClickCount(onOkClickCount + 1)
     setFilterType('custom')
     setIsModalOpenDate(false);
   };
@@ -253,94 +259,94 @@ const Lost_Damaged = () => {
 
   return (
     <>
-    <Row justify="center" align="middle" >
-    <Space size={16}>
-    <Button type="primary" onClick={() => setFilterType('currentMonth')}
-                           style={filterType === 'currentMonth' && {background: '#2d3f7c'}}
-                           >CURRENT MONTH</Button>
-    <Button type="primary" onClick={() => setFilterType('yearToDate')}
-                           style={filterType === 'yearToDate' && {background: '#2d3f7c'}} 
-                            >YEAR TO DATE</Button>                         
-    <Button type="primary" onClick={() => setFilterType('last12Months')}
-                           style={filterType === 'last12Months' && {background: '#2d3f7c'}}
-                            >LAST 12 MONTHS</Button>
+      <Row justify="center" align="middle" >
+        <Space size={16}>
+          <Button type="primary" onClick={() => setFilterType('currentMonth')}
+            style={filterType === 'currentMonth' && { background: '#2d3f7c' }}
+          >CURRENT MONTH</Button>
+          <Button type="primary" onClick={() => setFilterType('yearToDate')}
+            style={filterType === 'yearToDate' && { background: '#2d3f7c' }}
+          >YEAR TO DATE</Button>
+          <Button type="primary" onClick={() => setFilterType('last12Months')}
+            style={filterType === 'last12Months' && { background: '#2d3f7c' }}
+          >LAST 12 MONTHS</Button>
 
-    <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
-                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} 
-                                  onChangeDatePicker={onChangeDatePicker} filterType={filterType}
-                             />
+          <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
+            onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate}
+            onChangeDatePicker={onChangeDatePicker} filterType={filterType}
+          />
 
-      <Button type="primary" onClick={showModalDateRange} >
-        ADVANCED FILTERS
-      </Button>
-      <Form form={form} onFinish={onFinish}>
-      <Modal title="Advanced Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
-      
-      
-      <Row style={{ display: 'flex', alignItems: 'center' }}>
-        <Col span={5}style={{ display: 'flex', alignItems: 'center' }}>  
-          <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px'}}>Carrier</p>
-        </Col>
-       <Col span={19} style={{ display: 'flex', alignItems: 'center' }}> 
-       <Select
-          labelInValue
-          placeholder="All"
-          allowClear
-          value={filterValue.carrier}
-          style={{
-             width: 240,
-             marginTop: '0px',
-             marginLeft: '5px'
-             }}
-           onChange={handleChangeCarrier}
-           options={carrier.map(e => ({value: e, label: e }))  }
-      />
-      </Col>
+          <Button type="primary" onClick={showModalDateRange} >
+            ADVANCED FILTERS
+          </Button>
+          <Form form={form} onFinish={onFinish}>
+            <Modal title="Advanced Filters" open={isModalOpenDateRange} onOk={handleOkDateRange} onCancel={handleCancelDateRange}>
+
+
+              <Row style={{ display: 'flex', alignItems: 'center' }}>
+                <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
+                  <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px' }}>Carrier</p>
+                </Col>
+                <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+                  <Select
+                    labelInValue
+                    placeholder="All"
+                    allowClear
+                    value={filterValue.carrier}
+                    style={{
+                      width: 240,
+                      marginTop: '0px',
+                      marginLeft: '5px'
+                    }}
+                    onChange={handleChangeCarrier}
+                    options={carrier.map(e => ({ value: e, label: e }))}
+                  />
+                </Col>
+              </Row>
+
+
+              <Row style={{ display: 'flex', alignItems: 'center' }}>
+                <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
+                  <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px' }}>Display </p>
+                </Col>
+                <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px' }}>
+                  <Radio.Group onChange={onChangeDisplay} value={value} >
+                    {Object.keys(displayOptionsLostAndDamaged).map(k => (<Radio key={k} value={k}>{displayOptionsLostAndDamaged[k]}</Radio>))}
+                  </Radio.Group>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col offset={18}>
+                  <Button type="primary" onClick={resetForm} style={{ marginLeft: '-12px' }}  >
+                    Reset
+                  </Button>
+                </Col>
+              </Row>
+            </Modal>
+          </Form>
+        </Space>
+
       </Row>
-      
-      
-       <Row style={{ display: 'flex', alignItems: 'center' }}>
-        <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
-        <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>Display </p>
+
+
+      <Divider></Divider>
+
+      <Row>
+        <Col span={24}>
+          <Descriptions column={7}>
+            <Descriptions.Item label="Date Range">{data['date_range']}</Descriptions.Item>
+            {filterValue.carrier && <Descriptions.Item label="Carrier">{filterValue.carrier}</Descriptions.Item>}
+            {filterValue.display && <Descriptions.Item label="Display">{displayOptionsLostAndDamaged[filterValue.display]}</Descriptions.Item>}
+          </Descriptions>
         </Col>
-        <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px'}}>
-       <Radio.Group onChange={onChangeDisplay} value={value} >
-        <Radio value={'All'}>All LND Claims</Radio>
-        <Radio value={'damaged'}>Damaged Claims</Radio>
-        <Radio value={'lost'}>Lost Claims</Radio>
-        
-       </Radio.Group>
-       </Col>
       </Row>
-      
-    <Row>
-      <Col offset={18}>
-    <Button type="primary" onClick={resetForm} style={{marginLeft: '-12px'}}  >
-        Reset
-      </Button>
-      </Col>
-    </Row>
-      </Modal>
-      </Form>
-    </Space>
-    
-    </Row>
-
-
-    <Divider></Divider>
-
-
-    <Row>
-    <Col span={24}>
-    
-    </Col> 
-    </Row>      
-    <Row style={{marginTop: 40}}>
-          <Col span={24}><Bar height={80} options={options} data={dataLostDamaged} /></Col>
-          </Row>
+      <Row>
+        <Col span={24}><Bar height={80} options={options} data={dataLostDamaged} /></Col>
+      </Row>
 
     </>
-);
+  );
 };
 
 export default Lost_Damaged;

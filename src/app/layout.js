@@ -123,7 +123,7 @@ export default function RootLayout({
 
 
           <html lang="en">
-            <body style={{ overflow: 'hidden' }}>
+            <body style={{ overflow: 'hidden', margin: '0px' }}>
               <Layout
                 style={{
                   minHeight: '100vh',

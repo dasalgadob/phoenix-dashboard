@@ -1,7 +1,7 @@
 'use client'; // If used in Pages Router, is no need to add "use client"
 
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker } from 'antd';
+import { Col, Row, Select, Divider, Tabs, Space, Card, Typography, Button, Modal, DatePicker, Descriptions } from 'antd';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import PieLabelsBreakout from './pie-labels-breakout';
@@ -34,7 +34,7 @@ export const dataPie = {
   datasets: [
     {
       label: 'Charge',
-      data: [12, 19, 5, 2, ],
+      data: [12, 19, 5, 2,],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -59,12 +59,12 @@ const { RangePicker } = DatePicker;
 const Service_Type_Breakout = () => {
 
   const onChangeDatePicker = (date, dateString) => {
-    console.log( dateString);
+    console.log(dateString);
     if (valueRadio === 1) {
-      setCustomDate(`${dateString.substr(0,4)}0${dateString.substr(6,1)}`)
-    } 
+      setCustomDate(`${dateString.substr(0, 4)}0${dateString.substr(6, 1)}`)
+    }
     else {
-      setCustomDate(`${dateString.substr(0,4)}${dateString.substr(5,2)}`)
+      setCustomDate(`${dateString.substr(0, 4)}${dateString.substr(5, 2)}`)
     }
 
   };
@@ -92,7 +92,7 @@ const Service_Type_Breakout = () => {
   }, [filterType, onOkClickCount]);
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/service_type_breakout/5165/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}&${valueRadio === 1 ?'quarter':'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/spend/service_type_breakout/5165/?type_search=${filter[filterType]}${account ? `&account_number_search=${account}` : ''}&${valueRadio === 1 ? 'quarter' : 'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -142,8 +142,8 @@ const Service_Type_Breakout = () => {
   };
 
   const optionsPie = {
-    maintainAspectRatio: true, 
-    responsive: false,  
+    maintainAspectRatio: true,
+    responsive: false,
     plugins: {
       legend: {
         display: false,
@@ -158,7 +158,7 @@ const Service_Type_Breakout = () => {
     setIsModalOpenDate(true);
   };
   const handleOkDate = () => {
-    setOnOkClickCount(onOkClickCount+1)
+    setOnOkClickCount(onOkClickCount + 1)
     setFilterType('custom')
     setIsModalOpenDate(false);
   };
@@ -172,96 +172,109 @@ const Service_Type_Breakout = () => {
     setValueRadio(e.target.value);
   };
 
-return(
+  return (
 
 
-   
- 
 
-  <>
-   <Row justify="center" align="middle">
-    <Space size={16}>
-    <Button type="primary" onClick={() => setFilterType('currentMonth')}
+
+
+    <>
+      <Row justify="center" align="middle">
+        <Space size={16}>
+          <Button type="primary" onClick={() => setFilterType('currentMonth')}
             style={filterType === 'currentMonth' && { background: '#2d3f7c' }}
-                           >CURRENT MONTH</Button> 
-    <Button type="primary" onClick={() => setFilterType('yearToDate')}
+          >CURRENT MONTH</Button>
+          <Button type="primary" onClick={() => setFilterType('yearToDate')}
             style={filterType === 'yearToDate' && { background: '#2d3f7c' }}
-            >YEAR TO DATE</Button>                        
-    <Button type="primary" onClick={() => setFilterType('last12Months')}
-            style={filterType === 'last12Months' && {background: '#2d3f7c'}}
-            >LAST 12 MONTHS</Button>
-    <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
-                                  onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} filterType={filterType}
-                                  onChangeDatePicker={onChangeDatePicker}/>
-      <Button type="primary" onClick={showModal} >
-                    ADVANCED FILTERS
-               </Button>
-               <Modal title="Advanced filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                  <Select
-                       labelInValue
-                       placeholder="All"
-                       allowClear
-                       style={{
-                        width: 240,
-                       }}
-                       onChange={handleChange}
-                    options={data.data?.[0]?.account_numbers.map(e => ({value: e, label: e}) || [])
+          >YEAR TO DATE</Button>
+          <Button type="primary" onClick={() => setFilterType('last12Months')}
+            style={filterType === 'last12Months' && { background: '#2d3f7c' }}
+          >LAST 12 MONTHS</Button>
+          <CustomDateButtonFilter isModalOpenDate={isModalOpenDate} handleOkDate={handleOkDate} handleCancelDate={handleCancelDate}
+            onChangeRadio={onChangeRadio} valueRadio={valueRadio} showModalDate={showModalDate} filterType={filterType}
+            onChangeDatePicker={onChangeDatePicker} />
+          <Button type="primary" onClick={showModal} >
+            ADVANCED FILTERS
+          </Button>
+          <Modal title="Advanced filters" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            <Row style={{ display: 'flex', alignItems: 'center' }}>
+              <Col span={5} style={{ display: 'flex', alignItems: 'center' }}>
+                <p style={{ fontWeight: 'bold', marginTop: '15px', fontSize: '16px' }}>Account #</p>
+              </Col>
+              <Col span={19} style={{ display: 'flex', alignItems: 'center' }}>
+                <Select
+                  labelInValue
+                  placeholder="All"
+                  allowClear
+                  style={{
+                    width: 240,
+                  }}
+                  onChange={handleChange}
+                  options={data.data?.[0]?.account_numbers.map(e => ({ value: e, label: e }) || [])
                   }
-                 />
-               </Modal>             
-    </Space>
-    </Row>
+                />
+              </Col>
+            </Row>
+          </Modal>
+        </Space>
+      </Row>
 
-    <Divider></Divider>
+      <Divider></Divider>
+      <Row>
+        <Col span={24}>
+          <Descriptions column={7}>
+            <Descriptions.Item label="Date Range">{data.data?.[0]['date_range']}</Descriptions.Item>
+            {account && <Descriptions.Item label="Account #">{account}</Descriptions.Item>}
+          </Descriptions>
+        </Col>
+      </Row>
 
+      <Row>
+        <Col span={24}>
+          <Card style={{
+            margin: 10,
+            borderRadius: '12px',
+            height: 480,
+          }}
+          >
+            <Row>
+              <Col span={6} style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: '10px',
+                flexDirection: 'column',
+              }}>
+                <Title level={4} style={{
+                  fontWeight: 'bold',
+                  margin: 0,
+                }}>Shipments by Breakout</Title>
 
-
-  <Row>
-    <Col span={24}>
-    <Card style={{
-              margin: 10,
-              borderRadius: '12px',
-              height:480,
-            }}
-            >
-              <Row>
-               <Col span={6} style={{
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      justifyContent: 'center',
-                                      marginTop: '10px',
-                                      flexDirection: 'column',
-                                     }}>
-               <Title level={4} style={{
-                                        fontWeight: 'bold',
-                                        margin: 0,
-                                        }}>Shipments by Breakout</Title>                        
-                           
               </Col>
               <Col span={14} style={{
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      justifyContent: 'center',
-                                      flexDirection: 'column',
-                                     }}>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>                        
-              <Pie data={graphData} options={optionsPie} width={400} height={400} />
-              </div>
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <Pie data={graphData} options={optionsPie} width={400} height={400} />
+                </div>
               </Col>
               <Col span={4}>
-              {Object.keys(data?.data?.[0]?.shipping_spend_by_zone || {}).map((e, i) => 
-                <PieLabelsBreakout key={i} borderColor= {borderColors[i]} backgroundColor= {backgroundColors[i]} zone= {e}
-                values={data?.data?.[0] ? data.data[0].shipping_spend_by_zone[e] : {}}/>
-              )}
+                {Object.keys(data?.data?.[0]?.shipping_spend_by_zone || {}).map((e, i) =>
+                  <PieLabelsBreakout key={i} borderColor={borderColors[i]} backgroundColor={backgroundColors[i]} zone={e}
+                    values={data?.data?.[0] ? data.data[0].shipping_spend_by_zone[e] : {}} />
+                )}
               </Col>
-              </Row>
+            </Row>
 
-    </Card> 
-    </Col> 
-  </Row>   
+          </Card>
+        </Col>
+      </Row>
 
-  </>
-)
+    </>
+  )
 
 
 };
