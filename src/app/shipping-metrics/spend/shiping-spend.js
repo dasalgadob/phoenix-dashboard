@@ -21,6 +21,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import CustomDateButtonFilter from './custom-date-button-filter';
+import { compareToOptions, displayOptions } from './constants';
 
 ChartJS.register(
   CategoryScale,
@@ -361,10 +362,7 @@ const Shipping_Spend = () => {
                 </Col>
                 <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px' }}>
                   <Radio.Group onChange={onChangeDisplay} value={value} >
-                    <Radio value={'total'}>Total $</Radio>
-                    <Radio value={'shipment'}>$/shipment</Radio>
-                    <Radio value={'package'}>$/package</Radio>
-                    <Radio value={'lbs'}>$/lb</Radio>
+                    {Object.keys(displayOptions).map(k => (<Radio key={k} value={k}>{displayOptions[k]}</Radio>))}
                   </Radio.Group>
                 </Col>
               </Row>
@@ -374,9 +372,7 @@ const Shipping_Spend = () => {
                 </Col>
                 <Col span={19} style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '16px', alignItems: 'center', display: 'flex', }}>
                   <Radio.Group onChange={onChangeCompareTo} value={valueCompareTo}>
-                    <Radio value={'nothing'}>Nothing</Radio>
-                    <Radio value={'shipments'}># shipments</Radio>
-                    <Radio value={'packages'}># packages</Radio>
+                    {Object.keys(compareToOptions).map(k => (<Radio key={k} value={k}>{compareToOptions[k]}</Radio>))}
                   </Radio.Group>
                 </Col>
               </Row>
@@ -400,10 +396,13 @@ const Shipping_Spend = () => {
       <Row>
         <Col span={24}>
           <Descriptions column={8}>
-            <Descriptions.Item label="Date Range">{data['date_range']}</Descriptions.Item>
-            {Object.keys(filterValue).filter(e => filterValue[e]).map((e) => (
-              <Descriptions.Item key={e} label={keyToUpperCase(e)}>{filterValue[e]}</Descriptions.Item>
-            ))}
+            {data['date_range'] && <Descriptions.Item label="Date Range">{data['date_range']}</Descriptions.Item>}
+            {filterValue.serviceType && <Descriptions.Item label="Service Type">{filterValue.serviceType}</Descriptions.Item>}
+            {filterValue.carrier &&<Descriptions.Item label="Carrier">{filterValue.carrier}</Descriptions.Item>}
+            {filterValue.account && <Descriptions.Item label="Account #">{filterValue.account}</Descriptions.Item>}
+            {filterValue.zone && <Descriptions.Item label="Zone">{filterValue.zone}</Descriptions.Item>}
+            {filterValue.display && <Descriptions.Item label="Display">{displayOptions[filterValue.display]}</Descriptions.Item>}
+            {filterValue.compareTo && <Descriptions.Item label="Compare to">{compareToOptions[filterValue.compareTo]}</Descriptions.Item>}
           </Descriptions>
         </Col>
       </Row>
