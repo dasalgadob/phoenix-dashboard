@@ -332,7 +332,7 @@ const Home = () => {
             background: 'linear-gradient(to right, #4B0082, #6F2DA8)'
           }}>
             <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>Shipping Spend</p>
-            <Title level={2} style={{
+            <Title level={3} style={{
               fontWeight: 'bold',
               margin: 0,
               color: '#ffffff'
@@ -348,7 +348,7 @@ const Home = () => {
             background: 'linear-gradient(to right, #4B0082, #6F2DA8)'
           }}>
             <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>Refund Savings</p>
-            <Title level={2} style={{
+            <Title level={3} style={{
               fontWeight: 'bold',
               margin: 0,
               color: '#ffffff'
@@ -364,7 +364,7 @@ const Home = () => {
             <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>CN Savings</p>
             <Row>
               < Col span={8}>
-                <Title level={2} style={{
+                <Title level={3} style={{
                   fontWeight: 'bold',
                   margin: 0,
                   color: '#ffffff'
@@ -389,7 +389,7 @@ const Home = () => {
             background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'
           }}>
             <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}># Shipments</p>
-            <Title level={2} style={{
+            <Title level={3} style={{
               fontWeight: 'bold',
               margin: 0,
               color: '#ffffff'
@@ -403,7 +403,7 @@ const Home = () => {
             background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'
           }}>
             <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>Average Cost</p>
-            <Title level={2} style={{
+            <Title level={3} style={{
               fontWeight: 'bold',
               margin: 0,
               color: '#ffffff'
@@ -417,7 +417,7 @@ const Home = () => {
             background: 'linear-gradient(to right, #0a5cb8, #3b8eed)'
           }}>
             <p style={{ fontWeight: 'bold', margin: 0, color: '#ffffff' }}>Average Weight</p>
-            <Title level={2} style={{
+            <Title level={3} style={{
               fontWeight: 'bold',
               margin: 0,
               color: '#ffffff'
@@ -465,7 +465,7 @@ const Home = () => {
                       justifyContent: 'center',
                     }}>
                       <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px' }}>FedEx {message && message[0]?.shipping_spend_by_carrier?.fedex?.[1]}</p>
-                      <Title level={2} style={{
+                      <Title level={4} style={{
                         fontWeight: 'bold',
                         margin: 0,
                       }}>${message && message[0]?.shipping_spend_by_carrier?.fedex?.[0]}</Title>
@@ -478,7 +478,7 @@ const Home = () => {
                       justifyContent: 'center',
                     }}>
                       <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px' }}>UPS {message && message[0]?.shipping_spend_by_carrier?.ups?.[1]} </p>
-                      <Title level={2} style={{
+                      <Title level={4} style={{
                         fontWeight: 'bold',
                         margin: 0,
                       }}>${message && message[0]?.shipping_spend_by_carrier?.ups?.[0]}</Title>
@@ -509,7 +509,7 @@ const Home = () => {
                     justifyContent: 'center',
                   }}>
                     <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px' }}>Air {message && message[0]?.shipping_spend_by_service_type?.air?.[1]}</p>
-                    <Title level={2} style={{
+                    <Title level={4} style={{
                       fontWeight: 'bold',
                       margin: 0,
                     }}>${message && message[0]?.shipping_spend_by_service_type?.air?.[0]}</Title>
@@ -522,7 +522,7 @@ const Home = () => {
                     justifyContent: 'center',
                   }}>
                     <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px' }}>Ground {message && message[0]?.shipping_spend_by_service_type?.ground?.[1]} </p>
-                    <Title level={2} style={{
+                    <Title level={4} style={{
                       fontWeight: 'bold',
                       margin: 0,
                     }}>${message && message[0]?.shipping_spend_by_service_type?.ground?.[0]}</Title>
@@ -539,7 +539,7 @@ const Home = () => {
                     justifyContent: 'center',
                   }}>
                     <p style={{ fontWeight: 'bold', marginTop: '-25px', fontSize: '16px' }}>Intl {message && message[0]?.shipping_spend_by_service_type?.intl?.[1]}</p>
-                    <Title level={2} style={{
+                    <Title level={4} style={{
                       fontWeight: 'bold',
                       marginTop: '-20px',
                     }}>${message && message[0]?.shipping_spend_by_service_type?.intl?.[0]}</Title>
@@ -552,7 +552,7 @@ const Home = () => {
                     justifyContent: 'center',
                   }}>
                     <p style={{ fontWeight: 'bold', marginTop: '-25px', fontSize: '16px' }}>Deferred {message && message[0]?.shipping_spend_by_service_type?.deferred?.[1]} </p>
-                    <Title level={2} style={{
+                    <Title level={4} style={{
                       fontWeight: 'bold',
                       marginTop: '-20px',
                     }}>${message && message[0]?.shipping_spend_by_service_type?.deferred?.[0]}</Title>
