@@ -465,7 +465,7 @@ const Home = () => {
                       justifyContent: 'center',
                     }}>
                       <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px' }}>FedEx {message && message[0]?.shipping_spend_by_carrier?.fedex?.[1]}</p>
-                      <Title level={4} style={{
+                      <Title level={5} style={{
                         fontWeight: 'bold',
                         margin: 0,
                       }}>${message && message[0]?.shipping_spend_by_carrier?.fedex?.[0]}</Title>
@@ -478,7 +478,7 @@ const Home = () => {
                       justifyContent: 'center',
                     }}>
                       <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px' }}>UPS {message && message[0]?.shipping_spend_by_carrier?.ups?.[1]} </p>
-                      <Title level={4} style={{
+                      <Title level={5} style={{
                         fontWeight: 'bold',
                         margin: 0,
                       }}>${message && message[0]?.shipping_spend_by_carrier?.ups?.[0]}</Title>
@@ -509,7 +509,7 @@ const Home = () => {
                     justifyContent: 'center',
                   }}>
                     <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px' }}>Air {message && message[0]?.shipping_spend_by_service_type?.air?.[1]}</p>
-                    <Title level={4} style={{
+                    <Title level={5} style={{
                       fontWeight: 'bold',
                       margin: 0,
                     }}>${message && message[0]?.shipping_spend_by_service_type?.air?.[0]}</Title>
@@ -521,10 +521,10 @@ const Home = () => {
                     borderRadius: '12px',
                     justifyContent: 'center',
                   }}>
-                    <p style={{ fontWeight: 'bold', margin: 0, fontSize: '16px' }}>Ground {message && message[0]?.shipping_spend_by_service_type?.ground?.[1]} </p>
-                    <Title level={4} style={{
+                    <p style={{ fontWeight: 'bold', margin: '0px', fontSize: '16px' }}>Ground {message && message[0]?.shipping_spend_by_service_type?.ground?.[1]} </p>
+                    <Title level={5} style={{
                       fontWeight: 'bold',
-                      margin: 0,
+                      margin: '0px',
                     }}>${message && message[0]?.shipping_spend_by_service_type?.ground?.[0]}</Title>
                   </Card>
                 </Col>
@@ -539,7 +539,7 @@ const Home = () => {
                     justifyContent: 'center',
                   }}>
                     <p style={{ fontWeight: 'bold', marginTop: '-25px', fontSize: '16px' }}>Intl {message && message[0]?.shipping_spend_by_service_type?.intl?.[1]}</p>
-                    <Title level={4} style={{
+                    <Title level={5} style={{
                       fontWeight: 'bold',
                       marginTop: '-20px',
                     }}>${message && message[0]?.shipping_spend_by_service_type?.intl?.[0]}</Title>
@@ -552,7 +552,7 @@ const Home = () => {
                     justifyContent: 'center',
                   }}>
                     <p style={{ fontWeight: 'bold', marginTop: '-25px', fontSize: '16px' }}>Deferred {message && message[0]?.shipping_spend_by_service_type?.deferred?.[1]} </p>
-                    <Title level={4} style={{
+                    <Title level={5} style={{
                       fontWeight: 'bold',
                       marginTop: '-20px',
                     }}>${message && message[0]?.shipping_spend_by_service_type?.deferred?.[0]}</Title>
