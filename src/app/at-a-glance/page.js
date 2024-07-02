@@ -459,7 +459,7 @@ const Home = () => {
               <Col span={24} style={{ marginBottom: '10px' }}>
                 <Row >
                   <Col span={12}>
-                    <Card style={{
+                    <Card size='small' style={{
                       margin: 0,
                       borderRadius: '12px',
                       justifyContent: 'center',
@@ -472,7 +472,7 @@ const Home = () => {
                     </Card>
                   </Col>
                   <Col span={12}>
-                    <Card style={{
+                    <Card size='small' style={{
                       margin: 0,
                       borderRadius: '12px',
                       justifyContent: 'center',
@@ -503,7 +503,7 @@ const Home = () => {
             <Col span={24} style={{ marginBottom: '10px' }}>
               <Row>
                 <Col span={12}>
-                  <Card style={{
+                  <Card size='small' style={{
                     margin: 0,
                     borderRadius: '12px',
                     justifyContent: 'center',
@@ -516,7 +516,7 @@ const Home = () => {
                   </Card>
                 </Col>
                 <Col span={12}>
-                  <Card style={{
+                  <Card size='small' style={{
                     margin: 0,
                     borderRadius: '12px',
                     justifyContent: 'center',
@@ -533,7 +533,7 @@ const Home = () => {
             <Col span={24}>
               <Row>
                 <Col span={12}>
-                  <Card style={{
+                  <Card size='small' style={{
                     margin: 0,
                     borderRadius: '12px',
                     justifyContent: 'center',
@@ -546,7 +546,7 @@ const Home = () => {
                   </Card>
                 </Col>
                 <Col span={12}>
-                  <Card style={{
+                  <Card size='small' style={{
                     margin: 0,
                     borderRadius: '12px',
                     justifyContent: 'center',
@@ -566,7 +566,7 @@ const Home = () => {
 
         <Col span={8}>
 
-          <Card style={{
+          <Card  style={{
             margin: 10,
             borderRadius: '12px',
             height: 605,
