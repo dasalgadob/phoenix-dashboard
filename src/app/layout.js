@@ -22,6 +22,7 @@ import {
   UserOutlined,
   BellOutlined
 } from '@ant-design/icons';
+import { Providers } from './providers';
 
 const handleButtonClick = (e) => {
   message.info('Click on left button.');
@@ -68,7 +69,7 @@ function getItem(label, key, icon, children) {
 export default function RootLayout({
   children,
 }) {
-  const [collapsed, setCollapsed] = useState(false);  
+  const [collapsed, setCollapsed] = useState(false);
   const [data, setData] = useState([]);
   const asyncFetch = () => {
     fetch('https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json')
@@ -105,91 +106,94 @@ export default function RootLayout({
         minHeight: '100vh',
       }}
     >
-      <QueryClientProvider client={queryClient}>
+      <Providers>
+        <QueryClientProvider client={queryClient}>
 
-        <ConfigProvider
-          theme={{
-            token: {
-              // Seed Token
-              colorPrimary: '#597ef7',
-              borderRadius: 2,
+          <ConfigProvider
+            theme={{
+              token: {
+                // Seed Token
+                colorPrimary: '#597ef7',
+                borderRadius: 2,
 
-              // Alias Token
-              colorBgContainer: '#F2F3F4',
-            },
-          }}
-        >
+                // Alias Token
+                colorBgContainer: '#F2F3F4',
+              },
+            }}
+          >
 
 
 
-          <html lang="en">
-            <body style={{ overflow: 'hidden', margin: '0px' }}>
-              <Layout
-                style={{
-                  minHeight: '100vh',
-                }}
-              >
-                {!isNotLoggedIn &&
-
-                  <Sider /*collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}*/ width={210} style={{
+            <html lang="en">
+              <body style={{ overflow: 'hidden', margin: '0px' }}>
+                <Layout
+                  style={{
                     minHeight: '100vh',
-                  }}>
-                    <div className="demo-logo-vertical" />
-                    <div className='logo' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px',
-                                                  marginBottom: '20px' }} >
-                      <img src={'/71lbs_logo.jpg'} style={{ borderRadius: '50%' }} width={80} />
-                    </div>
+                  }}
+                >
+                  {!isNotLoggedIn &&
 
-                    <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" >
-                      <Menu.Item key='1'><Link href="/at-a-glance"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>At A Glance</Title></Link></Menu.Item>
-                      <SubMenu key='sub1' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping Metrics</Title>}>
-                        <Menu.Item key='2'><Link href="/shipping-metrics/spend"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Spend</Title></Link></Menu.Item>
-                        <Menu.Item key='3'><Link href="/shipping-metrics/refund"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Refund</Title></Link></Menu.Item>
-                        <Menu.Item key='4'><Link href="/shipping-metrics/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Breakdown</Title></Link></Menu.Item>
-                        {/*
+                    <Sider /*collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}*/ width={210} style={{
+                      minHeight: '100vh',
+                    }}>
+                      <div className="demo-logo-vertical" />
+                      <div className='logo' style={{
+                        display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px',
+                        marginBottom: '20px'
+                      }} >
+                        <img src={'/71lbs_logo.jpg'} style={{ borderRadius: '50%' }} width={80} />
+                      </div>
+
+                      <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" >
+                        <Menu.Item key='1'><Link href="/at-a-glance"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>At A Glance</Title></Link></Menu.Item>
+                        <SubMenu key='sub1' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping Metrics</Title>}>
+                          <Menu.Item key='2'><Link href="/shipping-metrics/spend"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Spend</Title></Link></Menu.Item>
+                          <Menu.Item key='3'><Link href="/shipping-metrics/refund"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Refund</Title></Link></Menu.Item>
+                          <Menu.Item key='4'><Link href="/shipping-metrics/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Breakdown</Title></Link></Menu.Item>
+                          {/*
         <Menu.Item key='5'><Link href="/shipping-metrics/map"><Title level={5} style={{ color: '#ffffff', marginBottom: 31    }}>Map</Title></Link></Menu.Item>
         */}
-                      </SubMenu>
-
-                      <SubMenu key='sub2' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Carrier Invoice</Title>}>
-                        <Menu.Item key='6'><Link href="/carrier-invoice/fedex-invoice"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>FedEx Invoice</Title></Link></Menu.Item>
-                        <Menu.Item key='7'><Link href="/carrier-invoice/ups-invoice"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>UPS Invoice</Title></Link></Menu.Item>
-                      </SubMenu>
-
-
-                      <SubMenu key='sub3' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Refunds</Title>}>
-                        <Menu.Item key='8'><Link href="/refunds/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Overview</Title></Link></Menu.Item>
-                        <Menu.Item key='9'><Link href="/refunds/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Breakdown</Title></Link></Menu.Item>
-                      </SubMenu>
-
-                      <SubMenu key='sub4' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice</Title>}>
-                        <Menu.Item key='10'><Link href="/invoice/invoice-report"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice Report</Title></Link></Menu.Item>
-                        <Menu.Item key='11'><Link href="/invoice/payments"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payments</Title></Link></Menu.Item>
-                        <Menu.Item key='12'><Link href="/invoice/payment-methods"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment Methods</Title></Link></Menu.Item>
-                        <Menu.Item key='13'><Link href="/invoice/payment-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment History</Title></Link></Menu.Item>
-                      </SubMenu>
-
-                      <SubMenu key='sub5' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Premium</Title>}>
-                        <Menu.Item key='14'><Link href="/premium/cn-savings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>CN Savings</Title></Link></Menu.Item>
-                        <Menu.Item key='15'><Link href="/premium/b3p-savings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P Savings</Title></Link></Menu.Item>
-                        <Menu.Item key='16'><Link href="/premium/shipping-fraud"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping Fraud</Title></Link></Menu.Item>
-                        <Menu.Item key='17'><Link href="/premium/gl-coding"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}> G/L Coding</Title></Link></Menu.Item>
-                      </SubMenu>
-
-                      <SubMenu key='sub6' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping</Title>}>
-                        <SubMenu key='sub7' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Labels</Title>}>
-                          <Menu.Item key='18'><Link href="/shipping/labels/create-label"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create label</Title></Link></Menu.Item>
-                          <Menu.Item key='19'><Link href="/shipping/labels/label-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Label History</Title></Link></Menu.Item>
-                          <Menu.Item key='20'><Link href="/shipping/labels/queue"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Queue</Title></Link></Menu.Item>
                         </SubMenu>
-                        <Menu.Item key='21'><Link href="/shipping/bill-to-3rd-party"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Bill to 3rd Party</Title></Link></Menu.Item>
-                        <Menu.Item key='22'><Link href="/shipping/reports"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>
-                      </SubMenu>
+
+                        <SubMenu key='sub2' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Carrier Invoice</Title>}>
+                          <Menu.Item key='6'><Link href="/carrier-invoice/fedex-invoice"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>FedEx Invoice</Title></Link></Menu.Item>
+                          <Menu.Item key='7'><Link href="/carrier-invoice/ups-invoice"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>UPS Invoice</Title></Link></Menu.Item>
+                        </SubMenu>
+
+
+                        <SubMenu key='sub3' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Refunds</Title>}>
+                          <Menu.Item key='8'><Link href="/refunds/overview"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Overview</Title></Link></Menu.Item>
+                          <Menu.Item key='9'><Link href="/refunds/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Breakdown</Title></Link></Menu.Item>
+                        </SubMenu>
+
+                        <SubMenu key='sub4' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice</Title>}>
+                          <Menu.Item key='10'><Link href="https://stg.71lbs.com/businesses/B18ED48633/invoices"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice Report</Title></Link></Menu.Item>
+                          <Menu.Item key='11'><Link href="https://stg.71lbs.com/businesses/B18ED48633/billings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payments</Title></Link></Menu.Item>
+                          <Menu.Item key='12'><Link href="https://stg.71lbs.com/businesses/B18ED48633/billings/credit_cards"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment Methods</Title></Link></Menu.Item>
+                          <Menu.Item key='13'><Link href="https://stg.71lbs.com/businesses/B18ED48633/billings/payment_history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment History</Title></Link></Menu.Item>
+                        </SubMenu>
+
+                        <SubMenu key='sub5' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Premium</Title>}>
+                          <Menu.Item key='14'><Link href="/premium/cn-savings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>CN Savings</Title></Link></Menu.Item>
+                          <Menu.Item key='15'><Link href="/premium/b3p-savings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P Savings</Title></Link></Menu.Item>
+                          <Menu.Item key='16'><Link href="/premium/shipping-fraud"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping Fraud</Title></Link></Menu.Item>
+                          <Menu.Item key='17'><Link href="/premium/gl-coding"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}> G/L Coding</Title></Link></Menu.Item>
+                        </SubMenu>
+
+                        <SubMenu key='sub6' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping</Title>}>
+                          <SubMenu key='sub7' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Labels</Title>}>
+                            <Menu.Item key='18'><Link href="/shipping/labels/create-label"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create label</Title></Link></Menu.Item>
+                            <Menu.Item key='19'><Link href="/shipping/labels/label-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Label History</Title></Link></Menu.Item>
+                            <Menu.Item key='20'><Link href="/shipping/labels/queue"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Queue</Title></Link></Menu.Item>
+                          </SubMenu>
+                          <Menu.Item key='21'><Link href="/shipping/bill-to-3rd-party"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Bill to 3rd Party</Title></Link></Menu.Item>
+                          <Menu.Item key='22'><Link href="/shipping/reports"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>
+                        </SubMenu>
 
 
 
-                      
-                      <SubMenu key='sub8' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title>}>
+
+                        <SubMenu key='sub8' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title>}>
                           {/*
                           <Menu.Item key='23'><Link href="/settings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Settings</Title></Link></Menu.Item>
                           */}
@@ -200,24 +204,24 @@ export default function RootLayout({
                           <Menu.Item key='28'><Link href="/settings/manage-users"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Manage Users</Title></Link></Menu.Item>
                           <Menu.Item key='29'><Link href="/settings/manage-billing"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Manage Billing</Title></Link></Menu.Item>
                           <Menu.Item key='30'><Link href="/settings/alerts"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Alerts</Title></Link></Menu.Item>
-                        </SubMenu> 
+                        </SubMenu>
 
-                    </Menu>
-                  </Sider>
+                      </Menu>
+                    </Sider>
 
-                }
+                  }
 
-                <Layout>
-                  
-                  <Content
-                    style={{
-                      margin: '0 0px',
-                      border: '1rem solid #597ef7',
-                      background: '#597ef7',
-                      height: '75vh',
-                    }}
-                  >
-                    {/*
+                  <Layout>
+
+                    <Content
+                      style={{
+                        margin: '0 0px',
+                        border: '1rem solid #597ef7',
+                        background: '#597ef7',
+                        height: '75vh',
+                      }}
+                    >
+                      {/*
           {!isNotLoggedIn &&
           <Breadcrumb
             style={{
@@ -231,55 +235,55 @@ export default function RootLayout({
           </Breadcrumb>
           }
           */}
- 
 
 
 
 
-                    <div
-                      style={{
-                        padding: 24,
-                        minHeight: 360,
-                        background: 'white',
-                        borderRadius: '20px',
-                        overflow: 'auto',
-                        height: '95vh',
-                      }}
-                    >
-                                         <Row>
-                      <Col span={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2px' }}>
-                        {isNotLoggedIn &&
 
-                          <img src={'/71lbs_logo.jpg'} style={{ width: '50px' }} />
+                      <div
+                        style={{
+                          padding: 24,
+                          minHeight: 360,
+                          background: 'white',
+                          borderRadius: '20px',
+                          overflow: 'auto',
+                          height: '95vh',
+                        }}
+                      >
+                        <Row>
+                          <Col span={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2px' }}>
+                            {isNotLoggedIn &&
 
-                        }
-                      </Col>
-                      <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px', marginLeft:'80px', marginBottom:'10px', marginRight:'-80px' }}>
-                        {!isNotLoggedIn &&
-                          <>
+                              <img src={'/71lbs_logo.jpg'} style={{ width: '50px' }} />
 
-                            <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>{message && message[0]?.business.business_name} </p>
+                            }
+                          </Col>
+                          <Col span={17} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px', marginLeft: '80px', marginBottom: '10px', marginRight: '-80px' }}>
+                            {!isNotLoggedIn &&
+                              <>
 
-                            <Tooltip title="User">
-                              <Button
-                                type="primary" shape="circle" icon={<UserOutlined />}
-                                style={{ alignItems: 'center', marginTop: '6px', marginRight: '10px', marginLeft: '20px', backgroundColor: '#597ef7', cursor: 'pointer', }}
-                              />
-                            </Tooltip>
-                            <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>Diego Salgado </p>
-                          </>
-                        }
-                      </Col>
-                      <Col span={4} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>
-                        {isNotLoggedIn &&
-                          <div>
-                            <Button type="primary" style={{ marginRight: '16px' }}>Sign Up</Button>
-                            <Button type="primary">Log In</Button>
-                          </div>
-                        }
-                        {!isNotLoggedIn &&
-                          <>
-                          {/*
+                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>{message && message[0]?.business.business_name} </p>
+
+                                <Tooltip title="User">
+                                  <Button
+                                    type="primary" shape="circle" icon={<UserOutlined />}
+                                    style={{ alignItems: 'center', marginTop: '6px', marginRight: '10px', marginLeft: '20px', backgroundColor: '#597ef7', cursor: 'pointer', }}
+                                  />
+                                </Tooltip>
+                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>Diego Salgado </p>
+                              </>
+                            }
+                          </Col>
+                          <Col span={4} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '2px' }}>
+                            {isNotLoggedIn &&
+                              <div>
+                                <Button type="primary" style={{ marginRight: '16px' }}>Sign Up</Button>
+                                <Button type="primary">Log In</Button>
+                              </div>
+                            }
+                            {!isNotLoggedIn &&
+                              <>
+                                {/*
                             <Badge count={2} style={{ fontSize: '10px', marginTop: '-3px', marginRight: '25px' }}>
                               <Dropdown menu={menuProps} placement="bottomCenter">
                                 <BellOutlined
@@ -287,27 +291,28 @@ export default function RootLayout({
                               </Dropdown>
                             </Badge>
                             */}
-                            <Tooltip title="Logout">
-                              <Button
-                                type="primary" href="/"
-                                icon={<PoweroffOutlined />}
-                              />
-                            </Tooltip>
-                            
-                          </>
-                        }
-                      </Col>
-                    </Row>
-                      {children}
+                                <Tooltip title="Logout">
+                                  <Button
+                                    type="primary" href="/"
+                                    icon={<PoweroffOutlined />}
+                                  />
+                                </Tooltip>
 
-                    </div>
-                  </Content>
+                              </>
+                            }
+                          </Col>
+                        </Row>
+                        {children}
+
+                      </div>
+                    </Content>
+                  </Layout>
                 </Layout>
-              </Layout>
-            </body>
-          </html>
-        </ConfigProvider>
-      </QueryClientProvider>
+              </body>
+            </html>
+          </ConfigProvider>
+        </QueryClientProvider>
+      </Providers>
     </AntdRegistry>
   )
 }
