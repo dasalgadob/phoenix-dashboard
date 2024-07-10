@@ -89,9 +89,11 @@ export default function RootLayout({
   let token = ''
 
   useEffect(() => {
+    console.log('useEffect')
     if (typeof window !== 'undefined') {
+      console.log('run fetch')
       token = window?.localStorage?.getItem('login-token')
-    }
+      console.log(token)
     fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/user", {
       headers: {
         'Accept': 'application/json',
@@ -106,7 +108,7 @@ export default function RootLayout({
         console.log(data);
       })
       .catch((error) => console.log(error));
-
+    }
 
     asyncFetch()
   }, []);

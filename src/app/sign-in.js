@@ -27,13 +27,15 @@ const SignIn = () => {
       .then((response) => {
         console.log(response.status)
         if(response.status === 403){
-          router.push('https://stg.71lbs.com/');
+          //router.push('https://stg.71lbs.com/');
         }
         
         return response.json()})
       .then((data) => {
         //setMessage(data.data);
         if(data.data[0].user){
+          console.log('setting token')
+          console.log(token)
           localStorage.setItem('login-token', token);
           router.push('/at-a-glance');
         }
