@@ -83,6 +83,14 @@ export default function RootLayout({
 
   const pathname = usePathname()
 
+  const searchParams = useSearchParams()
+  const tokenURL = searchParams.get('token')
+  if (tokenURL){
+    console.log('tokenURL')
+    console.log(tokenURL)
+    window?.localStorage?.setItem('login-token', tokenURL)
+  }
+
   const isNotLoggedIn = pathname === "/"
 
   const [message, setMessage] = useState(null);
