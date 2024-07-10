@@ -16,7 +16,7 @@ const Ups_Creds = () => {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/settings/credentials/65/", {
+    fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/settings/credentials/8258/", {
         method: "GET"
       })
         .then((response) => response.json())

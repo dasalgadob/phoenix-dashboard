@@ -106,7 +106,7 @@ export default function RootLayout({
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQ3Jpc3N5IExpc293c2tpIiwidGltZSI6MTcyMDYzNjQ1NiwiaXBfYWRkcmVzcyI6IjY3LjUzLjc4LjE3OCIsImV4cGlyYXRpb25fdGltZSI6IjIwMjQtMDctMTcgMTg6MzQ6MTYgVVRDIn0.r0gnhqw-0CPG4piH_3JJkBj40Xc7tJAc9bUdU6lgwa4"}`
       },
       method: "GET"
     })
@@ -198,12 +198,12 @@ export default function RootLayout({
                         </SubMenu>
 
                         <SubMenu key='sub6' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping</Title>}>
-                            {message && message.payload.businesses[0].available_services.shipping_labels.create_label && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/create_label`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create Label</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.view_labels && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>View Labels</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.reports && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/report`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.vendors && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/vendor`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Vendors</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.labels_in_queue && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/queued`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>labels in Queue</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.b3p && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/b3p`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.create_label && <Menu.Item key='15'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/create_label`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create Label</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.view_labels && <Menu.Item key='16'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>View Labels</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.reports && <Menu.Item key='17'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.vendors && <Menu.Item key='18'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/vendor`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Vendors</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.labels_in_queue && <Menu.Item key='19'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/queued`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>labels in Queue</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.b3p && <Menu.Item key='20'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/b3p`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P</Title></Link></Menu.Item>}
                         </SubMenu>
 
 

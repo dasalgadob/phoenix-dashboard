@@ -39,7 +39,7 @@ const offsets = {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const fetchShippingSpend = async () => {
-  const response = await fetch('http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/5165/?type_search=1');
+  const response = await fetch('http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/8258/?type_search=1');
   const data = await response.json();
   console.log(fetchShippingSpend)
   console.log(data)
@@ -146,7 +146,7 @@ const Home = () => {
   }, [filterType]);
 
   const getDataMap = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/maps/5165/?type_search=${filter[filterType]}&${valueRadio === 1 ? 'quarter' : 'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/shipping_metrics/maps/8258/?type_search=${filter[filterType]}&${valueRadio === 1 ? 'quarter' : 'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
@@ -159,7 +159,7 @@ const Home = () => {
   }
 
   const getData = () => {
-    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/5165/?type_search=${filter[filterType]}&${valueRadio === 1 ? 'quarter' : 'month'}_search=${customDate}`, {
+    fetch(`http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/overview/8258/?type_search=${filter[filterType]}&${valueRadio === 1 ? 'quarter' : 'month'}_search=${customDate}`, {
       method: "GET"
     })
       .then((response) => response.json())
