@@ -9,6 +9,7 @@ import { Typography, Avatar, Tooltip, Badge } from 'antd';
 import { usePathname } from "next/navigation"
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { useSearchParams, useRouter } from 'next/navigation'
 
 const { Title } = Typography;
 
@@ -85,14 +86,20 @@ export default function RootLayout({
   const isNotLoggedIn = pathname === "/"
 
   const [message, setMessage] = useState(null);
+  const token = localStorage.getItem('login-token')
 
   useEffect(() => {
-    fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/business/65/", {
+    fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/user", {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       method: "GET"
     })
       .then((response) => response.json())
       .then((data) => {
-        setMessage(data.data);
+        setMessage(data.data[0]);
         console.log(data);
       })
       .catch((error) => console.log(error));
@@ -100,6 +107,7 @@ export default function RootLayout({
 
     asyncFetch()
   }, []);
+
   return (
     <AntdRegistry
       style={{
@@ -149,7 +157,6 @@ export default function RootLayout({
                         <SubMenu key='sub1' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping Metrics</Title>}>
                           <Menu.Item key='2'><Link href="/shipping-metrics/spend"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Spend</Title></Link></Menu.Item>
                           <Menu.Item key='3'><Link href="/shipping-metrics/refund"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Refund</Title></Link></Menu.Item>
-                          <Menu.Item key='4'><Link href="/shipping-metrics/breakdown"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Breakdown</Title></Link></Menu.Item>
                           {/*
         <Menu.Item key='5'><Link href="/shipping-metrics/map"><Title level={5} style={{ color: '#ffffff', marginBottom: 31    }}>Map</Title></Link></Menu.Item>
         */}
@@ -167,27 +174,23 @@ export default function RootLayout({
                         </SubMenu>
 
                         <SubMenu key='sub4' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice</Title>}>
-                          <Menu.Item key='10'><Link href="https://stg.71lbs.com/businesses/B18ED48633/invoices"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice Report</Title></Link></Menu.Item>
-                          <Menu.Item key='11'><Link href="https://stg.71lbs.com/businesses/B18ED48633/billings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payments</Title></Link></Menu.Item>
-                          <Menu.Item key='12'><Link href="https://stg.71lbs.com/businesses/B18ED48633/billings/credit_cards"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment Methods</Title></Link></Menu.Item>
-                          <Menu.Item key='13'><Link href="https://stg.71lbs.com/businesses/B18ED48633/billings/payment_history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment History</Title></Link></Menu.Item>
+                          <Menu.Item key='10'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/invoices`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice Report</Title></Link></Menu.Item>
+                          <Menu.Item key='11'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/billings`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payments</Title></Link></Menu.Item>
+                          <Menu.Item key='12'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/billings/credit_cards`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment Methods</Title></Link></Menu.Item>
+                          <Menu.Item key='13'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/billings/payment_history`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment History</Title></Link></Menu.Item>
                         </SubMenu>
 
                         <SubMenu key='sub5' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Premium</Title>}>
-                          <Menu.Item key='14'><Link href="/premium/cn-savings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>CN Savings</Title></Link></Menu.Item>
-                          <Menu.Item key='15'><Link href="/premium/b3p-savings"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P Savings</Title></Link></Menu.Item>
-                          <Menu.Item key='16'><Link href="/premium/shipping-fraud"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping Fraud</Title></Link></Menu.Item>
-                          <Menu.Item key='17'><Link href="/premium/gl-coding"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}> G/L Coding</Title></Link></Menu.Item>
+                          {message && message.payload.businesses[0].available_services.premium.lost_and_damaged && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/lnd_summaries`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Lost & Damaged</Title></Link></Menu.Item>}
                         </SubMenu>
 
                         <SubMenu key='sub6' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping</Title>}>
-                          <SubMenu key='sub7' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Labels</Title>}>
-                            <Menu.Item key='18'><Link href="/shipping/labels/create-label"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create label</Title></Link></Menu.Item>
-                            <Menu.Item key='19'><Link href="/shipping/labels/label-history"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Label History</Title></Link></Menu.Item>
-                            <Menu.Item key='20'><Link href="/shipping/labels/queue"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Queue</Title></Link></Menu.Item>
-                          </SubMenu>
-                          <Menu.Item key='21'><Link href="/shipping/bill-to-3rd-party"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Bill to 3rd Party</Title></Link></Menu.Item>
-                          <Menu.Item key='22'><Link href="/shipping/reports"><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>
+                            {message && message.payload.businesses[0].available_services.shipping_labels.create_label && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/create_label`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create Label</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.view_labels && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>View Labels</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.reports && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/report`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.vendors && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/vendor`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Vendors</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.labels_in_queue && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/queued`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>labels in Queue</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.b3p && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/b3p`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P</Title></Link></Menu.Item>}
                         </SubMenu>
 
 
@@ -262,7 +265,7 @@ export default function RootLayout({
                             {!isNotLoggedIn &&
                               <>
 
-                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>{message && message[0]?.business.business_name} </p>
+                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>{message && message.user.businesses[0].name} </p>
 
                                 <Tooltip title="User">
                                   <Button
@@ -270,7 +273,7 @@ export default function RootLayout({
                                     style={{ alignItems: 'center', marginTop: '6px', marginRight: '10px', marginLeft: '20px', backgroundColor: '#597ef7', cursor: 'pointer', }}
                                   />
                                 </Tooltip>
-                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>Diego Salgado </p>
+                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>{message && message.user.user_name} </p>
                               </>
                             }
                           </Col>

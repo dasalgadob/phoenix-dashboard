@@ -3,7 +3,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { Button } from 'antd';
 import SignIn from './sign-in';
-import { useSearchParams, useRouter } from 'next/navigation'
 
 
 const Home = () => {
