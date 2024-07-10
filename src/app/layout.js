@@ -86,11 +86,12 @@ export default function RootLayout({
   const isNotLoggedIn = pathname === "/"
 
   const [message, setMessage] = useState(null);
-  if (typeof window !== 'undefined') {
-    const token = window?.localStorage?.getItem('login-token')
-  }
+  let token = ''
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      token = window?.localStorage?.getItem('login-token')
+    }
     fetch("http://ec2-44-202-145-148.compute-1.amazonaws.com/api-queries/user", {
       headers: {
         'Accept': 'application/json',
