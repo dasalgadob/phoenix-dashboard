@@ -194,7 +194,7 @@ export default function RootLayout({
                         </SubMenu>
 
                         <SubMenu key='sub5' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Premium</Title>}>
-                          {message && message.payload.businesses[0].available_services.premium.lost_and_damaged && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/lnd_summaries`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Lost & Damaged</Title></Link></Menu.Item>}
+                          {message && message.payload.businesses[0].available_services.premium.lost_and_damaged && <Menu.Item key='14'><Link href={`https://stg.71lbs.com/businesses/4058050F66/lnd_summaries`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Lost & Damaged</Title></Link></Menu.Item>}
                         </SubMenu>
 
                         <SubMenu key='sub6' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping</Title>}>
