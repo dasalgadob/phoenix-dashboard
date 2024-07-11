@@ -278,7 +278,7 @@ export default function RootLayout({
                             {!isNotLoggedIn &&
                               <>
 
-                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>{message && message.user.businesses[0].name} </p>
+                                <p style={{ fontWeight: 'bold', margin: 0, fontSize: '14px', color: '' }}>Toys for Trucks </p>
 
                                 <Tooltip title="User">
                                   <Button
