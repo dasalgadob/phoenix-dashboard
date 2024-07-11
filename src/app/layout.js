@@ -106,7 +106,7 @@ export default function RootLayout({
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQ3Jpc3N5IExpc293c2tpIiwidGltZSI6MTcyMDYzNjQ1NiwiaXBfYWRkcmVzcyI6IjY3LjUzLjc4LjE3OCIsImV4cGlyYXRpb25fdGltZSI6IjIwMjQtMDctMTcgMTg6MzQ6MTYgVVRDIn0.r0gnhqw-0CPG4piH_3JJkBj40Xc7tJAc9bUdU6lgwa4"}`
+        'Authorization': `Bearer ${token}`
       },
       method: "GET"
     })
