@@ -43,7 +43,7 @@ export const dataGraph = {
   datasets: [
     {
       fill: true,
-      label: ' ',
+      label: '',
       data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -71,7 +71,7 @@ const Shipping_Spend = () => {
       },
       title: {
         display: true,
-        text: '',
+        text: 'Spend',
       },
     },
   });
