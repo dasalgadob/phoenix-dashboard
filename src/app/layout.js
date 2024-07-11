@@ -187,10 +187,10 @@ export default function RootLayout({
                         </SubMenu>
 
                         <SubMenu key='sub4' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice</Title>}>
-                          <Menu.Item key='10'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/invoices`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice Report</Title></Link></Menu.Item>
-                          <Menu.Item key='11'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/billings`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payments</Title></Link></Menu.Item>
-                          <Menu.Item key='12'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/billings/credit_cards`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment Methods</Title></Link></Menu.Item>
-                          <Menu.Item key='13'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/billings/payment_history`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment History</Title></Link></Menu.Item>
+                          <Menu.Item key='10'><Link href={`https://stg.71lbs.com/businesses/4058050F66/invoices`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Invoice Report</Title></Link></Menu.Item>
+                          <Menu.Item key='11'><Link href={`https://stg.71lbs.com/businesses/4058050F66/billings`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payments</Title></Link></Menu.Item>
+                          <Menu.Item key='12'><Link href={`https://stg.71lbs.com/businesses/4058050F66/billings/credit_cards`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment Methods</Title></Link></Menu.Item>
+                          <Menu.Item key='13'><Link href={`https://stg.71lbs.com/businesses/4058050F66/billings/payment_history`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Payment History</Title></Link></Menu.Item>
                         </SubMenu>
 
                         <SubMenu key='sub5' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Premium</Title>}>
@@ -198,12 +198,12 @@ export default function RootLayout({
                         </SubMenu>
 
                         <SubMenu key='sub6' title={<Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Shipping</Title>}>
-                            {message && message.payload.businesses[0].available_services.shipping_labels.create_label && <Menu.Item key='15'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/create_label`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create Label</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.view_labels && <Menu.Item key='16'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>View Labels</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.reports && <Menu.Item key='17'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.vendors && <Menu.Item key='18'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/vendor`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Vendors</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.labels_in_queue && <Menu.Item key='19'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/queued`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>labels in Queue</Title></Link></Menu.Item>}
-                            {message && message.payload.businesses[0].available_services.shipping_labels.b3p && <Menu.Item key='20'><Link href={`https://stg.71lbs.com/businesses/${message && message.user.businesses[0].sid}/shipping_labels/b3p`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.create_label && <Menu.Item key='15'><Link href={`https://stg.71lbs.com/businesses/4058050F66/shipping_labels/create_label`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Create Label</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.view_labels && <Menu.Item key='16'><Link href={`https://stg.71lbs.com/businesses/4058050F66/shipping_labels`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>View Labels</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.reports && <Menu.Item key='17'><Link href={`https://stg.71lbs.com/businesses/4058050F66/shipping_labels`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Reports</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.vendors && <Menu.Item key='18'><Link href={`https://stg.71lbs.com/businesses/4058050F66/shipping_labels/vendor`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>Vendors</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.labels_in_queue && <Menu.Item key='19'><Link href={`https://stg.71lbs.com/businesses/4058050F66/shipping_labels/queued`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>labels in Queue</Title></Link></Menu.Item>}
+                            {message && message.payload.businesses[0].available_services.shipping_labels.b3p && <Menu.Item key='20'><Link href={`https://stg.71lbs.com/businesses/4058050F66/shipping_labels/b3p`}><Title level={5} style={{ color: '#ffffff', marginBottom: 31 }}>B3P</Title></Link></Menu.Item>}
                         </SubMenu>
 
 
